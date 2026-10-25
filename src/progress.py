@@ -45,7 +45,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from analysis import CONTROLS, degree_effects
 from load_data import ROOT, load_clean
-from ministry import FIELDS, IE, IE_FIELDS, IQR_TO_SD, TOP_SHARE, load as load_spain
+from ministry import FIELDS, IQR_TO_SD, TOP_SHARE, load as load_spain
 
 RAW = ROOT / "data" / "raw" / "ministerio"
 FIG = ROOT / "figures"

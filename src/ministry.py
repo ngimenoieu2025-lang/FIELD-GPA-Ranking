@@ -20,7 +20,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
-from matplotlib.patches import Patch
 from scipy.optimize import brentq
 from scipy.stats import norm
 from sklearn.linear_model import RidgeCV
@@ -34,7 +33,6 @@ RAW = ROOT / "data" / "raw" / "ministerio" / "Nota_Expediente_Grado_Univ.csv"
 FIG = ROOT / "figures"
 RES = ROOT / "results"
 TOP_SHARE = 0.20
-IE = "IE Universidad"
 IQR_TO_SD = 1.349  # interquartile range of a normal distribution, in SDs
 
 # Short English labels for the detailed fields (aggregates starting with "Total" are dropped).
@@ -70,9 +68,6 @@ FIELDS = {
     "Otros Servicios": "Other services",
 }
 INDICATORS = {"Nota media": "mean", "1º cuartil": "q1", "2º cuartil": "q2", "3º cuartil": "q3", "Máximo": "max"}
-# Fields in which IE University offers degrees.
-IE_FIELDS = ["Business administration", "Law", "Economics", "Other social sciences", "Psychology",
-             "Computer science", "Mathematics & statistics", "Architecture", "Audiovisual & media", "Arts"]
 
 plt.rcParams.update({"font.size": 10, "axes.spines.top": False, "axes.spines.right": False})
 
@@ -162,18 +157,14 @@ def unseen_university_rmse(df: pd.DataFrame) -> dict:
 
 
 def fig_eda(df: pd.DataFrame) -> None:
-    """Spread of university-level mean grades within each field, latest year, with IE marked."""
+    """Spread of university-level mean grades within each field, latest year."""
     last = df[df["year"] == df["year"].max()]
     order = last.groupby("field")["mean"].median().sort_values().index
     fig, ax = plt.subplots(figsize=(7.5, 7))
     ax.boxplot([last.loc[last["field"] == f, "mean"] for f in order], orientation="horizontal",
                tick_labels=order, showfliers=False, medianprops={"color": "black"})
-    ie = last[last["univ"] == IE].set_index("field")["mean"]
-    pos = {f: i + 1 for i, f in enumerate(order)}
-    ax.scatter(ie.to_numpy(), [pos[f] for f in ie.index], marker="D", color="tab:red", zorder=3, label="IE University")
     ax.set_xlabel(f"Mean final grade of graduates, {last['year'].max()}-{str(last['year'].max() + 1)[2:]} (5-10 scale)\n"
                   "Each box: distribution across Spanish universities")
-    ax.legend(frameon=False, loc="lower right")
     fig.tight_layout()
     fig.savefig(FIG / "spain_grades_by_field.pdf")
     fig.savefig(FIG / "spain_grades_by_field.png", dpi=200)
@@ -182,14 +173,11 @@ def fig_eda(df: pd.DataFrame) -> None:
 
 def fig_field_effects(eff: pd.DataFrame) -> None:
     y = np.arange(len(eff))
-    colors = ["tab:blue" if f in IE_FIELDS else "tab:gray" for f in eff.index]
     fig, ax = plt.subplots(figsize=(7.5, 7))
-    ax.barh(y, eff["effect"], xerr=1.96 * eff["se"], color=colors, error_kw={"lw": 0.8})
+    ax.barh(y, eff["effect"], xerr=1.96 * eff["se"], color="tab:blue", error_kw={"lw": 0.8})
     ax.axvline(0, color="black", lw=0.8)
     ax.set_yticks(y, eff.index)
     ax.set_xlabel("Difference from the average field in the same university and year\n(grade points on the 5-10 scale, 95% CI)")
-    ax.legend(handles=[Patch(color="tab:blue", label="Fields offered at IE University"),
-                       Patch(color="tab:gray", label="Other fields")], frameon=False, loc="lower right")
     fig.tight_layout()
     fig.savefig(FIG / "spain_field_effects.pdf")
     fig.savefig(FIG / "spain_field_effects.png", dpi=200)
@@ -198,9 +186,8 @@ def fig_field_effects(eff: pd.DataFrame) -> None:
 
 def fig_selection(sel_mean: pd.Series) -> None:
     s = sel_mean.sort_values()
-    colors = ["tab:blue" if f in IE_FIELDS else "tab:gray" for f in s.index]
     fig, ax = plt.subplots(figsize=(7.5, 7))
-    ax.barh(np.arange(len(s)), 100 * s, color=colors)
+    ax.barh(np.arange(len(s)), 100 * s, color="tab:blue")
     ax.axvline(100 * TOP_SHARE, color="tab:red", ls="--", lw=1, label="Equal access (20%)")
     ax.set_yticks(np.arange(len(s)), s.index)
     ax.set_xlabel("Graduates of the field inside their university's top 20% by raw grade (%)")
@@ -224,7 +211,6 @@ def main() -> None:
     stats["unseen_university_cv"] = unseen_university_rmse(df)
     last = df[df["year"] == df["year"].max()]
     stats["latest_year"] = {"year": int(last["year"].max()), "n_obs": int(len(last)), "n_univ": int(last["univ"].nunique()),
-                            "ie_total_mean_fields": float(last.loc[last["univ"] == IE, "mean"].mean()),
                             "national_mean_fields": float(last["mean"].mean())}
 
     stats["paired_gaps"] = [paired_gap(df, "Mathematics & statistics", b)
@@ -238,17 +224,12 @@ def main() -> None:
     stats["selection"] = {"n_univ_years": int(sel.groupby(["univ", "year"]).ngroups),
                           "n_univ": int(sel["univ"].nunique())}
 
-    ie = df[df["univ"] == IE].sort_values(["year", "field"])
-    ie.round(2).to_csv(RES / "ie_by_field_year.csv", index=False)
     stats["national_mean_by_year"] = df.groupby("year")["mean"].mean().round(3).to_dict()
     (RES / "spain_summary_stats.json").write_text(json.dumps(stats, indent=2))
 
     print(json.dumps(stats, indent=2))
     print(eff.round(3).to_string())
     print((100 * sel_mean.sort_values()).round(1).to_string())
-    print(ie[ie["year"] == ie["year"].max()].round(2).to_string(index=False))
-    ie_sel = sel[(sel["univ"] == IE) & (sel["year"] == sel.loc[sel["univ"] == IE, "year"].max())]
-    print((ie_sel.set_index("field")["top_share"] * 100).round(1).sort_values().to_string())
 
 
 if __name__ == "__main__":
