@@ -1,0 +1,228 @@
+{
+  "match": {
+    "spain_univs": 89,
+    "with_dropout": 86,
+    "with_admission": 47
+  },
+  "decomposition": {
+    "share_total_university_year": 0.20438658368804952,
+    "share_within_common_field": 0.6509065310224701,
+    "share_within_university_specific_field": 0.27523856077794057,
+    "share_within_year_noise": 0.07385490819958937,
+    "f_test_interaction": {
+      "F": 26.22741212417621,
+      "p": 0.0,
+      "df": 1409.0
+    },
+    "n_univ_field_cells": 1528
+  },
+  "persistence": {
+    "lag1_correlation": 0.8447897368208861,
+    "ci95": [
+      0.8391992517041453,
+      0.8502016904284279
+    ],
+    "n_pairs": 10413
+  },
+  "temporal_validation": {
+    "n_train": 9292,
+    "n_test": 2774,
+    "n_test_univ": 87,
+    "baseline: zero deviation": {
+      "rmse": 0.364543848549782,
+      "ci95_bootstrap_universities": [
+        0.348066011996299,
+        0.38118071004421145
+      ]
+    },
+    "ridge: common field effect": {
+      "rmse": 0.2255128030688597,
+      "ci95_bootstrap_universities": [
+        0.2108325650951715,
+        0.24081370670457147
+      ]
+    },
+    "ridge: field + university-by-field": {
+      "rmse": 0.1374118632336574,
+      "ci95_bootstrap_universities": [
+        0.12787022574746768,
+        0.14832680685638183
+      ]
+    },
+    "gradient boosting: field + dropout + size": {
+      "rmse": 0.20598558329783892,
+      "ci95_bootstrap_universities": [
+        0.1931466263222037,
+        0.22030805317178995
+      ]
+    }
+  },
+  "confounders": {
+    "field_level_admission": {
+      "slope": 0.05101388978727903,
+      "p": 0.25756020090754367,
+      "r2": 0.04720778852503382,
+      "n_fields": 29
+    },
+    "within_university": {
+      "n_obs": 8042,
+      "n_univ": 47,
+      "coef_pre": {
+        "adm_dev": 0.05552070337275373,
+        "size_dev": -0.015253976315148972
+      },
+      "p_pre": {
+        "adm_dev": 5.343888650536917e-23,
+        "size_dev": 0.000931353337266577
+      },
+      "coef_full": {
+        "adm_dev": 0.02645626201929267,
+        "size_dev": -0.03653028845570012,
+        "drop_dev": -0.01171811744079628
+      },
+      "p_full": {
+        "adm_dev": 7.1861594746617e-07,
+        "size_dev": 7.448142367078776e-17,
+        "drop_dev": 2.051531223693772e-223
+      },
+      "sd_field_effects": {
+        "field_only": 0.312310541243984,
+        "plus_admission_size": 0.30814369881481357,
+        "plus_dropout": 0.24316186118576671
+      },
+      "corr_effects_before_after_pre": 0.9918463417996618,
+      "corr_effects_before_after_full": 0.9522612807018108,
+      "r2": {
+        "field_only": 0.72299813800786,
+        "plus_admission_size": 0.7264889417386768,
+        "plus_dropout": 0.7591375497391835
+      },
+      "note": "public universities only (admission grade by rama is only published for them)"
+    }
+  },
+  "weighted_selection": {
+    "n_univ_years": 664,
+    "n_univ": 79
+  },
+  "clusters": {
+    "silhouette": {
+      "2": 0.24779578065099248,
+      "3": 0.20264862100106798,
+      "4": 0.22910322558773275,
+      "5": 0.23661253908961333,
+      "6": 0.21305493217496851
+    },
+    "k": 2,
+    "explained_variance": [
+      0.384,
+      0.21
+    ],
+    "loadings": {
+      "pc1": {
+        "field_effect": -0.534,
+        "spread_iqr": 0.32,
+        "between_univ_sd": -0.358,
+        "trend_per_year": -0.217,
+        "dropout": 0.607,
+        "admission": -0.261
+      },
+      "pc2": {
+        "field_effect": 0.191,
+        "spread_iqr": 0.368,
+        "between_univ_sd": 0.193,
+        "trend_per_year": 0.726,
+        "dropout": 0.134,
+        "admission": -0.496
+      }
+    },
+    "members": {
+      "0": [
+        "Agriculture",
+        "Architecture",
+        "Arts",
+        "Business administration",
+        "Computer science",
+        "Economics",
+        "Engineering",
+        "Humanities",
+        "Languages",
+        "Law",
+        "Life sciences",
+        "Mathematics & statistics",
+        "Other business",
+        "Other social sciences",
+        "Physical sciences",
+        "Tourism"
+      ],
+      "1": [
+        "Audiovisual & media",
+        "Early childhood teaching",
+        "Journalism",
+        "Medicine",
+        "Nursing",
+        "Other education",
+        "Other health",
+        "Other services",
+        "Primary teaching",
+        "Psychology",
+        "Social work",
+        "Sports",
+        "Veterinary"
+      ]
+    }
+  },
+  "portugal": {
+    "raw GPA": {
+      "sd_selection_rate_across_degrees": 0.08081340775211059,
+      "min_rate": 0.0513595166163142,
+      "max_rate": 0.3645251396648045,
+      "places_changed_vs_raw": 0,
+      "mean_admission_grade_selected": 0.5455774405385903
+    },
+    "within-degree z-score": {
+      "sd_selection_rate_across_degrees": 0.01934567979567817,
+      "min_rate": 0.16091954022988506,
+      "max_rate": 0.23809523809523808,
+      "places_changed_vs_raw": 138,
+      "mean_admission_grade_selected": 0.513358657532341
+    },
+    "within-degree percentile": {
+      "sd_selection_rate_across_degrees": 0.004383747758311014,
+      "min_rate": 0.19047619047619047,
+      "max_rate": 0.21052631578947367,
+      "places_changed_vs_raw": 156,
+      "mean_admission_grade_selected": 0.49494111167115473
+    },
+    "regression-adjusted GPA": {
+      "sd_selection_rate_across_degrees": 0.03612800147022788,
+      "min_rate": 0.13793103448275862,
+      "max_rate": 0.2777777777777778,
+      "places_changed_vs_raw": 125,
+      "mean_admission_grade_selected": 0.5368158337413658
+    },
+    "logistic_top20": {
+      "controls": {
+        "auc": 0.6994735839755207,
+        "fold_sd": 0.042152806584879694
+      },
+      "controls_plus_degree": {
+        "auc": 0.7439751927473595,
+        "fold_sd": 0.031702112372167475
+      },
+      "degree_only": {
+        "auc": 0.6559697691223332,
+        "fold_sd": 0.03602434362297184
+      },
+      "base_rate": 0.20010802052389953
+    },
+    "degree_gap": {
+      "raw_max_minus_min": 1.510834894337018,
+      "adjusted_standardised_max_minus_min": 1.3026473394635498,
+      "f_test_degree": [
+        38.124662145632776,
+        1.3517324383959885e-97,
+        14.0
+      ]
+    }
+  }
+}

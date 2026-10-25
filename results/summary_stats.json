@@ -1,0 +1,32 @@
+{
+  "n_students": 3703,
+  "n_degrees": 15,
+  "gpa_mean": 12.691985247726796,
+  "gpa_sd": 1.2669998043787978,
+  "raw_gap_max_minus_min": 1.510834894337009,
+  "r2_degree_only": 0.1494237394670921,
+  "r2_controls_only": 0.13571196121275808,
+  "r2_controls_plus_degree": 0.24453205451148097,
+  "f_test_degree_given_controls": {
+    "F": 37.87309818321323,
+    "p": 6.082530693642289e-97,
+    "df": 14.0
+  },
+  "sd_degree_effects_raw": 0.39630437243998456,
+  "sd_degree_effects_adjusted": 0.35383952806396796,
+  "adjusted_gap_max_minus_min": 1.3146269915672795,
+  "corr_raw_vs_adjusted_effects": 0.9702432796923592,
+  "admission_grade_coef": 0.020707426094815528,
+  "cv_rmse": {
+    "baseline_mean_only": 1.2669998043787978,
+    "controls_only": 1.180085496738378,
+    "degree_only": 1.1717360729595232,
+    "controls_plus_degree": 1.107262960283205,
+    "controls_plus_degree_ridge": 1.1070817427716662
+  },
+  "selection": {
+    "places": 741,
+    "changed_raw_vs_z": 138,
+    "changed_raw_vs_adj": 124
+  }
+}

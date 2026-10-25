@@ -1,0 +1,80 @@
+{
+  "r2_univ_year": 0.1784542161384851,
+  "r2_with_field": 0.6985259697765522,
+  "f_test_field": {
+    "F": 739.3270135112917,
+    "p": 0.0,
+    "df": 28.0
+  },
+  "n_obs": 12125,
+  "n_univ": 89,
+  "n_fields": 29,
+  "unseen_university_cv": {
+    "baseline_rmse_no_field": 0.35673530098084505,
+    "field_model_rmse": 0.22155650522970163
+  },
+  "latest_year": {
+    "year": 2023,
+    "n_obs": 1427,
+    "n_univ": 89,
+    "ie_total_mean_fields": 8.227500000000001,
+    "national_mean_fields": 7.413097407147863
+  },
+  "paired_gaps": [
+    {
+      "pair": "Mathematics & statistics minus Business administration",
+      "n_univ_years": 222,
+      "n_univ": 34,
+      "mean_gap": 0.252972972972973,
+      "share_univ_negative": 0.11764705882352941,
+      "se_clustered_by_univ": 0.03501950480276121
+    },
+    {
+      "pair": "Mathematics & statistics minus Law",
+      "n_univ_years": 210,
+      "n_univ": 32,
+      "mean_gap": 0.09666666666666665,
+      "share_univ_negative": 0.3125,
+      "se_clustered_by_univ": 0.03514314098045022
+    },
+    {
+      "pair": "Mathematics & statistics minus Economics",
+      "n_univ_years": 202,
+      "n_univ": 29,
+      "mean_gap": 0.26415841584158417,
+      "share_univ_negative": 0.034482758620689655,
+      "se_clustered_by_univ": 0.02976038299669141
+    },
+    {
+      "pair": "Mathematics & statistics minus Other social sciences",
+      "n_univ_years": 182,
+      "n_univ": 26,
+      "mean_gap": -0.29956043956043954,
+      "share_univ_negative": 0.8846153846153846,
+      "se_clustered_by_univ": 0.04796825802441116
+    },
+    {
+      "pair": "Engineering minus Business administration",
+      "n_univ_years": 565,
+      "n_univ": 69,
+      "mean_gap": -0.02969911504424779,
+      "share_univ_negative": 0.5797101449275363,
+      "se_clustered_by_univ": 0.026641647106700868
+    }
+  ],
+  "selection": {
+    "n_univ_years": 718,
+    "n_univ": 85
+  },
+  "national_mean_by_year": {
+    "2015": 7.224,
+    "2016": 7.226,
+    "2017": 7.239,
+    "2018": 7.265,
+    "2019": 7.27,
+    "2020": 7.337,
+    "2021": 7.415,
+    "2022": 7.437,
+    "2023": 7.413
+  }
+}

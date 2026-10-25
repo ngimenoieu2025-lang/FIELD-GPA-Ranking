@@ -1,0 +1,46 @@
+{
+  "spain": {
+    "n_train": 9566,
+    "n_test": 2559,
+    "n_univ_train": 71,
+    "n_univ_test": 18,
+    "models": {
+      "baseline: zero deviation (field ignored)": {
+        "cv_rmse_mean": 0.35289544885525664,
+        "cv_rmse_sd": 0.03307678869730426,
+        "test_rmse": 0.36606283533858336
+      },
+      "ridge: field of study": {
+        "cv_rmse_mean": 0.22073254939398684,
+        "cv_rmse_sd": 0.020416491049777098,
+        "test_rmse": 0.23078359787488287
+      }
+    }
+  },
+  "portugal": {
+    "n_train": 2962,
+    "n_test": 741,
+    "models": {
+      "baseline: overall mean": {
+        "cv_rmse_mean": 1.2546058834655571,
+        "cv_rmse_sd": 0.048046820785045755,
+        "test_rmse": 1.313306075906234
+      },
+      "linear: entry grades + background": {
+        "cv_rmse_mean": 1.1668701620213389,
+        "cv_rmse_sd": 0.05315137172455972,
+        "test_rmse": 1.2270160129592593
+      },
+      "linear: degree only": {
+        "cv_rmse_mean": 1.1578401846103186,
+        "cv_rmse_sd": 0.04625269294633194,
+        "test_rmse": 1.2352213234877811
+      },
+      "ridge: entry grades + background + degree": {
+        "cv_rmse_mean": 1.092168283662237,
+        "cv_rmse_sd": 0.052888491874003164,
+        "test_rmse": 1.1683538201904473
+      }
+    }
+  }
+}

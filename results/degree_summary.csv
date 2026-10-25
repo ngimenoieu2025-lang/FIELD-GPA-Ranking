@@ -1,0 +1,16 @@
+course,n,gpa_mean,gpa_sd,gpa_p80,admission_mean,share_no_unit_passed
+Management,331,11.885,1.118,12.75,123.041,0.129
+Management (evening),210,12.065,1.324,12.962,131.381,0.216
+Tourism,219,12.088,1.129,12.915,122.301,0.131
+Social Service,326,12.354,1.169,13.277,125.909,0.082
+Social Service (evening),184,12.355,1.132,13.198,122.192,0.144
+Basic Education,174,12.464,1.017,13.165,123.237,0.094
+Oral Hygiene,76,12.611,1.253,13.419,123.568,0.116
+Informatics Engineering,126,12.636,1.656,14.0,126.955,0.259
+Communication Design,212,12.747,1.134,13.667,129.105,0.062
+Advertising & Marketing,240,12.749,1.136,13.749,121.879,0.104
+Agronomy,170,12.768,1.32,13.766,133.886,0.19
+Equinculture,115,12.775,1.282,13.767,134.224,0.184
+Journalism & Communication,302,12.874,1.102,13.75,128.039,0.088
+Veterinary Nursing,302,13.187,1.227,14.2,131.673,0.104
+Nursing,716,13.396,1.058,14.313,127.397,0.065
