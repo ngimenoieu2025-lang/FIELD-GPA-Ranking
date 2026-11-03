@@ -1,0 +1,95 @@
+{
+  "n_students": 3469,
+  "top_share": 0.2,
+  "n_bootstrap": 1000,
+  "estimate": {
+    "raw GPA": {
+      "future_raw_grade": 14.2123,
+      "future_within_degree_z": 0.9972,
+      "stability_spearman": 0.6619,
+      "entry_admission_z": 0.5516,
+      "sd_selection_rate": 0.0897
+    },
+    "regression-adjusted": {
+      "future_raw_grade": 14.1038,
+      "future_within_degree_z": 1.0428,
+      "stability_spearman": 0.6189,
+      "entry_admission_z": 0.5207,
+      "sd_selection_rate": 0.0404
+    },
+    "within-degree z-score": {
+      "future_raw_grade": 14.0904,
+      "future_within_degree_z": 1.038,
+      "stability_spearman": 0.6259,
+      "entry_admission_z": 0.4816,
+      "sd_selection_rate": 0.0187
+    },
+    "within-degree percentile": {
+      "future_raw_grade": 14.0806,
+      "future_within_degree_z": 1.0359,
+      "stability_spearman": 0.6209,
+      "entry_admission_z": 0.4811,
+      "sd_selection_rate": 0.006
+    }
+  },
+  "ci95_low": {
+    "raw GPA": {
+      "future_raw_grade": 14.1144,
+      "future_within_degree_z": 0.9447,
+      "stability_spearman": 0.6402,
+      "entry_admission_z": 0.4634,
+      "sd_selection_rate": 0.0817
+    },
+    "regression-adjusted": {
+      "future_raw_grade": 13.9902,
+      "future_within_degree_z": 0.9865,
+      "stability_spearman": 0.5945,
+      "entry_admission_z": 0.4229,
+      "sd_selection_rate": 0.0314
+    },
+    "within-degree z-score": {
+      "future_raw_grade": 13.9807,
+      "future_within_degree_z": 0.9842,
+      "stability_spearman": 0.6014,
+      "entry_admission_z": 0.3961,
+      "sd_selection_rate": 0.0164
+    },
+    "within-degree percentile": {
+      "future_raw_grade": 13.9748,
+      "future_within_degree_z": 0.9825,
+      "stability_spearman": 0.5954,
+      "entry_admission_z": 0.3889,
+      "sd_selection_rate": 0.0047
+    }
+  },
+  "ci95_high": {
+    "raw GPA": {
+      "future_raw_grade": 14.309,
+      "future_within_degree_z": 1.0475,
+      "stability_spearman": 0.683,
+      "entry_admission_z": 0.6271,
+      "sd_selection_rate": 0.107
+    },
+    "regression-adjusted": {
+      "future_raw_grade": 14.2078,
+      "future_within_degree_z": 1.0871,
+      "stability_spearman": 0.6427,
+      "entry_admission_z": 0.5907,
+      "sd_selection_rate": 0.0568
+    },
+    "within-degree z-score": {
+      "future_raw_grade": 14.1942,
+      "future_within_degree_z": 1.0899,
+      "stability_spearman": 0.6484,
+      "entry_admission_z": 0.5596,
+      "sd_selection_rate": 0.0349
+    },
+    "within-degree percentile": {
+      "future_raw_grade": 14.1879,
+      "future_within_degree_z": 1.0857,
+      "stability_spearman": 0.6428,
+      "entry_admission_z": 0.5561,
+      "sd_selection_rate": 0.0128
+    }
+  }
+}
