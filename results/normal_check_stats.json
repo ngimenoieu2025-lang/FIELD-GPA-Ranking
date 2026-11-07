@@ -1,0 +1,31 @@
+{
+  "n_original_grade_records": 12125,
+  "n_matched_valid_records": 10476,
+  "n_excluded_records": 1649,
+  "n_records_with_median": 10328,
+  "n_records_with_maximum": 10278,
+  "median_absolute_mean_median_gap_sd": 0.11087671232876646,
+  "median_normal_mass_outside_5_10": 0.0003505071448588275,
+  "share_maxima_outside_normal_95_interval": 0.23234092235843548,
+  "mean_observed_minus_expected_max": 0.16910345128043267,
+  "n_selection_university_years": 664,
+  "n_selection_universities": 79,
+  "graduate_weighted_absolute_change_pp": 0.040756187558857064,
+  "largest_absolute_field_average_change_pp": 0.12926432363273288,
+  "n_fields_with_changed_rank": 0,
+  "maximum_selection_capacity_error": 2.349787031619144e-13,
+  "methods": {
+    "sd": "(Q3-Q1)/1.349, as in the existing simulation.",
+    "expected_maximum": "Numerical expectation from the normal maximum quantile function using 128-point Gaussian quadrature.",
+    "maximum_interval": "Pointwise 95% predictive interval using P(maximum <= x)=Phi((x-mean)/sd)^n; allows 0.01 grade points for rounding.",
+    "selection": "Graduate-weighted top-20% cutoff within university-year, with at least four observed fields. Same records and weights for both distributions.",
+    "truncation": "Restricts the existing normal to [5,10], retaining its underlying location and scale. Truncation changes the resulting mean and IQR; parameters are not refitted."
+  },
+  "limitations": [
+    "Published summaries cannot establish normality or support an individual-level normality test.",
+    "Mean-median gaps are descriptive evidence of asymmetry, not a formal significance test.",
+    "Maximum diagnostics assume independent grades and treat estimated means, scales and matched graduate counts as known; intervals are pointwise, not simultaneous.",
+    "Missing fields are excluded; selection represents graduates in available fields, not necessarily the complete university.",
+    "Selection compares model-implied rates, not the identities of individual selected students."
+  ]
+}
