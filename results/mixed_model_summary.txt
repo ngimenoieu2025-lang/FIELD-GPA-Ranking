@@ -1,0 +1,56 @@
+                        Mixed Linear Model Regression Results
+=====================================================================================
+Model:                      MixedLM           Dependent Variable:           mean     
+No. Observations:           12125             Method:                       REML     
+No. Groups:                 89                Scale:                        0.0147   
+Min. group size:            1                 Log-Likelihood:               5850.2667
+Max. group size:            261               Converged:                    Yes      
+Mean group size:            136.2                                                    
+-------------------------------------------------------------------------------------
+                                          Coef.  Std.Err.    z    P>|z| [0.025 0.975]
+-------------------------------------------------------------------------------------
+Intercept                                  7.239    0.019 385.556 0.000  7.202  7.275
+C(field, Sum)[S.Agriculture]              -0.502    0.037 -13.562 0.000 -0.575 -0.429
+C(field, Sum)[S.Architecture]             -0.564    0.030 -18.967 0.000 -0.622 -0.506
+C(field, Sum)[S.Arts]                      0.199    0.030   6.662 0.000  0.140  0.258
+C(field, Sum)[S.Audiovisual & media]       0.195    0.028   7.031 0.000  0.141  0.249
+C(field, Sum)[S.Business administration]  -0.316    0.022 -14.180 0.000 -0.359 -0.272
+C(field, Sum)[S.Computer science]         -0.093    0.025  -3.779 0.000 -0.141 -0.045
+C(field, Sum)[S.Early childhood teaching]  0.470    0.025  18.902 0.000  0.422  0.519
+C(field, Sum)[S.Economics]                -0.366    0.030 -12.327 0.000 -0.424 -0.308
+C(field, Sum)[S.Engineering]              -0.379    0.024 -15.790 0.000 -0.426 -0.332
+C(field, Sum)[S.Humanities]                0.109    0.029   3.767 0.000  0.052  0.165
+C(field, Sum)[S.Journalism]                0.044    0.030   1.444 0.149 -0.016  0.103
+C(field, Sum)[S.Languages]                 0.197    0.028   7.113 0.000  0.143  0.251
+C(field, Sum)[S.Law]                      -0.251    0.023 -10.743 0.000 -0.297 -0.205
+C(field, Sum)[S.Life sciences]             0.025    0.027   0.893 0.372 -0.029  0.078
+C(field, Sum)[S.Mathematics & statistics] -0.139    0.034  -4.040 0.000 -0.206 -0.072
+C(field, Sum)[S.Medicine]                  0.383    0.030  12.823 0.000  0.324  0.442
+C(field, Sum)[S.Nursing]                   0.530    0.025  21.000 0.000  0.480  0.579
+C(field, Sum)[S.Other business]           -0.127    0.026  -4.882 0.000 -0.179 -0.076
+C(field, Sum)[S.Other education]           0.320    0.030  10.832 0.000  0.262  0.378
+C(field, Sum)[S.Other health]              0.131    0.024   5.506 0.000  0.084  0.177
+C(field, Sum)[S.Other services]            0.041    0.041   1.003 0.316 -0.039  0.122
+C(field, Sum)[S.Other social sciences]     0.079    0.027   2.918 0.004  0.026  0.132
+C(field, Sum)[S.Physical sciences]        -0.243    0.030  -8.104 0.000 -0.302 -0.184
+C(field, Sum)[S.Primary teaching]          0.406    0.025  16.354 0.000  0.358  0.455
+C(field, Sum)[S.Psychology]                0.163    0.025   6.452 0.000  0.113  0.212
+C(field, Sum)[S.Social work]               0.059    0.032   1.875 0.061 -0.003  0.121
+C(field, Sum)[S.Sports]                    0.037    0.029   1.273 0.203 -0.020  0.094
+C(field, Sum)[S.Tourism]                  -0.200    0.029  -6.945 0.000 -0.257 -0.144
+C(year)[T.2016]                           -0.000    0.005  -0.085 0.932 -0.010  0.009
+C(year)[T.2017]                            0.005    0.005   1.008 0.313 -0.005  0.014
+C(year)[T.2018]                            0.031    0.005   6.448 0.000  0.022  0.040
+C(year)[T.2019]                            0.037    0.005   7.682 0.000  0.027  0.046
+C(year)[T.2020]                            0.096    0.005  20.218 0.000  0.087  0.106
+C(year)[T.2021]                            0.168    0.005  35.398 0.000  0.159  0.178
+C(year)[T.2022]                            0.190    0.005  39.847 0.000  0.180  0.199
+C(year)[T.2023]                            0.164    0.005  34.592 0.000  0.155  0.174
+Group Var                                  0.027    0.039                            
+university_field Var                       0.039    0.014                            
+=====================================================================================
+
+
+The previous 65/28/7 split uses reductions in OLS residual sums of squares after university-year adjustment. The descriptive mixed-model split uses fixed-field fitted-value variance plus estimated university-field and residual variances, excluding the university intercept and year effects. Different estimands: not an exact like-for-like decomposition.
+
+95% conditional empirical-Bayes intervals hold fixed effects and variance parameters at fitted estimates; they omit parameter-estimation uncertainty. Aggregate-mean uncertainty is not individual-grade uncertainty.

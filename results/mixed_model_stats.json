@@ -1,0 +1,65 @@
+{
+  "formula": "mean ~ C(field, Sum) + C(year)",
+  "random_intercept": "university",
+  "vc_formula": {
+    "university_field": "0 + C(field)"
+  },
+  "estimation": "REML",
+  "n_rows": 12125,
+  "n_universities": 89,
+  "n_fields": 29,
+  "years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "optimizer_attempts": [
+    {
+      "method": "lbfgs",
+      "converged": true,
+      "warnings": []
+    }
+  ],
+  "variance_components_grade_points_squared": {
+    "university": 0.02655641674523014,
+    "university_field": 0.03907472915276485,
+    "residual": 0.014738460990400467
+  },
+  "random_and_residual_variance_shares": {
+    "university": 0.3304286007284753,
+    "university_field": 0.48618788451989847,
+    "residual": 0.18338351475162618
+  },
+  "descriptive_common_field_variance": 0.08280288203936387,
+  "descriptive_three_way_shares": {
+    "common_field": 0.6060991266732737,
+    "university_specific_field": 0.286018537413066,
+    "residual": 0.10788233591366023
+  },
+  "previous_ols_decomposition": {
+    "share_total_university_year": 0.20438658368804963,
+    "share_within_common_field": 0.6509065265503922,
+    "share_within_university_specific_field": 0.2752355107773381,
+    "share_within_year_noise": 0.07385796267226975,
+    "f_test_interaction": {
+      "F": 26.22603684057602,
+      "p": 0.0,
+      "df": 1409.0
+    },
+    "n_univ_field_cells": 1528
+  },
+  "comparison_note": "The previous 65/28/7 split uses reductions in OLS residual sums of squares after university-year adjustment. The descriptive mixed-model split uses fixed-field fitted-value variance plus estimated university-field and residual variances, excluding the university intercept and year effects. Different estimands: not an exact like-for-like decomposition.",
+  "uncertainty_note": "95% conditional empirical-Bayes intervals hold fixed effects and variance parameters at fitted estimates; they omit parameter-estimation uncertainty. Aggregate-mean uncertainty is not individual-grade uncertainty.",
+  "profile_blup_max_abs_difference": 1.9761969838327786e-14,
+  "limitations": [
+    "Each university-field-year mean has equal weight; no graduate-count weighting.",
+    "Residuals represent unexplained variation in aggregate means, not individual student grades.",
+    "University and field differences are associations, not causal grading effects."
+  ]
+}
