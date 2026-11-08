@@ -30,6 +30,8 @@ python src/analysis.py      # proposal: degree effects and selection simulation
 python src/ministry.py      # proposal: field effects across Spanish universities
 python src/model_eval.py    # proposal: model comparison with a held-out test set
 python src/progress.py      # progress report: decomposition, temporal validation, confounders, clustering
+python src/mixed_model.py   # mixed-effects model and university-field profiles
+python src/normal_check.py  # normal approximation checks and selection sensitivity
 ```
 
 All scripts use fixed random seeds (42) and write their numbers to `results/` and their figures to `figures/`.
