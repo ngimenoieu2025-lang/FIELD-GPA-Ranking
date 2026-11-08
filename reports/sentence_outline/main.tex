@@ -1,0 +1,136 @@
+% ============================================================
+% FIELD - SENTENCE OUTLINE (due Sunday 15 November 2026, 23:59, Turnitin)
+%
+% HOW TO USE THIS SKELETON
+% - Every \todo{...} marks one entry of the outline. Replace the whole \todo{...}
+%   with ONE complete sentence that states the claim of that paragraph.
+%   (Irene: "A Sentence Outline of Sentence Outlines", Session 3.)
+% - The text inside \todo says who writes it [Adam]/[Pablo]/[Nacho] and which
+%   result it must contain. It is guidance, not text to submit: the course
+%   forbids AI-generated prose, so each member writes their own sentences.
+% - Level 1 (1., 2., ...) = main claims; reading only level 1 must give the
+%   whole argument. Level 2 (a., b.) = supporting points; level 3 (i., ii.) =
+%   specific evidence. A subdivided point needs at least two sub-entries.
+% - Structure follows the final report as required by the project guidelines
+%   (background integrated into the Introduction; results discussed where shown).
+% - Citations: numbered in order of first appearance, as in Irene's guide.
+%   (Pending Irene's answer on numbered vs MLA.)
+% - Limit: two pages. Delete \todo notes that end up unused.
+% ============================================================
+
+\documentclass[clean]{bam-outline}
+
+\BAMtitle{FIELD: How Much Does the Field of Study Shape University GPA Rankings?}
+\BAMteam{Adam Bajer; Pablo Torres; Ignacio Gimeno}
+\BAMcourse{Machine Learning \& Communication Skills}
+\BAMacademicyear{2026--2027}
+\BAMsubmissiondate{15 November 2026, 23:59 Madrid time}
+
+% Guidance notes: shown in blue while drafting. Remove before submitting.
+\newcommand{\todo}[1]{\textcolor{blue}{[#1]}}
+\setlist[enumerate,1]{label=\arabic*.,leftmargin=1.6em,itemsep=0.15em}
+\setlist[enumerate,2]{label=\alph*.,leftmargin=1.4em}
+\setlist[enumerate,3]{label=\roman*.,leftmargin=1.4em}
+
+\begin{document}
+\makeproposalheader
+
+\noindent\textit{FIELD: Field Influence on Evaluation Levels across Degrees.}
+
+% ============================================================
+\section{Introduction}
+\begin{enumerate}
+\item \todo{Adam: universities often allocate scarce places by ranking students from all degrees on one GPA list, which assumes a grade means the same in every degree.}
+  \begin{enumerate}
+  \item \todo{Adam: grading standards differ between departments of the same university [1, 2].}
+  \item \todo{Adam: the gaps are large and repeat across 33 US public universities [3].}
+  \end{enumerate}
+\item \todo{Adam: research question, stated as a claim: we measure how much of a student's position in a pooled GPA ranking depends on the field of study, and how ranking within degree changes who is selected.}
+  \begin{enumerate}
+  \item \todo{Adam: what the project measures (grading differences between fields) and what it does not claim (intrinsic difficulty of a degree).}
+  \item \todo{Adam: one sentence that previews the main finding and the structure of the report.}
+  \end{enumerate}
+\end{enumerate}
+
+% ============================================================
+\section{Data}
+\begin{enumerate}[resume]
+\item \todo{Pablo: three complementary sources answer different parts of the question, and they are analysed separately because they share no key.}
+  \begin{enumerate}
+  \item \todo{Pablo: Spanish SIIU table: 12,125 university-field-year means, 89 universities, 29 fields, 2015-16 to 2023-24, with quartiles [4]; limits: aggregated, graduates only.}
+  \item \todo{Pablo: Portuguese student records: 3,703 students in 15 degrees with standardised entry grades [5].}
+  \item \todo{Adam: US data: what the 33-university dataset adds and how departments were mapped to fields [3].}
+  \end{enumerate}
+\end{enumerate}
+
+% ============================================================
+\section{Methodology}
+\begin{enumerate}[resume]
+\item \todo{Pablo: the analysis separates shared field effects from university-specific ones and tests them on data the models have not seen.}
+  \begin{enumerate}
+  \item \todo{Pablo: variance decomposition with fixed effects, re-estimated with a mixed-effects model with random university and university-by-field effects.}
+  \item \todo{Pablo: temporal validation (train 2015--2021, test 2022--2023) with bootstrap intervals over universities.}
+  \item \todo{Pablo: confounders (standardised admission grade, size, dropout) and why dropout is treated separately.}
+  \end{enumerate}
+\item \todo{Pablo/Nacho: the selection simulation and the comparison of ranking rules translate grade gaps into places won or lost.}
+  \begin{enumerate}
+  \item \todo{Pablo: the simulation approximates within-field grades from mean and quartiles, and its normal assumption was checked against reported medians and maxima.}
+  \item \todo{Nacho: four ranking rules are compared by ranking on first-semester grades and evaluating them on second-semester grades.}
+  \end{enumerate}
+\end{enumerate}
+
+% ============================================================
+\section{Results and Discussion}
+\begin{enumerate}[resume]
+\item \todo{Nacho: most of the variation in grades within a university is explained by the field of study, and part of it is specific to each university.}
+  \begin{enumerate}
+  \item \todo{Nacho: 65\% shared field effect, 28\% university-specific, 7\% noise; the mixed model gives 61 / 29 / 11\%.}
+  \item \todo{Nacho: the university-specific part is stable over time (r = 0.84, 95\% CI 0.84--0.85).}
+  \item \todo{Nacho: past field profiles predict later years best (test RMSE 0.137 vs 0.226 for the shared effect alone).}
+  \end{enumerate}
+\item \todo{Nacho: intake differences do not explain the field gaps.}
+  \begin{enumerate}
+  \item \todo{Nacho: admission grade and size leave field effects almost unchanged (SD 0.31, correlation 0.99); in the Portuguese records the gap only falls from 1.51 to 1.30.}
+  \item \todo{Nacho: dropout explains part of the spread, but low grades may themselves cause dropout.}
+  \end{enumerate}
+\item \todo{Adam: the US replication result: whether the ranking of fields is similar in both countries (correlation of field effects).}
+  \begin{enumerate}
+  \item \todo{Adam: main supporting number.}
+  \item \todo{Adam: main difference or limitation of the comparison.}
+  \end{enumerate}
+\item \todo{Nacho: a single raw-GPA ranking gives very unequal access across fields, and the result is robust to the distributional assumption.}
+  \begin{enumerate}
+  \item \todo{Nacho: 41\% of Nursing graduates vs 6\% in Business Administration reach a top-20\% cut (median university-year, with interquartile ranges).}
+  \item \todo{Pablo: replacing the normal with a truncated normal changes shares by 0.04 percentage points on average and no field changes rank.}
+  \end{enumerate}
+\item \todo{Nacho: within-degree rules equalise access at almost no cost in later performance.}
+  \begin{enumerate}
+  \item \todo{Nacho: second-semester grade of the selected students 14.21 with raw GPA vs 14.08 with percentiles, overlapping 95\% intervals.}
+  \item \todo{Nacho: spread of selection rates across degrees falls from 0.090 to 0.006.}
+  \item \todo{Nacho: the higher stability of raw GPA partly reflects the persistent field gap itself.}
+  \end{enumerate}
+\item \todo{Nacho: the main limitations and what they mean for the conclusions (aggregated data, graduates only, public universities for admission grades).}
+\end{enumerate}
+
+% ============================================================
+\section{Conclusions and Future Work}
+\begin{enumerate}[resume]
+\item \todo{Nacho: synthesis: pooled GPA rankings sort students largely by field, and within-degree normalisation reduces this at little cost.}
+\item \todo{Nacho: future work, e.g. individual-level data from more institutions to separate grading practice from student ability.}
+\end{enumerate}
+
+% ============================================================
+\section*{References}
+\begin{list}{}{\setlength{\leftmargin}{1.8em}\setlength{\itemindent}{-1.8em}\setlength{\itemsep}{0.2em}}
+\small
+\item[{[1]}] R. Sabot and J. Wakeman-Linn, ``Grade inflation and course choice,'' \textit{Journal of Economic Perspectives}, vol. 5, no. 1, pp. 159--170, 1991, doi:10.1257/jep.5.1.159.
+\item[{[2]}] A. C. Achen and P. N. Courant, ``What are grades made of?,'' \textit{Journal of Economic Perspectives}, vol. 23, no. 3, pp. 77--92, 2009, doi:10.1257/jep.23.3.77.
+\item[{[3]}] H. Jeong, G. M. Weiss, A. Leung and D. D. Leeds, ``The construction and analysis of course grades across public universities,'' in \textit{Proc. 17th Int. Conf. Educational Data Mining}, 2024, pp. 643--648, doi:10.5281/zenodo.12729906.
+\item[{[4]}] Ministerio de Ciencia, Innovaci\'on y Universidades, ``Media, cuartiles y m\'aximo de la nota del expediente (estudiantes egresados) por \'ambito de estudio y sexo,'' SIIU, 2025. [Online]. Available: \url{https://estadisticas.ciencia.gob.es}
+\item[{[5]}] V. Realinho, M. Vieira Martins, J. Machado and L. Baptista, ``Predict students' dropout and academic success,'' UCI Machine Learning Repository, 2021, doi:10.24432/C5MC89.
+\end{list}
+
+\section*{Declaration of Contributions and AI Use}
+\todo{All: one entry per member describing what each actually did (analysis, code, sentences, reviews), and every use of AI tools with tool, purpose, output used and verification.}
+
+\end{document}
