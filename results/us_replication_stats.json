@@ -1,0 +1,333 @@
+{
+  "n_common_areas": 10,
+  "pearson_r": 0.6131270295789476,
+  "spearman_rho": 0.6121212121212121,
+  "same_sign_areas": 8,
+  "us_model": {
+    "r2_univ_year": 0.2845424269674177,
+    "r2_with_field": 0.7742688568474299,
+    "f_test_field": {
+      "F": 432.21500710563544,
+      "p": 0.0,
+      "df": 9.0
+    },
+    "n_obs": 1845,
+    "n_univ": 29,
+    "n_fields": 10
+  },
+  "spain_model": {
+    "r2_univ_year": 0.2626725370845694,
+    "r2_with_field": 0.6988977379070587,
+    "f_test_field": {
+      "F": 899.0366593797823,
+      "p": 0.0,
+      "df": 9.0
+    },
+    "n_obs": 5691,
+    "n_univ": 89,
+    "n_fields": 10
+  },
+  "weighted_excluded_institutions": [
+    "Georgia Institute of Technology",
+    "Parkland College",
+    "Purdue University",
+    "University of North Carolina Charlotte"
+  ],
+  "raw_rows": 1449779,
+  "weighted_rows": 1198266,
+  "mapping_coverage_valid_rows": 0.9402825289249188,
+  "us_year_range": [
+    2009,
+    2023
+  ],
+  "spain_year_range": [
+    2015,
+    2023
+  ],
+  "sensitivity": {
+    "equal_section_weights_all33": {
+      "n_common_areas": 10,
+      "pearson_r": 0.6239224101657637,
+      "spearman_rho": 0.6242424242424242,
+      "same_sign_areas": 8,
+      "us_model": {
+        "r2_univ_year": 0.36404683051305387,
+        "r2_with_field": 0.7757670690659939,
+        "f_test_field": {
+          "F": 405.37613701623064,
+          "p": 0.0,
+          "df": 9.0
+        },
+        "n_obs": 2043,
+        "n_univ": 33,
+        "n_fields": 10
+      },
+      "spain_model": {
+        "r2_univ_year": 0.2626725370845694,
+        "r2_with_field": 0.6988977379070587,
+        "f_test_field": {
+          "F": 899.0366593797823,
+          "p": 0.0,
+          "df": 9.0
+        },
+        "n_obs": 5691,
+        "n_univ": 89,
+        "n_fields": 10
+      }
+    },
+    "a_plus_capped_at4": {
+      "n_common_areas": 10,
+      "pearson_r": 0.6129502568498699,
+      "spearman_rho": 0.6969696969696969,
+      "same_sign_areas": 8,
+      "us_model": {
+        "r2_univ_year": 0.2715725013796003,
+        "r2_with_field": 0.7706447861318073,
+        "f_test_field": {
+          "F": 433.5035072496553,
+          "p": 0.0,
+          "df": 9.0
+        },
+        "n_obs": 1845,
+        "n_univ": 29,
+        "n_fields": 10
+      },
+      "spain_model": {
+        "r2_univ_year": 0.2626725370845694,
+        "r2_with_field": 0.6988977379070587,
+        "f_test_field": {
+          "F": 899.0366593797823,
+          "p": 0.0,
+          "df": 9.0
+        },
+        "n_obs": 5691,
+        "n_univ": 89,
+        "n_fields": 10
+      }
+    },
+    "common_years": {
+      "n_common_areas": 10,
+      "pearson_r": 0.6286199632382734,
+      "spearman_rho": 0.6606060606060605,
+      "same_sign_areas": 8,
+      "us_model": {
+        "r2_univ_year": 0.3218188231184125,
+        "r2_with_field": 0.7948287211046352,
+        "f_test_field": {
+          "F": 205.44024389301535,
+          "p": 1.9812680854017547e-201,
+          "df": 9.0
+        },
+        "n_obs": 847,
+        "n_univ": 28,
+        "n_fields": 10
+      },
+      "spain_model": {
+        "r2_univ_year": 0.2626725370845694,
+        "r2_with_field": 0.6988977379070587,
+        "f_test_field": {
+          "F": 899.0366593797823,
+          "p": 0.0,
+          "df": 9.0
+        },
+        "n_obs": 5691,
+        "n_univ": 89,
+        "n_fields": 10
+      },
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    }
+  },
+  "leave_one_university_out_pearson_range": [
+    0.6039070251249834,
+    0.6312537622184855
+  ],
+  "model": "OLS: mean ~ C(field, Sum) + C(univ) + C(year); unweighted university-area-year cells",
+  "input_files": [
+    {
+      "file": "Brooklyn College of the City University of New York.csv",
+      "bytes": 1948600,
+      "sha256": "92b808573372e238db8bb07f0f544807515064a34cd91b1ad98cc0db1b41b3cd"
+    },
+    {
+      "file": "California State University - Los Angeles.csv",
+      "bytes": 11364327,
+      "sha256": "9152fe8ca99fe80af34a5e13f828dff46760f626e9ca5c615f43b44bf39580c9"
+    },
+    {
+      "file": "Chicago State University.csv",
+      "bytes": 1080578,
+      "sha256": "abfed36cf2ee0838529891d5d9d75658ee87cf774ac019d159f712c326543db7"
+    },
+    {
+      "file": "George Mason University.csv",
+      "bytes": 8801239,
+      "sha256": "a8c8dd48fe59a3b63bbc304b2cc93be9b18a885255b52906ebaaba02fce1c878"
+    },
+    {
+      "file": "Georgia Institute of Technology.csv",
+      "bytes": 2871763,
+      "sha256": "0d222e9810c3562bc36fd91015bc75f2d6d4cfa88d6b58712b7ada66bc212b98"
+    },
+    {
+      "file": "Grand Valley State University.csv",
+      "bytes": 7520325,
+      "sha256": "91785bfa0255ac02e17b282be9589299c054750440543aae8eb3664bf27059c7"
+    },
+    {
+      "file": "Illinois State University.csv",
+      "bytes": 3849578,
+      "sha256": "2eec8f34dcbe643553002c7c3c5ed6a1de8e6264c7d30f00c03c4748711a7e90"
+    },
+    {
+      "file": "Indiana University Bloomington.csv",
+      "bytes": 13387009,
+      "sha256": "9ea491f1b0e9be0513bd30e2a86d16b855ca68f4d9de3dbbf7c2100b191f9e1e"
+    },
+    {
+      "file": "James Madison University.csv",
+      "bytes": 16211778,
+      "sha256": "becee4d763f0c30aacc4dc450c1cbc0742ef14ae5921d5b899e3bad479df4daa"
+    },
+    {
+      "file": "Kennesaw State University.csv",
+      "bytes": 12398834,
+      "sha256": "f73a6e85cc5b699bbccf8ee165eb9f315ff21b48c67f0f227a96e7e8bb3f3f6c"
+    },
+    {
+      "file": "Kent State University.csv",
+      "bytes": 11523649,
+      "sha256": "40d534c988934048cfab355f6e1ba0fbec7e2f7b0d9f82ba28afd7b44b368c0f"
+    },
+    {
+      "file": "Michigan State University.csv",
+      "bytes": 21918975,
+      "sha256": "fdbf7735f3cea0a8ed6bd709a9629e4d5fc3a63c219d1e1bce60f5d47fdc1123"
+    },
+    {
+      "file": "North Carolina State University Raleigh.csv",
+      "bytes": 5080271,
+      "sha256": "2363f221c0e79234998d3934f25f02a6f54d31f8a22287e2535ce94adae8262e"
+    },
+    {
+      "file": "Northern Illinois University.csv",
+      "bytes": 5433727,
+      "sha256": "93559ce056a135a444cae4c89c9eb8ba418bd638efc5bcd0aea33924d948ce37"
+    },
+    {
+      "file": "Parkland College.csv",
+      "bytes": 1410159,
+      "sha256": "cd9d69d9c5e02eac7893e184fbd864f6639f80f2c0fd1c0b19491e321ee012ac"
+    },
+    {
+      "file": "Purdue University.csv",
+      "bytes": 2719533,
+      "sha256": "e050ca4e65d16c0c3987ef6faf2185b30fdea9f6c4025ab8c640ee6953cd519b"
+    },
+    {
+      "file": "Texas Tech University.csv",
+      "bytes": 6539224,
+      "sha256": "b20d05b51a15d60eeaf3c2c5f1e04d71c88afd8b88ee6f5b4fadd156503186b3"
+    },
+    {
+      "file": "University of California Berkeley.csv",
+      "bytes": 3588177,
+      "sha256": "76f17762291797fd59b04dd39c3a580b1f52e10587b4b693cfc007db5a2bb084"
+    },
+    {
+      "file": "University of California Irvine.csv",
+      "bytes": 3768762,
+      "sha256": "b505849bca4944ef07fbb669a10ada652345a4e65ab5fd52614c8d6a0d30a796"
+    },
+    {
+      "file": "University of California Los Angeles.csv",
+      "bytes": 7552625,
+      "sha256": "121e1130beed294632a09c7f5a2ba2724e5160c81501dcf758db4946da315658"
+    },
+    {
+      "file": "University of California Santa Barbara.csv",
+      "bytes": 15843735,
+      "sha256": "1c45414e69a44df235554b2887e976edda421aa7b720fe148dba3af196b9abd0"
+    },
+    {
+      "file": "University of Houston.csv",
+      "bytes": 7673340,
+      "sha256": "d112e1dd1c2143a5b9ecc9d4b3ddedeec5d9dd498ab6519b6a17f49c377eea1d"
+    },
+    {
+      "file": "University of Illinois Chicago.csv",
+      "bytes": 4057146,
+      "sha256": "da485080346b60ba3e5d7862ddb598ca34c47144f886ebb213e0dde12417f616"
+    },
+    {
+      "file": "University of Illinois Urbana-Champaign.csv",
+      "bytes": 16113790,
+      "sha256": "fda790af5072d3a6fbd8b36be4ea8df44e43b0ab5e282b18e7dde2d4eda4d380"
+    },
+    {
+      "file": "University of Kentucky.csv",
+      "bytes": 8598736,
+      "sha256": "03ff699107ad8c1148a09b42b85ce814d447e28c9091d0261d4440f044a213a1"
+    },
+    {
+      "file": "University of Maryland College Park.csv",
+      "bytes": 12254074,
+      "sha256": "8abc4e3d578bcb91bbded121c83ab30f6e02d84d0ea8675b1166215ff45341b4"
+    },
+    {
+      "file": "University of Minnesota Twin Cities.csv",
+      "bytes": 8627212,
+      "sha256": "ceb67d1f24a2ab67292b145c1c99a1b2d00ded8acc5b0cd9dd2ef14ac7ae87d9"
+    },
+    {
+      "file": "University of North Carolina Charlotte.csv",
+      "bytes": 6877622,
+      "sha256": "074055fd797bec46a96755d83962a3d7a396ae25590057c0df8fae386d0921c9"
+    },
+    {
+      "file": "University of South Carolina.csv",
+      "bytes": 13887923,
+      "sha256": "6b2e9f5c0a03bca0989e4370d7cfc45c608f4e1c2168fb4b564bc1411fd0019d"
+    },
+    {
+      "file": "University of Virginia.csv",
+      "bytes": 9469995,
+      "sha256": "809f31f9eda297640a0788e2537f76be44ac68914a37a3bfacae4a802b38d06b"
+    },
+    {
+      "file": "University of Washington Seattle.csv",
+      "bytes": 8266216,
+      "sha256": "45eca6748f640b3703f2163b17ac44e0a15b2764acf9ba0ba34063459bb46bfe"
+    },
+    {
+      "file": "Virginia Tech.csv",
+      "bytes": 6046840,
+      "sha256": "f8033b9948d7e338572479ab7ca2a68cc3134b74927d35c4710ae43940935b47"
+    },
+    {
+      "file": "West Virginia University.csv",
+      "bytes": 7530686,
+      "sha256": "914c6530ee31119ad6ff9b5bd34393017b369df4e48bf7399bf3ef363bc73f6f"
+    }
+  ],
+  "mapping_sha256": "b2b5dee6f3fa97b9ff158ef857320a196f7b3a98b90dbd77b52df7e4bd42d9ce",
+  "workbook_sha256": "5b0647f7448d198239ae01e7df97a161922ea669861b2d744b6572f0d16c343c",
+  "limitations": [
+    "Broad-area rather than 29-field replication; mapping requires subject-matter review.",
+    "US course/section outcomes include multiple course levels; Spain uses graduates final averages.",
+    "Four institutions have no enrolment counts; weighted analysis excludes them.",
+    "Spanish sample follows ministry.py and is not restricted to public universities.",
+    "Source blank grade categories are treated as zero, as in the released percentage tables.",
+    "Conventional OLS standard errors match ministry.py; not university-clustered.",
+    "Cross-area correlations are descriptive, based on only ten broad areas, not causal effects."
+  ]
+}
