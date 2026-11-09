@@ -75,32 +75,32 @@
 \item \todo{Pablo/Nacho: the selection simulation and the comparison of ranking rules translate grade gaps into places won or lost.}
   \begin{enumerate}
   \item \todo{Pablo: the simulation approximates within-field grades from mean and quartiles, and its normal assumption was checked against reported medians and maxima.}
-  \item \todo{Nacho: four ranking rules are compared by ranking on first-semester grades and evaluating them on second-semester grades.}
+  \item Each of the four ranking rules (raw GPA, regression-adjusted GPA, within-degree z-score and within-degree percentile) ranks Portuguese students by their first-semester grade, selects the top 20\%, and is evaluated on the same students' second-semester grades, which the rule has not seen.
   \end{enumerate}
 \end{enumerate}
 
 % ============================================================
 \section{Results and Discussion}
 \begin{enumerate}[resume]
-\item \todo{Nacho: most of the variation in grades within a university is explained by the field of study, and part of it is specific to each university.}
+\item The field of study explains most of the differences in grades within each university, and each university adds its own stable pattern on top.
   \begin{enumerate}
-  \item \todo{Nacho: 65\% shared field effect, 28\% university-specific, 7\% noise; the mixed model gives 61 / 29 / 11\%.}
-  \item \todo{Nacho: the university-specific part is stable over time (r = 0.84, 95\% CI 0.84--0.85).}
-  \item \todo{Nacho: past field profiles predict later years best (test RMSE 0.137 vs 0.226 for the shared effect alone).}
+  \item With fixed effects, 65\% of the within-university variation is a field effect shared by all universities, 28\% is specific to each university and 7\% is noise, and the mixed-effects model gives almost the same split (61, 29 and 11\%).
+  \item The university-specific part stays fairly constant over time, with a correlation of 0.84 between consecutive years.
+  \item The model that uses each university's past profile best predicts the years it has not seen, with an error of 0.137 against 0.226 when only the shared field effect is used.
   \end{enumerate}
-\item \todo{Nacho: intake differences do not explain the field gaps.}
+\item The differences between fields are not explained by the entry level of their students.
   \begin{enumerate}
-  \item \todo{Nacho: admission grade and size leave field effects almost unchanged (SD 0.31, correlation 0.99); in the Portuguese records the gap only falls from 1.51 to 1.30.}
-  \item \todo{Nacho: dropout explains part of the spread, but low grades may themselves cause dropout.}
+  \item Controlling for admission grade and size barely changes the field effects, whose values before and after correlate at 0.99, and in the Portuguese records the gap between the highest- and lowest-graded degree only falls from 1.51 to 1.30 points.
+  \item Dropout explains part of the differences, but it may also be a consequence of stricter grading rather than its cause.
   \end{enumerate}
 \item The US analysis partly reproduces the Spanish pattern, with a positive association between broad-area grade effects after controlling for university and year.
   \begin{enumerate}
   \item Across ten comparable areas, Pearson's correlation between the estimated effects is 0.613 and Spearman's rank correlation is 0.612, with eight areas sharing the same effect sign.
   \item Humanities and languages have a positive effect in Spain but a negative effect in the US, while differences between US course grades and Spanish graduates' final averages limit the comparability of the results.
   \end{enumerate}
-\item \todo{Nacho: a single raw-GPA ranking gives very unequal access across fields, and the result is robust to the distributional assumption.}
+\item Ranking all students of a university on a single raw-GPA list gives very unequal access by field, and the result does not depend on the assumed grade distribution.
   \begin{enumerate}
-  \item \todo{Nacho: 41\% of Nursing graduates vs 6\% in Business Administration reach a top-20\% cut (median university-year, with interquartile ranges).}
+  \item In the median university-year, 41\% of Nursing graduates reach the top 20\%, compared with 6\% of Business Administration graduates (interquartile ranges 29--54\% and 2--13\%).
   \item \todo{Pablo: replacing the normal with a truncated normal changes shares by 0.04 percentage points on average and no field changes rank.}
   \end{enumerate}
 \item Ranking students within their own degree would make access to a top-20\% selection much more equal across degrees, with almost no change in the later performance of the selected students.
@@ -109,14 +109,14 @@
   \item Under raw GPA some degrees obtain many more places than others, whereas with within-degree percentiles almost all degrees obtain a similar share, as the spread of selection rates across degrees falls from 0.090 to 0.006.
   \item The higher rank stability of raw GPA (0.66 against 0.62) does not make it a better rule, because it partly comes from the gap between degrees repeating every semester, which shows that the inequality is persistent rather than occasional.
   \end{enumerate}
-\item \todo{Nacho: the main limitations and what they mean for the conclusions (aggregated data, graduates only, public universities for admission grades).}
+\item The data are aggregated means, they include only students who graduate, and admission grades are published only for public universities, so the results describe associations between fields and grades rather than their causes.
 \end{enumerate}
 
 % ============================================================
 \section{Conclusions and Future Work}
 \begin{enumerate}[resume]
-\item \todo{Nacho: synthesis: pooled GPA rankings sort students largely by field, and within-degree normalisation reduces this at little cost.}
-\item \todo{Nacho: future work, e.g. individual-level data from more institutions to separate grading practice from student ability.}
+\item Rankings that pool all degrees by raw GPA sort students largely by their field of study, and ranking within each degree corrects this at almost no cost.
+\item Comparing students who take the same courses in different degrees would directly measure whether some fields grade more strictly than others.
 \end{enumerate}
 
 % ============================================================
