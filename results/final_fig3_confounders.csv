@@ -1,0 +1,30 @@
+field,effect_before,se_before,effect_after,se_after
+Agriculture,-0.4346,0.0274,-0.4299,0.0272
+Architecture,-0.5207,0.0298,-0.5097,0.03
+Arts,0.1904,0.035,0.2173,0.0337
+Audiovisual & media,0.247,0.0377,0.2648,0.0393
+Business administration,-0.4213,0.0207,-0.379,0.0267
+Computer science,-0.1152,0.0204,-0.1034,0.0206
+Early childhood teaching,0.5355,0.0259,0.5723,0.0278
+Economics,-0.4665,0.0275,-0.4481,0.0329
+Engineering,-0.404,0.0223,-0.3776,0.0269
+Humanities,0.0484,0.024,0.0662,0.0271
+Journalism,0.0879,0.0486,0.1081,0.0495
+Languages,0.1368,0.0247,0.1639,0.0234
+Law,-0.3215,0.0205,-0.285,0.0252
+Life sciences,-0.0104,0.0383,-0.0518,0.0471
+Mathematics & statistics,-0.1889,0.045,-0.2568,0.0486
+Medicine,0.4611,0.0325,0.3932,0.0422
+Nursing,0.6454,0.0307,0.5795,0.0411
+Other business,-0.239,0.038,-0.2101,0.04
+Other education,0.375,0.0319,0.4026,0.034
+Other health,0.1804,0.0407,0.1173,0.0455
+Other services,0.0124,0.0872,0.0282,0.0919
+Other social sciences,0.0677,0.0326,0.0908,0.0347
+Physical sciences,-0.2466,0.0284,-0.2983,0.028
+Primary teaching,0.4144,0.0245,0.458,0.0276
+Psychology,0.2046,0.0347,0.1371,0.0412
+Social work,0.0518,0.0266,0.0787,0.0267
+Sports,0.12,0.0487,0.1417,0.0502
+Tourism,-0.2559,0.0217,-0.2366,0.0222
+Veterinary,-0.1541,0.0445,-0.2336,0.0594

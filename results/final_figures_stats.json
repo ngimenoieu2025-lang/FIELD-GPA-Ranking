@@ -1,0 +1,43 @@
+{
+  "fig1": {
+    "n_obs": 12125,
+    "n_univ": 89,
+    "max_field": "Nursing",
+    "max_effect": 0.5260509661933895,
+    "min_field": "Architecture",
+    "min_effect": -0.5320495132572621,
+    "median_ci_halfwidth": 0.0513700700176189
+  },
+  "fig2": {
+    "lag1_correlation": 0.8447897368208861,
+    "ci95": [
+      0.8391992517041453,
+      0.8502016904284279
+    ],
+    "n_pairs": 10413
+  },
+  "fig3": {
+    "n_obs": 8043,
+    "n_univ": 47,
+    "r_before_after": 0.9916776696107861,
+    "sd_before": 0.3123076758211288,
+    "sd_after": 0.3081451201817381,
+    "n_branches": 5,
+    "note": "Admission grades are published per university and broad branch (5 branches for 29 fields), so they cannot separate fields within the same branch."
+  },
+  "fig4": {
+    "nursing_median": 0.411,
+    "business_median": 0.055,
+    "truncated_normal_mean_abs_change_pp": 0.040756187558857064,
+    "truncated_normal_fields_changing_rank": 0
+  },
+  "fig5": {
+    "pearson_r": 0.6131270295789483,
+    "pearson_r_ci95": [
+      -0.026887169547736768,
+      0.8966236323489623
+    ],
+    "n_areas": 10,
+    "same_sign": 8
+  }
+}

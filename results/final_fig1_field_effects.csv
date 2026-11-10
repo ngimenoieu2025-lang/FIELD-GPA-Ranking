@@ -1,0 +1,30 @@
+field,effect,se
+Architecture,-0.532,0.0244
+Agriculture,-0.4515,0.0244
+Economics,-0.3865,0.0307
+Engineering,-0.3675,0.02
+Business administration,-0.3172,0.0225
+Law,-0.2576,0.019
+Physical sciences,-0.2255,0.0253
+Veterinary,-0.1961,0.0385
+Tourism,-0.1927,0.0211
+Other business,-0.149,0.0278
+Mathematics & statistics,-0.1392,0.0392
+Computer science,-0.0834,0.0189
+Life sciences,0.0138,0.0311
+Other services,0.0343,0.063
+Sports,0.0385,0.0341
+Journalism,0.0413,0.0323
+Social work,0.0539,0.0256
+Other social sciences,0.086,0.0212
+Humanities,0.1276,0.0309
+Other health,0.1297,0.0271
+Psychology,0.1309,0.0252
+Languages,0.1807,0.0228
+Audiovisual & media,0.1934,0.0262
+Arts,0.1998,0.027
+Other education,0.3063,0.0348
+Primary teaching,0.3864,0.0198
+Medicine,0.3867,0.0321
+Early childhood teaching,0.4629,0.0245
+Nursing,0.5261,0.032
