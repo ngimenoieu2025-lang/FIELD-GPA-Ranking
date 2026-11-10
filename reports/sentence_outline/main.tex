@@ -55,10 +55,10 @@
 % ============================================================
 \section{Data}
 \begin{enumerate}[resume]
-\item \todo{Pablo: three complementary sources answer different parts of the question, and they are analysed separately because they share no key.}
+\item We use three datasets to examine grade differences and selection outcomes, studying each separately because they cover different populations and cannot be linked directly.
   \begin{enumerate}
-  \item \todo{Pablo: Spanish SIIU table: 12,125 university-field-year means, 89 universities, 29 fields, 2015-16 to 2023-24, with quartiles [4]; limits: aggregated, graduates only.}
-  \item \todo{Pablo: Portuguese student records: 3,703 students in 15 degrees with standardised entry grades [5].}
+  \item The Spanish SIIU dataset contains 12,125 observations of average grades across 89 universities and 29 fields from the academic years 2015 to 2016 through 2023 to 2024, with reported quartiles, although it covers graduates only and does not provide individual records [4].
+  \item The Portuguese dataset contains individual records for 3,703 students in 15 degrees, with entry grades standardised within each admission route to account for differences in grading scales [5].
   \item The US dataset provides an external comparison using course or section grades from 33 public institutions, whose departments are mapped through institution-specific classifications and name rules to ten broad areas covering the 29 Spanish fields, with enrolment-weighted analysis possible for 29 institutions [3].
   \end{enumerate}
 \end{enumerate}
@@ -66,15 +66,15 @@
 % ============================================================
 \section{Methodology}
 \begin{enumerate}[resume]
-\item \todo{Pablo: the analysis separates shared field effects from university-specific ones and tests them on data the models have not seen.}
+\item We distinguish field effects shared across universities from patterns specific to each university and test whether these patterns help predict grades in later years.
   \begin{enumerate}
-  \item \todo{Pablo: variance decomposition with fixed effects, re-estimated with a mixed-effects model with random university and university-by-field effects.}
-  \item \todo{Pablo: temporal validation (train 2015--2021, test 2022--2023) with bootstrap intervals over universities.}
-  \item \todo{Pablo: confounders (standardised admission grade, size, dropout) and why dropout is treated separately.}
+  \item We first separate the sources of grade variation using fixed effects and then compare the results with a mixed model that includes fixed effects for field and year, random university effects and random effects for each field within each university.
+  \item We train the prediction models using data from 2015 to 2021 and test them on observations from 2022 and 2023 for combinations of universities and fields present in training, calculating 95\% intervals for prediction error by resampling universities.
+  \item We check whether field differences remain after accounting for standardised admission grades and the logarithm of graduate counts, considering dropout separately because it could be a consequence of stricter grading rather than a cause of grade differences.
   \end{enumerate}
-\item \todo{Pablo/Nacho: the selection simulation and the comparison of ranking rules translate grade gaps into places won or lost.}
+\item We use the selection simulation and the comparison of ranking rules to examine how grade differences affect students' chances of selection and whether alternative rules make access more equal.
   \begin{enumerate}
-  \item \todo{Pablo: the simulation approximates within-field grades from mean and quartiles, and its normal assumption was checked against reported medians and maxima.}
+  \item We estimate the proportion of graduates in each field reaching the university's top 20\% using normal distributions based on published means and standard deviations estimated as IQR/1.349, weighting fields by graduate counts and checking the assumption against reported medians and maxima.
   \item Each of the four ranking rules (raw GPA, regression-adjusted GPA, within-degree z-score and within-degree percentile) ranks Portuguese students by their first-semester grade, selects the top 20\%, and is evaluated on the same students' second-semester grades, which the rule has not seen.
   \end{enumerate}
 \end{enumerate}
@@ -101,7 +101,7 @@
 \item Ranking all students of a university on a single raw-GPA list gives very unequal access by field, and the result does not depend on the assumed grade distribution.
   \begin{enumerate}
   \item In the median university-year, 41\% of Nursing graduates reach the top 20\%, compared with 6\% of Business Administration graduates (interquartile ranges 29--54\% and 2--13\%).
-  \item \todo{Pablo: replacing the normal with a truncated normal changes shares by 0.04 percentage points on average and no field changes rank.}
+  \item Replacing the normal distribution with a normal distribution truncated between 5 and 10 changes selection rates by an average absolute difference of only 0.04 percentage points when weighted by graduate counts, while all 29 fields retain the same overall ranking.
   \end{enumerate}
 \item Ranking students within their own degree would make access to a top-20\% selection much more equal across degrees, with almost no change in the later performance of the selected students.
   \begin{enumerate}
