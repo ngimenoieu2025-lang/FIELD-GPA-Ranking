@@ -55,10 +55,10 @@
 % ============================================================
 \section{Data}
 \begin{enumerate}[resume]
-\item We analyse three separate datasets with different units of observation: Spanish records summarise graduates' final grades for each university, field and academic year, Portuguese records describe individual students, and US records summarise grades in university courses or sections, so the datasets provide complementary evidence without linking the same students.
+\item We analyse three datasets separately because they use different units of observation and cannot be linked.
   \begin{enumerate}
-  \item The Spanish SIIU dataset contains 12,125 observations across 89 universities and 29 fields from 2015-16 to 2023-24, each giving the mean, quartiles and maximum final grade of graduates in one field at one university in one academic year, allowing comparisons between fields within the same university and year but providing no individual student records [4].
-  \item The Portuguese analysis uses records for 3,703 students in 15 degree programmes at one polytechnic, covering enrolment cohorts from 2008-09 to 2018-19, with each observation representing one student and including their first and second semester average grades, numbers of course units passed and entry grades, which are standardised within admission routes to account for different entry scales [5].
+  \item The 12,125 Spanish SIIU observations each give the mean final grade of graduates in one field at one university in one academic year, covering 89 universities and 29 fields from 2015-16 to 2023-24 [4].
+  \item Portuguese records describe 3,703 individual students in 15 degrees at one polytechnic, enrolled from 2008-09 to 2018-19, with entry grades standardised within admission routes [5].
   \item Course grades from 33 US public institutions provide an external comparison across ten broad areas matched to the Spanish fields [3].
   \end{enumerate}
 \end{enumerate}
@@ -69,12 +69,12 @@
 \item We distinguish field effects shared across universities from patterns specific to each university and test whether these patterns help predict grades in later years.
   \begin{enumerate}
   \item We first separate the sources of grade variation using fixed effects and then compare the results with a mixed model that includes fixed effects for field and year, random university effects and random effects for each field within each university.
-  \item We train the prediction models using data from 2015 to 2021 and test them on observations from 2022 and 2023 for combinations of universities and fields present in training, calculating 95\% intervals for prediction error by resampling universities.
+  \item Models are trained on 2015 to 2021 data and tested on 2022 to 2023 data, with 95\% intervals for prediction error obtained by resampling universities.
   \item We check whether field differences remain after accounting for standardised admission grades and the logarithm of graduate counts, considering dropout separately because it could be a consequence of stricter grading rather than a cause of grade differences.
   \end{enumerate}
 \item We use the selection simulation and the comparison of ranking rules to examine how grade differences affect students' chances of selection and whether alternative rules make access more equal.
   \begin{enumerate}
-  \item We estimate the proportion of graduates in each field reaching the university's top 20\% using normal distributions based on published means and standard deviations estimated as IQR/1.349, weighting fields by graduate counts and checking the assumption against reported medians and maxima.
+  \item Using published means and SD = IQR/1.349, the simulation estimates each field's share in the university's top 20\% from normal distributions weighted by graduate counts.
   \item Each of the four ranking rules (raw GPA, regression-adjusted GPA, within-degree z-score and within-degree percentile) ranks Portuguese students by their first-semester grade, selects the top 20\%, and is evaluated on the same students' second-semester grades, which the rule has not seen.
   \end{enumerate}
 \end{enumerate}
@@ -101,7 +101,7 @@
 \item Ranking all students of a university on a single raw-GPA list gives very unequal access by field, and the result does not depend on the assumed grade distribution.
   \begin{enumerate}
   \item In the median university-year, 41\% of Nursing graduates reach the top 20\%, compared with 6\% of Business Administration graduates (interquartile ranges 29--54\% and 2--13\%).
-  \item Replacing the normal distribution with a normal distribution truncated between 5 and 10 changes selection rates by an average absolute difference of only 0.04 percentage points when weighted by graduate counts, while all 29 fields retain the same overall ranking.
+  \item Truncating the normal distribution between 5 and 10 changes selection shares by an average absolute difference of 0.04 percentage points, weighted by graduate counts, without changing the overall field ranking.
   \end{enumerate}
 \item Ranking students within their own degree would make access to a top-20\% selection much more equal across degrees, with almost no change in the later performance of the selected students.
   \begin{enumerate}
@@ -132,6 +132,7 @@
 
 \section*{Declaration of Contributions and AI Use}
 \noindent\textbf{Adam Bajer:} Contributed the US replication, code, department mapping, tests and outline entries, using ChatGPT/Codex to generate code, mapping rules, tests and initial prose drafts. Verification included six passing tests, reproduction of the saved Spanish coefficients and Ignacio's independent reproduction of the US results.
+\par\noindent\textbf{Pablo Torres:} Contributed the mixed model, normal approximation checks and outline entries, using ChatGPT/Codex for code and prose drafts. Ran both scripts and checked their outputs; Ignacio independently reproduced the results.
 \todo{All: one entry per member describing what each actually did (analysis, code, sentences, reviews), and every use of AI tools with tool, purpose, output used and verification.}
 
 \end{document}
