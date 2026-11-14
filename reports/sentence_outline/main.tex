@@ -1,0 +1,138 @@
+% ============================================================
+% FIELD - SENTENCE OUTLINE (due Sunday 15 November 2026, 23:59, Turnitin)
+%
+% HOW TO USE THIS SKELETON
+% - Every \todo{...} marks one entry of the outline. Replace the whole \todo{...}
+%   with ONE complete sentence that states the claim of that paragraph.
+%   (Irene: "A Sentence Outline of Sentence Outlines", Session 3.)
+% - The text inside \todo says who writes it [Adam]/[Pablo]/[Nacho] and which
+%   result it must contain. It is guidance, not text to submit: the course
+%   forbids AI-generated prose, so each member writes their own sentences.
+% - Level 1 (1., 2., ...) = main claims; reading only level 1 must give the
+%   whole argument. Level 2 (a., b.) = supporting points; level 3 (i., ii.) =
+%   specific evidence. A subdivided point needs at least two sub-entries.
+% - Structure follows the final report as required by the project guidelines
+%   (background integrated into the Introduction; results discussed where shown).
+% - Citations: numbered in order of first appearance, as in Irene's guide.
+%   (Pending Irene's answer on numbered vs MLA.)
+% - Limit: two pages. Delete \todo notes that end up unused.
+% ============================================================
+
+\documentclass[clean]{bam-outline}
+
+\BAMtitle{FIELD: How Much Does the Field of Study Shape University GPA Rankings?}
+\BAMteam{Adam Bajer; Pablo Torres; Ignacio Gimeno}
+\BAMcourse{Machine Learning \& Communication Skills}
+\BAMacademicyear{2026--2027}
+\BAMsubmissiondate{15 November 2026, 23:59 Madrid time}
+
+% Guidance notes: shown in blue while drafting. Remove before submitting.
+\newcommand{\todo}[1]{\textcolor{blue}{[#1]}}
+\setlist[enumerate,1]{label=\arabic*.,leftmargin=1.6em,itemsep=0.15em}
+\setlist[enumerate,2]{label=\alph*.,leftmargin=1.4em}
+\setlist[enumerate,3]{label=\roman*.,leftmargin=1.4em}
+
+\begin{document}
+\makeproposalheader
+
+\noindent\textit{FIELD: Field Influence on Evaluation Levels across Degrees.}
+
+% ============================================================
+\section{Introduction}
+\begin{enumerate}
+\item Using one GPA ranking to allocate places across degrees assumes that grades are comparable across fields of study.
+  \begin{enumerate}
+  \item Previous research documents differences in grading patterns between departments within the same university [1, 2].
+  \item Evidence from 33 US public institutions also shows recurring differences in average course grades between academic disciplines [3].
+  \end{enumerate}
+\item This project examines how field-related grade differences affect pooled GPA rankings and how ranking students within their degree changes who is selected.
+  \begin{enumerate}
+  \item We measure differences in observed grades across fields without interpreting them as direct measures of degree difficulty or student ability.
+  \item Using separate Spanish, Portuguese and US datasets, we examine field effects and their persistence before assessing whether alternative ranking rules reduce unequal access to selection.
+  \end{enumerate}
+\end{enumerate}
+
+% ============================================================
+\section{Data}
+\begin{enumerate}[resume]
+\item We analyse three datasets separately because they use different units of observation and cannot be linked.
+  \begin{enumerate}
+  \item The 12,125 Spanish SIIU observations each give the mean final grade of graduates in one field at one university in one academic year, covering 89 universities and 29 fields from 2015-16 to 2023-24 [4].
+  \item Portuguese records describe 3,703 individual students in 15 degrees at one polytechnic, enrolled from 2008-09 to 2018-19, with entry grades standardised within admission routes [5].
+  \item Course grades from 33 US public institutions provide an external comparison across ten broad areas matched to the Spanish fields [3].
+  \end{enumerate}
+\end{enumerate}
+
+% ============================================================
+\section{Methodology}
+\begin{enumerate}[resume]
+\item We distinguish field effects shared across universities from patterns specific to each university and test whether these patterns help predict grades in later years.
+  \begin{enumerate}
+  \item We first separate the sources of grade variation using fixed effects and then compare the results with a mixed model that includes fixed effects for field and year, random university effects and random effects for each field within each university.
+  \item Models are trained on 2015 to 2021 data and tested on 2022 to 2023 data, with 95\% intervals for prediction error obtained by resampling universities.
+  \item We check whether field differences remain after accounting for standardised admission grades and the logarithm of graduate counts, considering dropout separately because it could be a consequence of stricter grading rather than a cause of grade differences.
+  \end{enumerate}
+\item We use the selection simulation and the comparison of ranking rules to examine how grade differences affect students' chances of selection and whether alternative rules make access more equal.
+  \begin{enumerate}
+  \item Using published means and SD = IQR/1.349, the simulation estimates each field's share in the university's top 20\% from normal distributions weighted by graduate counts.
+  \item Four ranking rules (raw GPA, regression-adjusted GPA, within-degree z-score and percentile) select the top 20\% of Portuguese students on first-semester grades and are evaluated on their unseen second-semester grades.
+  \end{enumerate}
+\end{enumerate}
+
+% ============================================================
+\section{Results and Discussion}
+\begin{enumerate}[resume]
+\item Field explains most grade differences within each university, and each university adds a stable pattern.
+  \begin{enumerate}
+  \item Of the within-university variation, 65\% is a field effect shared by all universities, 28\% is specific to each university and 7\% is noise (mixed model: 61, 29 and 11\%).
+  \item The university-specific part is stable over time (correlation 0.84 between consecutive years).
+  \item Past university profiles best predict unseen years (error 0.137, against 0.226 for shared effects).
+  \end{enumerate}
+\item The available measures of student intake explain only a small part of the differences between fields.
+  \begin{enumerate}
+  \item Controlling for size and for admission grade, which is only published by broad branch, barely changes the field effects (correlation 0.99), and with individual entry grades in Portugal the gap between the highest- and lowest-graded degree only falls from 1.51 to 1.30 points.
+  \item Dropout explains part of the differences, but it may be a consequence of stricter grading.
+  \end{enumerate}
+\item The US data show moderate agreement with the Spanish pattern of broad-area grade effects, although the evidence is not conclusive.
+  \begin{enumerate}
+  \item Across ten comparable areas, Pearson's correlation between the estimated effects is 0.61 (95\% CI: $-0.03$ to $0.90$), with eight areas sharing the same sign.
+  \item Humanities effects differ in sign between countries, but US course grades and Spanish graduates' final averages are not directly comparable.
+  \end{enumerate}
+\item A single raw-GPA ranking gives very unequal access by field, whatever grade distribution is assumed.
+  \begin{enumerate}
+  \item In the median university-year, 41\% of Nursing graduates reach the top 20\%, compared with 6\% of Business Administration graduates (interquartile ranges 29--54\% and 2--13\%).
+  \item Truncating the normal distribution between 5 and 10 changes selection shares by an average absolute difference of 0.04 percentage points, weighted by graduate counts, without changing the overall field ranking.
+  \end{enumerate}
+\item Ranking students within their own degree makes access to a top-20\% selection much more equal, with almost no change in the later performance of those selected.
+  \begin{enumerate}
+  \item Selected students obtain 14.21 out of 20 in the second semester under raw GPA and 14.08 under within-degree percentiles, with overlapping 95\% intervals.
+  \item The spread of selection rates across degrees falls from 0.090 to 0.006.
+  \item Raw GPA is more stable across semesters (0.66 against 0.62) partly because the gap between degrees repeats every semester, which shows that the inequality is persistent.
+  \end{enumerate}
+\item Aggregated graduate means and public-only admission grades limit the results to associations, not causes.
+\end{enumerate}
+
+% ============================================================
+\section{Conclusions and Future Work}
+\begin{enumerate}[resume]
+\item Pooled raw-GPA rankings sort students largely by field, and ranking within each degree corrects this at almost no cost.
+\item Comparing students in the same courses across degrees would measure grading strictness directly.
+\end{enumerate}
+
+% ============================================================
+\section*{References}
+\begin{list}{}{\setlength{\leftmargin}{1.8em}\setlength{\itemindent}{-1.8em}\setlength{\itemsep}{0.2em}}
+\small
+\item[{[1]}] R. Sabot and J. Wakeman-Linn, ``Grade inflation and course choice,'' \textit{Journal of Economic Perspectives}, vol. 5, no. 1, pp. 159--170, 1991, doi:10.1257/jep.5.1.159.
+\item[{[2]}] A. C. Achen and P. N. Courant, ``What are grades made of?,'' \textit{Journal of Economic Perspectives}, vol. 23, no. 3, pp. 77--92, 2009, doi:10.1257/jep.23.3.77.
+\item[{[3]}] H. Jeong, G. M. Weiss, A. Leung and D. D. Leeds, ``The construction and analysis of course grades across public universities,'' in \textit{Proc. 17th Int. Conf. Educational Data Mining}, 2024, pp. 643--648, doi:10.5281/zenodo.12729906.
+\item[{[4]}] Ministerio de Ciencia, Innovaci\'on y Universidades, ``Media, cuartiles y m\'aximo de la nota del expediente (estudiantes egresados) por \'ambito de estudio y sexo,'' SIIU, 2025. [Online]. Available: \url{https://estadisticas.ciencia.gob.es}
+\item[{[5]}] V. Realinho, M. Vieira Martins, J. Machado and L. Baptista, ``Predict students' dropout and academic success,'' UCI Machine Learning Repository, 2021, doi:10.24432/C5MC89.
+\end{list}
+
+\section*{Declaration of Contributions and AI Use}
+\noindent\textbf{Adam Bajer:} Contributed the US replication, code, department mapping, tests and outline entries, using ChatGPT/Codex to generate code, mapping rules, tests and initial prose drafts. Verification included six passing tests, reproduction of the saved Spanish coefficients and Ignacio's independent reproduction of the US results.
+\par\noindent\textbf{Pablo Torres:} Contributed the mixed model, normal approximation checks and outline entries, using ChatGPT/Codex for code and prose drafts. Ran both scripts and checked their outputs; Ignacio independently reproduced the results.
+\par\noindent\textbf{Ignacio Gimeno:} Contributed the Spanish Ministry analysis (variance decomposition, temporal validation, confounders and selection simulation), the ranking-rule comparison, the final figures, the repository organisation and outline entries 5b, 6, 7 and 9--13. Claude (Anthropic) was used to help write and debug code, produce the figures, rerun teammates' code to check that their results reproduce, and translate into English and edit Ignacio's Spanish drafts of his outline entries. All reported numbers were checked against the saved result files.
+
+\end{document}
