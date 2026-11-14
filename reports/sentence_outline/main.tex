@@ -75,48 +75,48 @@
 \item We use the selection simulation and the comparison of ranking rules to examine how grade differences affect students' chances of selection and whether alternative rules make access more equal.
   \begin{enumerate}
   \item Using published means and SD = IQR/1.349, the simulation estimates each field's share in the university's top 20\% from normal distributions weighted by graduate counts.
-  \item Each of the four ranking rules (raw GPA, regression-adjusted GPA, within-degree z-score and within-degree percentile) ranks Portuguese students by their first-semester grade, selects the top 20\%, and is evaluated on the same students' second-semester grades, which the rule has not seen.
+  \item Four ranking rules (raw GPA, regression-adjusted GPA, within-degree z-score and percentile) select the top 20\% of Portuguese students on first-semester grades and are evaluated on their unseen second-semester grades.
   \end{enumerate}
 \end{enumerate}
 
 % ============================================================
 \section{Results and Discussion}
 \begin{enumerate}[resume]
-\item The field of study explains most of the differences in grades within each university, and each university adds its own stable pattern on top.
+\item Field explains most grade differences within each university, and each university adds a stable pattern.
   \begin{enumerate}
-  \item With fixed effects, 65\% of the within-university variation is a field effect shared by all universities, 28\% is specific to each university and 7\% is noise, and the mixed-effects model gives almost the same split (61, 29 and 11\%).
-  \item The university-specific part stays fairly constant over time, with a correlation of 0.84 between consecutive years.
-  \item The model that uses each university's past profile best predicts the years it has not seen, with an error of 0.137 against 0.226 when only the shared field effect is used.
+  \item Of the within-university variation, 65\% is a field effect shared by all universities, 28\% is specific to each university and 7\% is noise (mixed model: 61, 29 and 11\%).
+  \item The university-specific part is stable over time (correlation 0.84 between consecutive years).
+  \item Past university profiles best predict unseen years (error 0.137, against 0.226 for shared effects).
   \end{enumerate}
 \item The available measures of student intake explain only a small part of the differences between fields.
   \begin{enumerate}
-  \item Controlling for admission grade, which is only published by broad branch and therefore cannot separate fields within the same branch, and for size barely changes the field effects (correlation 0.99), while in the Portuguese records, where entry grades are individual, the gap between the highest- and lowest-graded degree only falls from 1.51 to 1.30 points.
-  \item Dropout explains part of the differences, but it may also be a consequence of stricter grading rather than its cause.
+  \item Controlling for size and for admission grade, which is only published by broad branch, barely changes the field effects (correlation 0.99), and with individual entry grades in Portugal the gap between the highest- and lowest-graded degree only falls from 1.51 to 1.30 points.
+  \item Dropout explains part of the differences, but it may be a consequence of stricter grading.
   \end{enumerate}
 \item The US data show moderate agreement with the Spanish pattern of broad-area grade effects, although the evidence is not conclusive.
   \begin{enumerate}
   \item Across ten comparable areas, Pearson's correlation between the estimated effects is 0.61 (95\% CI: $-0.03$ to $0.90$), with eight areas sharing the same sign.
   \item Humanities effects differ in sign between countries, but US course grades and Spanish graduates' final averages are not directly comparable.
   \end{enumerate}
-\item Ranking all students of a university on a single raw-GPA list gives very unequal access by field, and the result does not depend on the assumed grade distribution.
+\item A single raw-GPA ranking gives very unequal access by field, whatever grade distribution is assumed.
   \begin{enumerate}
   \item In the median university-year, 41\% of Nursing graduates reach the top 20\%, compared with 6\% of Business Administration graduates (interquartile ranges 29--54\% and 2--13\%).
   \item Truncating the normal distribution between 5 and 10 changes selection shares by an average absolute difference of 0.04 percentage points, weighted by graduate counts, without changing the overall field ranking.
   \end{enumerate}
-\item Ranking students within their own degree would make access to a top-20\% selection much more equal across degrees, with almost no change in the later performance of the selected students.
+\item Ranking students within their own degree makes access to a top-20\% selection much more equal, with almost no change in the later performance of those selected.
   \begin{enumerate}
-  \item The selected students obtain 14.21 out of 20 in the second semester under raw GPA and 14.08 under within-degree percentiles, but the 95\% confidence intervals overlap, so the difference is too small to be conclusive.
-  \item Under raw GPA some degrees obtain many more places than others, whereas with within-degree percentiles almost all degrees obtain a similar share, as the spread of selection rates across degrees falls from 0.090 to 0.006.
-  \item The higher rank stability of raw GPA (0.66 against 0.62) does not make it a better rule, because it partly comes from the gap between degrees repeating every semester, which shows that the inequality is persistent rather than occasional.
+  \item Selected students obtain 14.21 out of 20 in the second semester under raw GPA and 14.08 under within-degree percentiles, with overlapping 95\% intervals.
+  \item The spread of selection rates across degrees falls from 0.090 to 0.006.
+  \item Raw GPA is more stable across semesters (0.66 against 0.62) partly because the gap between degrees repeats every semester, which shows that the inequality is persistent.
   \end{enumerate}
-\item The data are aggregated means, they include only students who graduate, and admission grades are published only for public universities, so the results describe associations between fields and grades rather than their causes.
+\item Aggregated graduate means and public-only admission grades limit the results to associations, not causes.
 \end{enumerate}
 
 % ============================================================
 \section{Conclusions and Future Work}
 \begin{enumerate}[resume]
-\item Rankings that pool all degrees by raw GPA sort students largely by their field of study, and ranking within each degree corrects this at almost no cost.
-\item Comparing students who take the same courses in different degrees would directly measure whether some fields grade more strictly than others.
+\item Pooled raw-GPA rankings sort students largely by field, and ranking within each degree corrects this at almost no cost.
+\item Comparing students in the same courses across degrees would measure grading strictness directly.
 \end{enumerate}
 
 % ============================================================
@@ -133,6 +133,6 @@
 \section*{Declaration of Contributions and AI Use}
 \noindent\textbf{Adam Bajer:} Contributed the US replication, code, department mapping, tests and outline entries, using ChatGPT/Codex to generate code, mapping rules, tests and initial prose drafts. Verification included six passing tests, reproduction of the saved Spanish coefficients and Ignacio's independent reproduction of the US results.
 \par\noindent\textbf{Pablo Torres:} Contributed the mixed model, normal approximation checks and outline entries, using ChatGPT/Codex for code and prose drafts. Ran both scripts and checked their outputs; Ignacio independently reproduced the results.
-\todo{All: one entry per member describing what each actually did (analysis, code, sentences, reviews), and every use of AI tools with tool, purpose, output used and verification.}
+\par\noindent\textbf{Ignacio Gimeno:} Contributed the Spanish Ministry analysis (variance decomposition, temporal validation, confounders and selection simulation), the ranking-rule comparison, the final figures, the repository organisation and outline entries 5b, 6, 7 and 9--13. Claude (Anthropic) was used to help write and debug code, produce the figures, rerun teammates' code to check that their results reproduce, and translate into English and edit Ignacio's Spanish drafts of his outline entries. All reported numbers were checked against the saved result files.
 
 \end{document}
