@@ -1,0 +1,102 @@
+{
+  "evaluation_years": [
+    2016,
+    2023
+  ],
+  "raw": {
+    "mean_abs_gap_pp": 11.783452677596644,
+    "mean_abs_gap_ci95_pp": [
+      10.99461836064722,
+      12.586712066498945
+    ],
+    "sd_field_shares_pp": 9.911347468660257,
+    "max_min_field_share_pp": [
+      43.10280283597217,
+      4.710894460253773
+    ],
+    "max_field": "Nursing",
+    "min_field": "Agriculture",
+    "median_within_univ_sd_of_field_means": 0.3490360371584632,
+    "n_univ_field_years": 9291,
+    "n_univ_years": 595,
+    "n_univ": 79
+  },
+  "common_prior": {
+    "mean_abs_gap_pp": 7.380098485417032,
+    "mean_abs_gap_ci95_pp": [
+      7.060479074985447,
+      7.736939560488978
+    ],
+    "sd_field_shares_pp": 2.842135012487027,
+    "max_min_field_share_pp": [
+      27.018356492169687,
+      14.783556316622917
+    ],
+    "max_field": "Languages",
+    "min_field": "Engineering",
+    "median_within_univ_sd_of_field_means": 0.18627127415064731,
+    "n_univ_field_years": 9291,
+    "n_univ_years": 595,
+    "n_univ": 79
+  },
+  "univ_last_year": {
+    "mean_abs_gap_pp": 4.996656745295351,
+    "mean_abs_gap_ci95_pp": [
+      4.711515010527654,
+      5.268188011096504
+    ],
+    "sd_field_shares_pp": 3.1611992677140375,
+    "max_min_field_share_pp": [
+      27.18796637635938,
+      12.793801187488679
+    ],
+    "max_field": "Languages",
+    "min_field": "Nursing",
+    "median_within_univ_sd_of_field_means": 0.09894619168409821,
+    "n_univ_field_years": 9291,
+    "n_univ_years": 595,
+    "n_univ": 79
+  },
+  "univ_prior_mean": {
+    "mean_abs_gap_pp": 5.076214213664561,
+    "mean_abs_gap_ci95_pp": [
+      4.811977042571691,
+      5.343539907638357
+    ],
+    "sd_field_shares_pp": 3.085272105256278,
+    "max_min_field_share_pp": [
+      27.088971006806734,
+      13.205729791173043
+    ],
+    "max_field": "Languages",
+    "min_field": "Nursing",
+    "median_within_univ_sd_of_field_means": 0.10232316703227565,
+    "n_univ_field_years": 9291,
+    "n_univ_years": 595,
+    "n_univ": 79
+  },
+  "oracle_current": {
+    "mean_abs_gap_pp": 3.6002985049130896,
+    "mean_abs_gap_ci95_pp": [
+      3.389721402858961,
+      3.812946644212796
+    ],
+    "sd_field_shares_pp": 3.13841969729775,
+    "max_min_field_share_pp": [
+      27.297355262843514,
+      12.582578096886568
+    ],
+    "max_field": "Languages",
+    "min_field": "Nursing",
+    "median_within_univ_sd_of_field_means": 8.881784197001252e-16,
+    "n_univ_field_years": 9291,
+    "n_univ_years": 595,
+    "n_univ": 79
+  },
+  "reduction_vs_raw_pct": {
+    "common_prior": 37.36896402657528,
+    "univ_last_year": 57.59598750886254,
+    "univ_prior_mean": 56.92082488424006,
+    "oracle_current": 69.44614958433891
+  }
+}
