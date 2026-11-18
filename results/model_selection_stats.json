@@ -1,0 +1,94 @@
+{
+  "validation_years": [
+    2018,
+    2019,
+    2020,
+    2021
+  ],
+  "test_years": [
+    2022,
+    2023
+  ],
+  "validation_rmse_best": {
+    "baseline": 0.3599584506749395,
+    "common_field": 0.21905899934341794,
+    "shrunk_profile": 0.11570388672277501,
+    "ridge_profile": 0.11582497881238765,
+    "gradient_boosting": 0.11403772896639403
+  },
+  "test": {
+    "n_train": 9292,
+    "n_test": 2774,
+    "n_test_univ": 87,
+    "baseline": {
+      "hyperparameter": null,
+      "rmse": 0.364543848549782,
+      "mae": 0.2962242766949516,
+      "rmse_ci95_bootstrap_universities": [
+        0.348066011996299,
+        0.38118071004421145
+      ],
+      "r2": -9.295903049766352e-06
+    },
+    "common_field": {
+      "hyperparameter": null,
+      "rmse": 0.22549583270714074,
+      "mae": 0.17395068253603524,
+      "rmse_ci95_bootstrap_universities": [
+        0.21081621754803173,
+        0.24079354909934578
+      ],
+      "r2": 0.6173677872153479
+    },
+    "shrunk_profile": {
+      "hyperparameter": 0.25,
+      "rmse": 0.1377900230491488,
+      "mae": 0.10295692455928274,
+      "rmse_ci95_bootstrap_universities": [
+        0.12825457882920305,
+        0.14877657593667765
+      ],
+      "r2": 0.8571303323873833,
+      "rmse_minus_common_field_ci95": [
+        -0.09804599936367249,
+        -0.0773177393631286
+      ]
+    },
+    "ridge_profile": {
+      "hyperparameter": 0.21544346900318834,
+      "rmse": 0.13811900557218815,
+      "mae": 0.10307692380991489,
+      "rmse_ci95_bootstrap_universities": [
+        0.12864178954494856,
+        0.14900267380903714
+      ],
+      "r2": 0.8564472969633057,
+      "rmse_minus_common_field_ci95": [
+        -0.09769257819347255,
+        -0.07694113298034277
+      ]
+    },
+    "gradient_boosting": {
+      "hyperparameter": {
+        "max_depth": 8,
+        "learning_rate": 0.03,
+        "n_trees": 600
+      },
+      "rmse": 0.1325872564656219,
+      "mae": 0.0975937549651485,
+      "rmse_ci95_bootstrap_universities": [
+        0.12348604043415097,
+        0.1430577549131165
+      ],
+      "r2": 0.8677157750697515,
+      "rmse_minus_shrunk_profile_ci95": [
+        -0.008137028118906115,
+        -0.0024950122348792983
+      ],
+      "rmse_minus_common_field_ci95": [
+        -0.10448715498298411,
+        -0.08130941912268759
+      ]
+    }
+  }
+}

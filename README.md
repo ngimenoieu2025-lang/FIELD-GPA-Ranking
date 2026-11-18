@@ -34,6 +34,8 @@ python src/mixed_model.py   # mixed-effects model and university-field profiles
 python src/normal_check.py  # normal approximation checks and selection sensitivity
 python src/ranking_rules.py # comparison of four ranking rules (Portuguese records)
 python src/final_figures.py # six figures of the Final Report, written to figures/final/
+python src/adjusted_mark.py   # adjusted marks (mark minus field deviation) and selection
+python src/model_selection.py # prediction models: temporal tuning and test errors (about 3 minutes)
 ```
 
 `src/final_figures.py` needs `src/us_replication.py` to have been run first (see "US replication" below), because Figure 5 reads its tables in `data/processed/`. Notes for each figure caption are in `figures/final/CAPTIONS.md`.
