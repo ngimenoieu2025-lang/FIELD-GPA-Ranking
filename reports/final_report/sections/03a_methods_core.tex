@@ -1,0 +1,90 @@
+% ============================================================
+% 3.1-3.4 METHODOLOGY (core) -- Writer: Pablo Torres
+% Target: about 1,000 words + equations (1)-(4).
+% Brief: "Methodology or Approach: methods applied, implementation choices, and
+% rationale." Template: "Each methodological decision should have a reason.
+% Separate established methods from modifications or original decisions made by
+% the team." Introduce every equation in the text and explain every symbol and
+% unit. Results do NOT go here (they go in Section 4).
+% The equations below follow the code exactly (src/progress.py, mixed_model.py,
+% ministry.py, normal_check.py, final_figures.py). Keep the notation, explain
+% it in your own words, and change it only together with Ignacio and Adam so
+% that the whole report uses the same symbols.
+% Start from outline entries 4, 4a, 4b, 4c, 5, 5a.
+% ============================================================
+
+\guide{Pablo -- Opening paragraph of Section 3}{%
+\textbf{Establish (outline 4):} the method first separates field effects shared by all universities from each university's own pattern, then tests whether these patterns predict later years, and finally measures what they do to a selection.\\
+\textbf{Introduce Figure~\ref{fig:overview} (Irene asked for graphs that help the reader follow the analysis):} tell the reader how to read it -- left, the three datasets; middle, the analysis applied to each; right, the question it answers and where. Then one sentence of road map for \S\ref{sec:methods-decomposition}--\S\ref{sec:methods-computing}. Write the caption of Figure~\ref{fig:overview} (file \texttt{tables/fig\_overview.tex}).}
+\budget{90}{Pablo}
+
+\subsection{Field Deviations and Variance Decomposition}
+\label{sec:methods-decomposition}
+
+\guide{Pablo -- Notation and the deviation (equation~\eqref{eq:deviation})}{%
+\textbf{Explain:} $\bar g_{ufy}$ is the mean final grade of field $f$ at university $u$ in year $y$ (5--10 scale); $F_{uy}$ is the set of fields reported for that university-year. The deviation $d_{ufy}$ removes the university-year level (some universities and years grade higher overall), so what is left compares fields \emph{inside} the same university and year. Say why: universities differ in overall grading, and we only want to compare fields within them.}
+\begin{equation}
+  d_{ufy} \;=\; \bar g_{ufy} \;-\; \frac{1}{|F_{uy}|}\sum_{f' \in F_{uy}} \bar g_{uf'y}.
+  \label{eq:deviation}
+\end{equation}
+\budget{90}{Pablo}
+
+\guide{Pablo -- The decomposition (equation~\eqref{eq:decomposition})}{%
+\textbf{Explain:} nested least-squares models: university-year effects $\alpha_{uy}$ first, then a field effect $\beta_f$ shared by all universities, then a university-by-field effect $\gamma_{uf}$; $\varepsilon_{ufy}$ is year-to-year noise. The share of each component is the drop in the residual sum of squares when it is added, divided by the variation left after $\alpha_{uy}$. An $F$-test compares the models with and without $\gamma_{uf}$ (1,528 university-field cells). Field effects are sum-coded ($\sum_f \beta_f = 0$), so each effect is a distance from the average field.\\
+\textbf{Code:} \texttt{progress.py}, function \texttt{decomposition}. Do not report the shares here; they belong to \S\ref{sec:res-field}.}
+\begin{equation}
+  \bar g_{ufy} \;=\; \alpha_{uy} + \beta_f + \gamma_{uf} + \varepsilon_{ufy},
+  \qquad \textstyle\sum_f \beta_f = 0.
+  \label{eq:decomposition}
+\end{equation}
+\budget{130}{Pablo}
+
+\subsection{Mixed-Effects Model}
+\label{sec:methods-mixed}
+
+\guide{Pablo -- Your mixed model (equation~\eqref{eq:mixed}) and why it complements the decomposition}{%
+\textbf{Explain (outline 4a):} fixed effects for field $\beta_f$ and year $\tau_y$; random university intercept $a_u$ and random university-by-field effect $b_{uf}$, both normal with variances $\sigma_a^2$, $\sigma_b^2$; residual variance $\sigma^2$; REML, L-BFGS (converged); 12,125 rows. \textbf{Why:} it estimates each university's profile with partial pooling (universities with few years are pulled towards the shared effect) and gives variance components with a clear meaning.\\
+\textbf{Be honest about the difference:} the 65/28/7 split and the mixed-model split (61/29/11) are different estimands -- say this in one sentence (see \texttt{comparison\_note} in \texttt{results/mixed\_model\_stats.json}).\\
+\textbf{Code:} \texttt{src/mixed\_model.py} (statsmodels MixedLM).}
+\begin{equation}
+  \begin{aligned}
+  \bar g_{ufy} &= \mu + \beta_f + \tau_y + a_u + b_{uf} + \varepsilon_{ufy},\\
+  a_u &\sim \mathcal N(0,\sigma_a^2),\quad b_{uf} \sim \mathcal N(0,\sigma_b^2),\quad \varepsilon_{ufy} \sim \mathcal N(0,\sigma^2).
+  \end{aligned}
+  \label{eq:mixed}
+\end{equation}
+\budget{170}{Pablo}
+
+\subsection{Student Intake and Other Possible Explanations}
+\label{sec:methods-confounders}
+
+\guide{Pablo -- Controls for intake and size; why dropout is treated separately}{%
+\textbf{Explain (outline 4c):} we re-estimate the field effects adding the standardised admission grade and the logarithm of the number of graduates, both measured as deviations from the university-year mean (public universities only, 47 universities, 8,043 rows). Dropout is added only in a separate model because it could be a \emph{consequence} of strict grading rather than a cause of low grades (a bad control).\\
+\textbf{Portugal:} the same idea with individual entry grades and background controls in a linear model (\texttt{src/analysis.py}); entry grades standardised within admission route.\\
+\textbf{Code:} \texttt{progress.py} (\texttt{confounders}), \texttt{final\_figures.py} (Figure~\ref{fig:confounders}).}
+\budget{160}{Pablo}
+
+\subsection{Selection Simulation and the Normal Approximation}
+\label{sec:methods-simulation}
+
+\guide{Pablo -- How a top-20\% selection is simulated (equation~\eqref{eq:selection})}{%
+\textbf{Explain (outline 5a):} the Ministry publishes means and quartiles, not individual grades, so grades within each field are approximated as normal with mean $\bar g_{ufy}$ and $\sigma_{ufy} = \mathrm{IQR}_{ufy}/1.349$ (the IQR of a normal distribution is 1.349 standard deviations). A single cut-off $c_{uy}$ per university-year selects 20\% of all graduates, weighting each field by its share of graduates $w_{ufy}$; $s_{ufy}$ is the share of the field's graduates above the cut-off. University-years need at least four reported fields (664 university-years, 79 universities).\\
+\textbf{Code:} \texttt{progress.py} (\texttt{weighted\_selection}).}
+\begin{equation}
+  s_{ufy} = 1-\Phi\!\left(\frac{c_{uy}-\bar g_{ufy}}{\sigma_{ufy}}\right),\qquad
+  \sum_{f} w_{ufy}\, s_{ufy} = 0.20 .
+  \label{eq:selection}
+\end{equation}
+\budget{130}{Pablo}
+
+\guide{Pablo -- Your checks of the normal approximation}{%
+\textbf{Explain what was checked and why (outline 9b), not the results:} (i) mean-median gap in standard deviations (asymmetry); (ii) normal mass outside the 5--10 scale; (iii) observed maxima against the expected maximum of $n$ normal draws; (iv) the whole simulation repeated with a normal truncated to $[5,10]$. Say clearly that published summaries cannot prove normality; these are consistency checks.\\
+\textbf{Code:} \texttt{src/normal\_check.py}. Results go in \S\ref{sec:res-selection} (your file \texttt{04f}).}
+\budget{120}{Pablo}
+
+\subsection{Uncertainty}
+\label{sec:methods-uncertainty}
+
+\guide{Pablo -- How uncertainty is measured everywhere in the report}{%
+\textbf{Explain:} (i) standard errors of field effects are clustered by university, because one university contributes up to nine years that are not independent (cite Cameron and Miller); (ii) prediction errors and selection gaps get 95\% intervals from a bootstrap that resamples whole universities, 1,000 times (cite Efron 1979); (iii) the ranking rules use a bootstrap over students; (iv) correlations get Fisher-$z$ intervals. Seed 42 everywhere.}
+\budget{110}{Pablo}

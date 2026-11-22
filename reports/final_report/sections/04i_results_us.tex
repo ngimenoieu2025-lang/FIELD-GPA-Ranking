@@ -1,0 +1,33 @@
+% ============================================================
+% 4.7 US REPLICATION RESULTS -- Writer: Adam Bajer -- about 330 words
+% Numbers: results/final_figures_stats.json (fig5, clustered intervals),
+% results/final_fig5_us_spain.csv, results/us_replication_stats.json
+% (sensitivity, leave-one-out), reports/us_replication/FINDINGS.md,
+% figures/final/CAPTIONS.md (entry fig5). Outline entries 8, 8a, 8b (your text).
+% ============================================================
+
+\subsection{The US Data Show a Similar but Not Conclusive Pattern}
+\label{sec:res-us}
+
+\guide{Adam -- Paragraph: the main comparison (Figure~\ref{fig:us})}{%
+\textbf{Claim (your outline 8):} the US data show moderate agreement with the Spanish pattern of broad-area effects, although the evidence is not conclusive.\\
+\textbf{Numbers:} Pearson $r = 0.61$ (95\% CI $-0.03$ to $0.90$, 10 areas), Spearman 0.61; 8 of 10 areas have the same sign. Education is the most generous area in both countries (Spain $+0.45$, US $+0.43$), Engineering and Agriculture are below average in both. The field explains a large share of the variation in both models ($R^2$ from 0.28 to 0.77 in the US and from 0.26 to 0.70 in Spain when field is added).\\
+\textbf{Interpretation:} the interval includes zero because there are only ten points -- say this plainly.}
+\budget{130}{Adam}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\linewidth]{fig5_us_spain}
+  \caption{\capguide{Adam -- see CAPTIONS.md, entry "Figure 5" (file fig5): broad-area effects in Spain (graduates' final averages, 5--10) against the US (course-section GPA, 0--4); 10 areas; 95\% intervals clustered by university in both countries; compare signs and order, not magnitudes; data sources.}}
+  \label{fig:us}
+\end{figure}
+
+\guide{Adam -- Paragraph: where the countries disagree (your outline 8b)}{%
+\textbf{Numbers:} Humanities \& languages is above average in Spain ($+0.22$) but below in the US ($-0.08$); Sports, tourism \& services changes sign too ($-0.01$ vs $+0.11$, both small); Science, mathematics \& computing is close to average in Spain ($-0.03$) but clearly below in the US ($-0.36$).\\
+\textbf{Interpretation:} US course grades include introductory courses taken by students of every degree, while Spanish data are graduates' final averages, so the two measures are not directly comparable.}
+\budget{110}{Adam}
+
+\guide{Adam -- Paragraph: robustness}{%
+\textbf{Numbers:} equal section weights with all 33 institutions $r = 0.62$; A+ capped at 4.0 $r = 0.61$ (Spearman 0.70); common years only $r = 0.63$; 8 of 10 same signs in every check; leaving out each US university in turn keeps $r$ between 0.60 and 0.63. (These sensitivity runs use conventional standard errors, as in \texttt{us\_replication.py}; Figure~\ref{fig:us} uses clustered ones -- keep the two apart.)\\
+\textbf{Interpretation:} the agreement does not depend on one university or on the weighting; the limit is the small number of areas and the different grade types.}
+\budget{90}{Adam}

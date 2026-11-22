@@ -1,0 +1,24 @@
+% Table 2 -- prediction models. Numbers from results/model_selection_stats.json
+% and results/model_selection_tuning.csv (checked 20 Nov 2026). Rounded to 3 d.p.
+% Full grids: k in {0, 0.25, 0.5, 1, 2, 3, 5, 8, 13, 21, 50, inf}; alpha: 16
+% log-spaced values from 1e-2 to 1e3; boosting: depth {2,3,5,8} x learning rate
+% {0.03, 0.1, 0.3} x trees {100, 300, 600}.
+\begin{table*}[t]
+\centering
+\caption{\capguide{Ignacio -- say: target ($d_{ufy}$, grade points), training 2015--2021, tuning by expanding-window validation on 2018--2021 (Algorithm~\ref{alg:tuning}), single test on 2022--2023 (2,774 university-field-years, 87 universities); 95\% intervals from 1,000 bootstrap resamples of universities; lower RMSE and MAE are better; the grids are listed in \S\ref{sec:methods-prediction}.}}
+\label{tab:models}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lllcccc@{}}
+\toprule
+Model & Grid searched & Chosen & Valid.\ RMSE & Test RMSE (95\% CI) & Test MAE & Test $R^2$ \\
+ & & & 2018--2021 & 2022--2023 & & \\
+\midrule
+Baseline (predict 0) & -- & -- & 0.360 & 0.365 (0.348--0.381) & 0.296 & 0.00 \\
+Common field effect & -- & -- & 0.219 & 0.225 (0.211--0.241) & 0.174 & 0.62 \\
+Shrunk university profile & 12 values, 0 to $\infty$ & $k = 0.25$ & 0.116 & 0.138 (0.128--0.149) & 0.103 & 0.86 \\
+Ridge (field, university$\times$field) & 16 values, $10^{-2}$ to $10^{3}$ & $\alpha = 0.22$ & 0.116 & 0.138 (0.129--0.149) & 0.103 & 0.86 \\
+Gradient boosting & 36 (depth, rate, trees) & 8, 0.03, 600 & 0.114 & 0.133 (0.123--0.143) & 0.098 & 0.87 \\
+\bottomrule
+\end{tabular}
+\end{table*}

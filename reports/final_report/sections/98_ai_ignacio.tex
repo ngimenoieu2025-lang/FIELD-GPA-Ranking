@@ -1,0 +1,20 @@
+% ============================================================
+% DECLARATION -- AI record -- Writer: Ignacio Gimeno
+% One record per material use (add another \begin{tabularx}...\end{tabularx}
+% block for each further use). Template fields, in this order. Be specific and
+% honest: the brief allows AI for code; prose must be your own.
+% ============================================================
+
+\paragraph{Ignacio Gimeno.}
+\guide{Ignacio -- Your AI record(s)}{%
+Claude (Anthropic) was used to help write and debug code, produce and restyle the figures, rerun teammates' code, verify bibliographic records against DOI databases, and prepare the LaTeX skeleton of this report (structure, tables of numbers taken from results/, notes on what each paragraph must cover). It did not write the submitted prose. If you use it to translate or edit your own drafts, say so here. Two records are probably clearest: one for code and figures, one for the report skeleton and references.}
+\noindent{\small
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{0.31\linewidth}>{\raggedright\arraybackslash}X@{}}
+Tool and version & \capguide{e.g. tool name, model/version if known} \\
+Purpose & \capguide{what you used it for} \\
+Representative prompt & \capguide{one real prompt, quoted} \\
+Output used & \capguide{what you kept} \\
+Modifications & \capguide{what you changed or rejected} \\
+Verification & \capguide{tests, reruns, checks against results/} \\
+Affected material & \capguide{files, figures, sections} \\
+\end{tabularx}}

@@ -1,0 +1,50 @@
+% Figure: map of the analysis (Irene: "use graphs to help readers understand the
+% analysis"). Drawn in TikZ so it uses the report's fonts. Original diagram.
+% Introduced by Pablo at the start of Section 3 and referred to in the
+% Introduction road map. Numbers checked against results/ on 22 Nov 2026.
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\footnotesize,
+  fdata/.style={draw=FIELDdata, fill=FIELDdata!8, rounded corners=2pt, align=center, text width=3.75cm, minimum height=0.9cm, inner sep=3pt},
+  fstep/.style={draw=FIELDstep, fill=FIELDstep!7, rounded corners=2pt, align=left, text width=7.55cm, minimum height=0.55cm, inner sep=3pt},
+  fgoal/.style={draw=black!45, fill=black!3, rounded corners=2pt, align=left, text width=4.6cm, minimum height=0.55cm, inner sep=3pt},
+  arr/.style={-{Stealth[length=4pt]}, draw=black!55, line width=0.5pt},
+  hdr/.style={font=\footnotesize\bfseries, anchor=south}
+]
+% columns
+\node[hdr] at (0,0.35) {Data (\S\ref{sec:data})};
+\node[hdr] at (6.55,0.35) {Analysis (\S\ref{sec:methodology})};
+\node[hdr] at (12.95,0.35) {Question answered (\S\ref{sec:results})};
+% data
+\node[fdata] (es) at (0,-1.6) {\textbf{Spain} (Ministry, SIIU)\\12,125 field means\\89 universities, 2015--23};
+\node[fdata] (pt) at (0,-4.0) {\textbf{Portugal} (UCI)\\3,703 students, 15 degrees};
+\node[fdata] (us) at (0,-5.25) {\textbf{United States}\\33 universities, 1,845 cells};
+% steps
+\node[fstep] (s1) at (6.55,0)    {Deviations, decomposition, mixed model (eqs.~\ref{eq:deviation}--\ref{eq:mixed})};
+\node[fstep] (s2) at (6.55,-0.8) {Five models: tuned 2018--21, tested 2022--23 (Alg.~\ref{alg:tuning})};
+\node[fstep] (s3) at (6.55,-1.6) {Controls for intake, size and dropout};
+\node[fstep] (s4) at (6.55,-2.4) {Top-20\% selection simulation (eq.~\ref{eq:selection})};
+\node[fstep] (s5) at (6.55,-3.2) {Adjusted marks from past deviations (eq.~\ref{eq:adjusted})};
+\node[fstep] (s6) at (6.55,-4.2) {Four ranking rules judged on the next semester};
+\node[fstep] (s7) at (6.55,-5.25) {Same model on ten broad areas in both countries};
+% goals
+\node[fgoal] (g1) at (12.95,0)    {O1 How much is field? (\S\ref{sec:res-field})};
+\node[fgoal] (g2) at (12.95,-0.8) {O2 Persists and predicts? (\S\ref{sec:res-prediction})};
+\node[fgoal] (g3) at (12.95,-1.6) {O3 Explained by intake? (\S\ref{sec:res-confounders})};
+\node[fgoal] (g4) at (12.95,-2.4) {O4 Who gets selected? (\S\ref{sec:res-selection})};
+\node[fgoal] (g5) at (12.95,-3.2) {O5 Does a correction fix it? (\S\ref{sec:res-adjusted})};
+\node[fgoal] (g6) at (12.95,-4.2) {O5 At what cost? (\S\ref{sec:res-rules})};
+\node[fgoal] (g7) at (12.95,-5.25) {O6 Same in the US? (\S\ref{sec:res-us})};
+% arrows data -> steps
+\foreach \s in {s1,s2,s3,s4,s5} \draw[arr] (es.east) -- (\s.west);
+\draw[arr] (pt.east) -- (s3.west);
+\draw[arr] (pt.east) -- (s6.west);
+\draw[arr] (us.east) -- (s7.west);
+\draw[arr] (es.east) to[out=-30,in=180] (s7.west);
+% arrows steps -> goals
+\foreach \i in {1,...,7} \draw[arr] (s\i.east) -- (g\i.west);
+\end{tikzpicture}
+\caption{\capguide{Pablo -- what the diagram shows (the three datasets, the analysis applied to each, and the question each analysis answers, with the subsection where the answer is); that the datasets are analysed separately and never linked; original diagram.}}
+\label{fig:overview}
+\end{figure*}

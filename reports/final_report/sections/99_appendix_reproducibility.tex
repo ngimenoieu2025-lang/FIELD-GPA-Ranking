@@ -1,0 +1,61 @@
+% ============================================================
+% APPENDIX A -- CODE, DATA AND REPRODUCIBILITY -- Writer: Ignacio Gimeno
+% Not counted in the 10-12 pages. Template: "Repository URL; exact release,
+% tag, or commit; ... software and versions; installation; data preparation;
+% configuration; random seeds; execution commands; mapping from scripts or
+% notebooks to results; hardware requirements; expected runtime; and known
+% issues." Brief: the repository must be organised, readable and reproducible.
+% The tables below are factual (checked on 20 Nov 2026); the prose is yours.
+% ============================================================
+
+\section{Code, Data, and Reproducibility}
+\label{app:reproducibility}
+
+\guide{Ignacio -- Two or three sentences introducing the appendix}{%
+Repository: \url{https://github.com/ngimenoieu2025-lang/FIELD-GPA-Ranking}. Give the \textbf{final commit hash} after the last merge (\texttt{git rev-parse --short HEAD}). Say which data are in the repository (Ministry CSVs and the UCI file) and which must be downloaded (US files from Kaggle, about 274 MB, see README). All random seeds are 42; figures are deterministic. Reproducibility test you can report: on 22 Nov 2026 every script was rerun on a fresh copy of the repository (about 16 minutes on the setup of Table~\ref{tab:software}); every saved table and JSON file came out identical, except \texttt{mixed\_model\_stats.json}, whose decomposition shares differ only in the eighth decimal (numerical rounding). Refer to Table~\ref{tab:software} and Table~\ref{tab:pipeline}, and cite the libraries here (Harris et al.; McKinney; Virtanen et al.; Seabold and Perktold; Pedregosa et al.; Hunter).}
+\budget{100}{Ignacio}
+
+\begin{table}[H]
+\centering
+\caption{\capguide{Ignacio -- computing setup: hardware, operating system, software and versions used to produce every result in this report.}}
+\label{tab:software}
+\small
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+Component & Version \\
+\midrule
+Hardware & Intel Core Ultra 7 258V (8 cores), 32 GB RAM, no GPU \\
+Operating system & Windows 11 (build 26200) \\
+Python & 3.14.4 \\
+NumPy & 2.4.4 \\
+pandas & 3.0.2 \\
+SciPy & 1.18.1 \\
+statsmodels & 0.15.0 \\
+scikit-learn & 1.9.1 \\
+Matplotlib & 3.10.9 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table*}[t]
+\centering
+\caption{\capguide{Ignacio -- run order and the report items each script produces; all outputs are saved in \texttt{results/} and \texttt{figures/}.}}
+\label{tab:pipeline}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}Xr@{}}
+\toprule
+Script (\texttt{src/}) & Main outputs & Used in & Time \\
+\midrule
+\texttt{load\_data.py}, \texttt{analysis.py} & cleaned Portuguese records, degree effects & \S\ref{sec:data-portugal}, \S\ref{sec:res-confounders} & 33 s \\
+\texttt{ministry.py}, \texttt{progress.py} & decomposition, persistence, confounders, selection shares & \S\ref{sec:res-field}--\S\ref{sec:res-selection}, Figures~\ref{fig:field-effects}--\ref{fig:selection} & 6.6 min \\
+\texttt{mixed\_model.py} & variance components, university profiles & \S\ref{sec:res-field} & 27 s \\
+\texttt{normal\_check.py} & normal-approximation diagnostics, truncated-normal selection & \S\ref{sec:res-selection} & 51 s \\
+\texttt{ranking\_rules.py} & four ranking rules with bootstrap intervals & \S\ref{sec:res-rules}, Figure~\ref{fig:rules} & 3.3 min \\
+\texttt{background.py} & background of the students of each degree & \S\ref{sec:context}, Figure~\ref{fig:background} & 3 s \\
+\texttt{us\_replication.py} (+ \texttt{us\_mapping.py}, \texttt{us\_model.py}) & US cells, crosswalk, country comparison, sensitivity checks & \S\ref{sec:res-us}, Figure~\ref{fig:us} & -- \\
+\texttt{adjusted\_mark.py} & adjusted-mark selection shares & \S\ref{sec:res-adjusted}, Table~\ref{tab:adjusted}, Figure~\ref{fig:adjusted} & 25 s \\
+\texttt{model\_selection.py} & tuning curves, test errors & \S\ref{sec:res-prediction}, Table~\ref{tab:models}, Figure~\ref{fig:tuning} & 3.4 min \\
+\texttt{final\_figures.py} (run last) & the nine data figures of this report, \texttt{final\_figures\_stats.json} & all figures & 25 s \\
+\bottomrule
+\end{tabularx}
+\end{table*}

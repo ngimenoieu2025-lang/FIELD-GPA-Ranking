@@ -1,0 +1,13 @@
+% ============================================================
+% 4.1 (continued) MIXED-MODEL RESULT -- Writer: Pablo Torres -- about 170 words
+% This paragraph continues Section 4.1 (no new heading).
+% Numbers: results/mixed_model_stats.json, results/mixed_model_profiles.csv.
+% Start from outline entry 6a ("mixed model: 61, 29 and 11%").
+% ============================================================
+
+\guide{Pablo -- Paragraph: what the mixed model adds}{%
+\textbf{Claim:} the mixed model confirms the split with a different method.\\
+\textbf{Numbers:} descriptive split 61\% shared field effect, 29\% university-specific, 11\% residual (\texttt{descriptive\_three\_way\_shares}); variance components $\sigma_a^2 = 0.027$, $\sigma_b^2 = 0.039$, $\sigma^2 = 0.015$ grade points$^2$; converged with L-BFGS.\\
+\textbf{Interpretation:} the university-by-field variance is larger than the residual variance, so a university's profile is not noise -- this is what \S\ref{sec:res-prediction} tests on future years.\\
+\textbf{Be precise:} the 65/28/7 and 61/29/11 splits measure slightly different things (see \texttt{comparison\_note}); say so in one sentence so the reader does not think they contradict each other. Mention that the profiles (BLUPs) are saved in \texttt{results/mixed\_model\_profiles.csv}.}
+\budget{170}{Pablo}
