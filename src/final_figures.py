@@ -13,9 +13,12 @@ Statistical choices shared by all figures:
   Figure 1 uses all universities; Figure 3 only the public universities for
   which admission grades are published.
 
-Run after ministry.py, progress.py, us_replication.py and ranking_rules.py.
-Output: figures/final/fig1_field_effects.pdf ... fig6_ranking_rules.pdf, and
+Run after ministry.py, progress.py, us_replication.py, ranking_rules.py,
+adjusted_mark.py and model_selection.py.
+Output: figures/final/fig1_field_effects.pdf ... fig8_model_tuning.pdf, and
 results/final_figures_stats.json with every number quoted in the captions.
+`python src/final_figures.py fig7 fig8` remakes only the named figures (fig5
+needs the US data, which is not in the repository).
 """
 import json
 import sys
@@ -48,7 +51,8 @@ plt.rcParams.update({
 
 
 def save(fig, name: str) -> None:
-    fig.savefig(OUT / f"{name}.pdf")
+    # No creation date in the PDF, so rerunning the script does not change unchanged figures.
+    fig.savefig(OUT / f"{name}.pdf", metadata={"CreationDate": None})
     fig.savefig(OUT / f"{name}.png", dpi=300)
     plt.close(fig)
 
@@ -76,10 +80,15 @@ def spain_deviations() -> pd.DataFrame:
 def fig1_field_effects(dev: pd.DataFrame) -> None:
     """Field effects across all Spanish universities, 95% CIs clustered by university."""
     eff = sum_coded_effects("dev ~ C(field, Sum)", dev).sort_values("effect")
+    q = dev.dropna(subset=["q1", "q3"])
+    within_sd = (q["q3"] - q["q1"]) / 1.349  # SD of a normal with that IQR
     STATS["fig1"] = {"n_obs": int(len(dev)), "n_univ": int(dev["univ"].nunique()),
                      "max_field": eff.index[-1], "max_effect": float(eff["effect"].iloc[-1]),
                      "min_field": eff.index[0], "min_effect": float(eff["effect"].iloc[0]),
-                     "median_ci_halfwidth": float(1.96 * eff["se"].median())}
+                     "median_ci_halfwidth": float(1.96 * eff["se"].median()),
+                     "range_max_minus_min": float(eff["effect"].iloc[-1] - eff["effect"].iloc[0]),
+                     "median_within_field_sd": float(within_sd.median()),
+                     "n_with_quartiles": int(len(q))}
     eff.round(4).to_csv(RES / "final_fig1_field_effects.csv")
     y = np.arange(len(eff))
     fig, ax = plt.subplots(figsize=(COL, 4.6))
@@ -241,17 +250,149 @@ def fig6_ranking_rules() -> None:
     save(fig, "fig6_ranking_rules")
 
 
+def fig7_adjusted_marks() -> None:
+    """Selection shares with raw and adjusted marks (instructor's suggestion), same statistic as Figure 4."""
+    dist = pd.read_csv(RES / "adjusted_mark_field_distribution.csv")
+    stats = json.loads((RES / "adjusted_mark_stats.json").read_text(encoding="utf-8"))
+    raw = dist[dist["method"] == "raw"].set_index("field")
+    adj = dist[dist["method"] == "univ_prior_mean"].set_index("field").loc[raw.index]
+    order = raw["median"].sort_values().index
+    raw, adj = raw.loc[order], adj.loc[order]
+    STATS["fig7"] = {
+        "adjustment": "univ_prior_mean: field deviation at the same university, averaged over earlier years",
+        "evaluation_years": stats["evaluation_years"], "n_univ_years": stats["raw"]["n_univ_years"],
+        "n_univ": stats["raw"]["n_univ"],
+        "mean_abs_gap_pp": {m: stats[m]["mean_abs_gap_pp"] for m in ["raw", "univ_prior_mean", "oracle_current"]},
+        "mean_abs_gap_ci95_pp": {m: stats[m]["mean_abs_gap_ci95_pp"] for m in ["raw", "univ_prior_mean"]},
+        "median_share_pp": {m: stats[m]["median_share_pp"] for m in ["raw", "univ_prior_mean"]},
+    }
+    y = np.arange(len(order))
+    fig, ax = plt.subplots(figsize=(COL, 4.6))
+    for d, off, color, label in [(raw, 0.18, GREY, "raw mark"),
+                                 (adj, -0.18, BLUE, "adjusted mark (minus the field's\npast deviation at that university)")]:
+        ax.hlines(y + off, 100 * d["q1"], 100 * d["q3"], color=color, lw=2.0, alpha=0.45)
+        ax.plot(100 * d["median"], y + off, "o", ms=3, color=color, label=label)
+    ax.axvline(20, color=RED, ls="--", lw=0.8, label="equal access (20%)")
+    ax.set_yticks(y, order)
+    ax.set_ylim(-0.7, len(order) - 0.3)
+    ax.set_xlabel("Simulated share of the field's graduates in\ntheir university's top 20% (%; median and IQR)")
+    g = STATS["fig7"]["mean_abs_gap_pp"]
+    ax.legend(frameon=False, loc="lower center", bbox_to_anchor=(0.42, 1.0), fontsize=6.5, ncol=1,
+              title=f"mean distance from 20%: {g['raw']:.1f} pp (raw) → {g['univ_prior_mean']:.1f} pp (adjusted)",
+              title_fontsize=6.5)
+    save(fig, "fig7_adjusted_marks")
+
+
+def fig8_model_tuning() -> None:
+    """Expanding-window validation error against each tuned hyperparameter (2018-2021)."""
+    t = pd.read_csv(RES / "model_selection_tuning.csv")
+    sel = json.loads((RES / "model_selection_stats.json").read_text(encoding="utf-8"))
+    common = float(t.loc[t["model"] == "common_field", "val_rmse"].iloc[0])
+    STATS["fig8"] = {"validation_years": sel["validation_years"], "validation_rmse_best": sel["validation_rmse_best"],
+                     "chosen": {m: sel["test"][m]["hyperparameter"] for m in
+                                ["shrunk_profile", "ridge_profile", "gradient_boosting"]},
+                     "test_rmse": {m: sel["test"][m]["rmse"] for m in
+                                   ["baseline", "common_field", "shrunk_profile", "ridge_profile", "gradient_boosting"]}}
+    fig, axes = plt.subplots(1, 3, figsize=(FULL, 2.0), sharey=True)
+    # (a) shrinkage k
+    s = t[t["model"] == "shrunk_profile"].copy()
+    s["k"] = s["hyperparameter"].astype(float)
+    s = s[s["k"] < 1e8].sort_values("k")
+    best = s.loc[s["val_rmse"].idxmin()]
+    axes[0].plot(s["k"], s["val_rmse"], "o-", ms=3, color=BLUE)
+    axes[0].plot(best["k"], best["val_rmse"], "o", ms=7, mfc="none", color=RED, label=f"chosen k = {best['k']:g}")
+    axes[0].set_xscale("symlog", linthresh=0.25)
+    axes[0].set_xlabel("Shrinkage k (weight on own past = n/(n+k))")
+    axes[0].set_title("(a) Shrunk university profile")
+    # (b) ridge alpha
+    r = t[t["model"] == "ridge_profile"].copy()
+    r["alpha"] = r["hyperparameter"].astype(float)
+    r = r.sort_values("alpha")
+    best = r.loc[r["val_rmse"].idxmin()]
+    axes[1].plot(r["alpha"], r["val_rmse"], "o-", ms=3, color=BLUE)
+    axes[1].plot(best["alpha"], best["val_rmse"], "o", ms=7, mfc="none", color=RED,
+                 label=f"chosen α = {best['alpha']:.2g}")
+    axes[1].set_xscale("log")
+    axes[1].set_xlabel("Ridge penalty α")
+    axes[1].set_title("(b) Ridge, field + university×field")
+    # (c) gradient boosting: best over the number of trees, by depth and learning rate
+    g = t[t["model"] == "gradient_boosting"].copy()
+    hp = g["hyperparameter"].str.strip("()").str.split(",", expand=True).astype(float)
+    g["depth"], g["lr"], g["trees"] = hp[0], hp[1], hp[2]
+    gb = g.groupby(["lr", "depth"])["val_rmse"].min().reset_index()
+    for lr, color in zip(sorted(gb["lr"].unique()), [ORANGE, BLUE, GREY]):
+        d = gb[gb["lr"] == lr]
+        axes[2].plot(d["depth"], d["val_rmse"], "o-", ms=3, color=color, label=f"learning rate {lr:g}")
+    bg = g.loc[g["val_rmse"].idxmin()]
+    axes[2].plot(bg["depth"], bg["val_rmse"], "o", ms=7, mfc="none", color=RED)
+    axes[2].set_xlabel("Maximum tree depth")
+    axes[2].set_title("(c) Gradient boosting")
+    axes[2].set_xticks(sorted(g["depth"].unique()))
+    for ax in axes:
+        ax.axhline(common, color=GREY, ls="--", lw=0.8)
+        ax.grid(axis="y", alpha=0.3, lw=0.4)
+    axes[0].text(0.03, common, "common field effect only", transform=axes[0].get_yaxis_transform(),
+                 va="bottom", fontsize=6.5, color=GREY)
+    axes[0].set_ylabel("Validation RMSE, 2018-2021\n(grade points)")
+    axes[0].legend(frameon=False, loc="upper left", fontsize=6.5)
+    axes[1].legend(frameon=False, loc="upper left", fontsize=6.5)
+    axes[2].legend(frameon=False, loc="upper right", fontsize=6.5,
+                   title="best number of trees (100-600)", title_fontsize=6.5)
+    save(fig, "fig8_model_tuning")
+
+
+def fig9_background() -> None:
+    """Who enters each degree: background of the 3,703 Portuguese students, by degree."""
+    b = pd.read_csv(RES / "background_by_degree.csv", index_col=0).sort_values("gpa_mean")
+    stats = json.loads((RES / "background_stats.json").read_text(encoding="utf-8"))
+    STATS["fig9"] = {"n_students": stats["n_students"], "n_degrees": stats["n_degrees"],
+                     "tests": stats["tests"], "overall": stats["overall"]}
+    panels = [("parent_higher_ed", 100, "Parent with a higher-\neducation degree (%)"),
+              ("scholarship", 100, "Scholarship\nholders (%)"),
+              ("female", 100, "Women (%)"),
+              ("gpa_mean", 1, "Mean first-year\nGPA (0-20)")]
+    fig, axes = plt.subplots(1, 4, figsize=(FULL, 2.9), sharey=True)
+    y = np.arange(len(b))
+    for ax, (col, scale, title) in zip(axes, panels):
+        x = scale * b[col]
+        mean = scale * (stats["overall"][col] if col in stats["overall"] else np.average(b[col], weights=b["n"]))
+        ax.hlines(y, mean, x, color=GREY, lw=0.8)
+        ax.plot(x, y, "o", ms=3.5, color=BLUE if col != "gpa_mean" else ORANGE)
+        ax.axvline(mean, color=RED, ls="--", lw=0.8)
+        ax.set_title(title)
+        ax.grid(axis="x", alpha=0.3, lw=0.4)
+    axes[0].set_yticks(y, [f"{c} (n={n})" for c, n in zip(b.index, b["n"])])
+    axes[0].text(0.0, -0.22, "Degrees ordered by mean GPA; dashed line: all students.", transform=axes[0].transAxes,
+                 fontsize=6.5, color=GREY)
+    save(fig, "fig9_background")
+
+
+FIGURES = {"fig1": fig1_field_effects, "fig2": fig2_persistence, "fig3": fig3_confounders,
+           "fig4": fig4_selection, "fig5": fig5_us_spain, "fig6": fig6_ranking_rules,
+           "fig7": fig7_adjusted_marks, "fig8": fig8_model_tuning, "fig9": fig9_background}
+NEEDS_DEV = {"fig1", "fig2", "fig3"}
+
+
 def main() -> None:
+    """Make every figure, or only those named on the command line (e.g. `fig7 fig8`).
+
+    A partial run keeps the statistics of the other figures already saved in
+    results/final_figures_stats.json.
+    """
     OUT.mkdir(parents=True, exist_ok=True)
-    dev = spain_deviations()
-    fig1_field_effects(dev)
-    fig2_persistence(dev)
-    fig3_confounders(dev)
-    fig4_selection()
-    fig5_us_spain()
-    fig6_ranking_rules()
-    (RES / "final_figures_stats.json").write_text(json.dumps(STATS, indent=2, default=str), encoding="utf-8")
-    print(json.dumps(STATS, indent=2, default=str))
+    names = sys.argv[1:] or list(FIGURES)
+    unknown = set(names) - set(FIGURES)
+    if unknown:
+        raise SystemExit(f"Unknown figure(s): {sorted(unknown)}. Choose from {list(FIGURES)}.")
+    path = RES / "final_figures_stats.json"
+    if sys.argv[1:] and path.exists():
+        STATS.update(json.loads(path.read_text(encoding="utf-8")))
+    dev = spain_deviations() if NEEDS_DEV & set(names) else None
+    for name in names:
+        FIGURES[name](dev) if name in NEEDS_DEV else FIGURES[name]()
+    ordered = {k: STATS[k] for k in FIGURES if k in STATS}
+    path.write_text(json.dumps(ordered, indent=2, default=str), encoding="utf-8")
+    print(json.dumps({k: ordered[k] for k in names if k in ordered}, indent=2, default=str))
 
 
 if __name__ == "__main__":

@@ -6,7 +6,10 @@
     "max_effect": 0.5260509661933895,
     "min_field": "Architecture",
     "min_effect": -0.5320495132572621,
-    "median_ci_halfwidth": 0.0513700700176189
+    "median_ci_halfwidth": 0.0513700700176189,
+    "range_max_minus_min": 1.0581004794506517,
+    "median_within_field_sd": 0.622683469236472,
+    "n_with_quartiles": 11738
   },
   "fig2": {
     "lag1_correlation": 0.8447897368208861,
@@ -39,5 +42,116 @@
     ],
     "n_areas": 10,
     "same_sign": 8
+  },
+  "fig7": {
+    "adjustment": "univ_prior_mean: field deviation at the same university, averaged over earlier years",
+    "evaluation_years": [
+      2016,
+      2023
+    ],
+    "n_univ_years": 595,
+    "n_univ": 79,
+    "mean_abs_gap_pp": {
+      "raw": 11.783452677596644,
+      "univ_prior_mean": 5.076214213664561,
+      "oracle_current": 3.6002985049130896
+    },
+    "mean_abs_gap_ci95_pp": {
+      "raw": [
+        10.99461836064722,
+        12.586712066498945
+      ],
+      "univ_prior_mean": [
+        4.811977042571691,
+        5.343539907638357
+      ]
+    },
+    "median_share_pp": {
+      "raw": {
+        "Nursing": 40.5988049337181,
+        "Business administration": 5.404948137313091
+      },
+      "univ_prior_mean": {
+        "Nursing": 13.04802311888545,
+        "Business administration": 19.488616504489713
+      }
+    }
+  },
+  "fig8": {
+    "validation_years": [
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "validation_rmse_best": {
+      "baseline": 0.3599584506749395,
+      "common_field": 0.21905899934341794,
+      "shrunk_profile": 0.11570388672277501,
+      "ridge_profile": 0.11582497881238765,
+      "gradient_boosting": 0.11403772896639403
+    },
+    "chosen": {
+      "shrunk_profile": 0.25,
+      "ridge_profile": 0.21544346900318834,
+      "gradient_boosting": {
+        "max_depth": 8,
+        "learning_rate": 0.03,
+        "n_trees": 600
+      }
+    },
+    "test_rmse": {
+      "baseline": 0.364543848549782,
+      "common_field": 0.22549583270714074,
+      "shrunk_profile": 0.1377900230491488,
+      "ridge_profile": 0.13811900557218815,
+      "gradient_boosting": 0.1325872564656219
+    }
+  },
+  "fig9": {
+    "n_students": 3703,
+    "n_degrees": 15,
+    "tests": {
+      "parent_higher_ed": {
+        "chi2": 158.79518471996363,
+        "df": 14,
+        "p": 1.2394556069815912e-26,
+        "min_degree": "Social Service (evening)",
+        "min": 0.06521739130434782,
+        "max_degree": "Equinculture",
+        "max": 0.5043478260869565
+      },
+      "scholarship": {
+        "chi2": 200.4856219442409,
+        "df": 14,
+        "p": 4.371247338602787e-35,
+        "min_degree": "Equinculture",
+        "min": 0.0782608695652174,
+        "max_degree": "Social Service",
+        "max": 0.42024539877300615
+      },
+      "female": {
+        "chi2": 681.0989430687806,
+        "df": 14,
+        "p": 2.784127929062051e-136,
+        "min_degree": "Informatics Engineering",
+        "min": 0.015873015873015872,
+        "max_degree": "Basic Education",
+        "max": 0.9540229885057471
+      },
+      "admission_z": {
+        "F": 12.584324411042934,
+        "p": 2.261505852914814e-29,
+        "min_degree": "Advertising & Marketing",
+        "min": -0.3267525979508002,
+        "max_degree": "Equinculture",
+        "max": 0.4383734271499793
+      }
+    },
+    "overall": {
+      "parent_higher_ed": 0.17121253038077236,
+      "scholarship": 0.27572238725357817,
+      "female": 0.6843100189035917
+    }
   }
 }

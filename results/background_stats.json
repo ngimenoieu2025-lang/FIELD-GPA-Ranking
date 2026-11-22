@@ -1,0 +1,61 @@
+{
+  "n_students": 3703,
+  "n_degrees": 15,
+  "higher_education_codes": [
+    2,
+    3,
+    4,
+    5,
+    40,
+    43,
+    44
+  ],
+  "overall": {
+    "parent_higher_ed": 0.17121253038077236,
+    "scholarship": 0.27572238725357817,
+    "female": 0.6843100189035917
+  },
+  "tests": {
+    "parent_higher_ed": {
+      "chi2": 158.79518471996363,
+      "df": 14,
+      "p": 1.2394556069815912e-26,
+      "min_degree": "Social Service (evening)",
+      "min": 0.06521739130434782,
+      "max_degree": "Equinculture",
+      "max": 0.5043478260869565
+    },
+    "scholarship": {
+      "chi2": 200.4856219442409,
+      "df": 14,
+      "p": 4.371247338602787e-35,
+      "min_degree": "Equinculture",
+      "min": 0.0782608695652174,
+      "max_degree": "Social Service",
+      "max": 0.42024539877300615
+    },
+    "female": {
+      "chi2": 681.0989430687806,
+      "df": 14,
+      "p": 2.784127929062051e-136,
+      "min_degree": "Informatics Engineering",
+      "min": 0.015873015873015872,
+      "max_degree": "Basic Education",
+      "max": 0.9540229885057471
+    },
+    "admission_z": {
+      "F": 12.584324411042934,
+      "p": 2.261505852914814e-29,
+      "min_degree": "Advertising & Marketing",
+      "min": -0.3267525979508002,
+      "max_degree": "Equinculture",
+      "max": 0.4383734271499793
+    }
+  },
+  "corr_degree_gpa_with": {
+    "parent_higher_ed": 0.4045443613077421,
+    "scholarship": 0.13264026977083637,
+    "female": 0.08126107826067987,
+    "admission_z": 0.43783120969427003
+  }
+}
