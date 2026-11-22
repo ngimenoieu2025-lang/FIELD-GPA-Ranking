@@ -1,0 +1,146 @@
+field,median,q1,q3,n_univ_years,method
+Agriculture,0.0217,0.008,0.0478,145,raw
+Architecture,0.0184,0.0027,0.0581,249,raw
+Arts,0.2701,0.1972,0.3487,236,raw
+Audiovisual & media,0.2291,0.1467,0.3217,299,raw
+Business administration,0.054,0.022,0.1323,543,raw
+Computer science,0.12,0.0675,0.191,429,raw
+Early childhood teaching,0.3589,0.2693,0.4461,439,raw
+Economics,0.0441,0.0167,0.0902,272,raw
+Engineering,0.0322,0.013,0.0888,470,raw
+Humanities,0.2566,0.1838,0.3224,292,raw
+Journalism,0.1729,0.106,0.2534,255,raw
+Languages,0.2737,0.2246,0.3302,326,raw
+Law,0.0905,0.0519,0.1465,503,raw
+Life sciences,0.1877,0.0973,0.2615,340,raw
+Mathematics & statistics,0.1305,0.072,0.2119,179,raw
+Medicine,0.3333,0.2541,0.4241,304,raw
+Nursing,0.406,0.2917,0.5395,441,raw
+Other business,0.1263,0.0559,0.1889,352,raw
+Other education,0.277,0.1828,0.3701,289,raw
+Other health,0.1972,0.136,0.2719,482,raw
+Other services,0.1136,0.0602,0.2579,97,raw
+Other social sciences,0.1989,0.1372,0.285,294,raw
+Physical sciences,0.0869,0.0406,0.1478,286,raw
+Primary teaching,0.3369,0.271,0.3893,444,raw
+Psychology,0.2033,0.1397,0.2767,388,raw
+Social work,0.1365,0.0798,0.1848,256,raw
+Sports,0.1478,0.0869,0.2221,293,raw
+Tourism,0.0797,0.0413,0.147,291,raw
+Veterinary,0.0638,0.0333,0.1182,97,raw
+Agriculture,0.1427,0.0952,0.1911,145,common_prior
+Architecture,0.155,0.0955,0.2673,249,common_prior
+Arts,0.2396,0.1803,0.299,236,common_prior
+Audiovisual & media,0.1956,0.1227,0.2673,299,common_prior
+Business administration,0.1769,0.1144,0.2586,543,common_prior
+Computer science,0.1904,0.1222,0.259,429,common_prior
+Early childhood teaching,0.1804,0.1196,0.2306,439,common_prior
+Economics,0.1696,0.1063,0.2576,272,common_prior
+Engineering,0.1508,0.0931,0.2131,470,common_prior
+Humanities,0.2475,0.1928,0.3054,292,common_prior
+Journalism,0.2031,0.1263,0.2833,255,common_prior
+Languages,0.2619,0.2015,0.3203,326,common_prior
+Law,0.2043,0.1542,0.2626,503,common_prior
+Life sciences,0.2306,0.1339,0.3084,340,common_prior
+Mathematics & statistics,0.2159,0.1426,0.3017,179,common_prior
+Medicine,0.2157,0.1322,0.2816,304,common_prior
+Nursing,0.1439,0.0801,0.2385,441,common_prior
+Other business,0.2342,0.1399,0.313,352,common_prior
+Other education,0.1976,0.1248,0.2815,289,common_prior
+Other health,0.186,0.1238,0.2644,482,common_prior
+Other services,0.134,0.0793,0.2484,97,common_prior
+Other social sciences,0.2074,0.1476,0.2735,294,common_prior
+Physical sciences,0.1997,0.1327,0.2621,286,common_prior
+Primary teaching,0.2272,0.1767,0.2744,444,common_prior
+Psychology,0.2046,0.139,0.297,388,common_prior
+Social work,0.1836,0.1233,0.2389,256,common_prior
+Sports,0.1776,0.1091,0.2659,293,common_prior
+Tourism,0.1729,0.1115,0.266,291,common_prior
+Veterinary,0.1777,0.1226,0.2559,97,common_prior
+Agriculture,0.1727,0.1219,0.237,145,univ_last_year
+Architecture,0.1784,0.1191,0.244,249,univ_last_year
+Arts,0.2316,0.1974,0.2723,236,univ_last_year
+Audiovisual & media,0.1924,0.1355,0.2513,299,univ_last_year
+Business administration,0.2002,0.164,0.24,543,univ_last_year
+Computer science,0.2065,0.1475,0.2616,429,univ_last_year
+Early childhood teaching,0.161,0.1275,0.2053,439,univ_last_year
+Economics,0.2168,0.1514,0.2701,272,univ_last_year
+Engineering,0.1739,0.1373,0.2181,470,univ_last_year
+Humanities,0.2647,0.214,0.3164,292,univ_last_year
+Journalism,0.191,0.1415,0.2433,255,univ_last_year
+Languages,0.2777,0.2373,0.3103,326,univ_last_year
+Law,0.221,0.1847,0.262,503,univ_last_year
+Life sciences,0.2347,0.1912,0.2766,340,univ_last_year
+Mathematics & statistics,0.2433,0.1958,0.3164,179,univ_last_year
+Medicine,0.1852,0.1459,0.226,304,univ_last_year
+Nursing,0.1273,0.0906,0.1662,441,univ_last_year
+Other business,0.2137,0.1637,0.2598,352,univ_last_year
+Other education,0.1626,0.1202,0.2099,289,univ_last_year
+Other health,0.1937,0.147,0.2388,482,univ_last_year
+Other services,0.1794,0.1018,0.26,97,univ_last_year
+Other social sciences,0.2243,0.1698,0.2609,294,univ_last_year
+Physical sciences,0.2244,0.1688,0.2758,286,univ_last_year
+Primary teaching,0.2016,0.1709,0.2355,444,univ_last_year
+Psychology,0.1954,0.158,0.2416,388,univ_last_year
+Social work,0.1841,0.1297,0.2211,256,univ_last_year
+Sports,0.1741,0.1349,0.2255,293,univ_last_year
+Tourism,0.2004,0.1543,0.2629,291,univ_last_year
+Veterinary,0.1667,0.1136,0.2075,97,univ_last_year
+Agriculture,0.1601,0.111,0.2138,145,univ_prior_mean
+Architecture,0.1748,0.1246,0.2437,249,univ_prior_mean
+Arts,0.2347,0.1964,0.2763,236,univ_prior_mean
+Audiovisual & media,0.202,0.1406,0.2587,299,univ_prior_mean
+Business administration,0.1949,0.1566,0.236,543,univ_prior_mean
+Computer science,0.2031,0.1479,0.2582,429,univ_prior_mean
+Early childhood teaching,0.1665,0.1303,0.2093,439,univ_prior_mean
+Economics,0.2027,0.1466,0.2585,272,univ_prior_mean
+Engineering,0.1663,0.1191,0.2082,470,univ_prior_mean
+Humanities,0.2673,0.2218,0.3179,292,univ_prior_mean
+Journalism,0.1858,0.1463,0.2474,255,univ_prior_mean
+Languages,0.2784,0.2349,0.3079,326,univ_prior_mean
+Law,0.2123,0.1777,0.2517,503,univ_prior_mean
+Life sciences,0.2359,0.1857,0.273,340,univ_prior_mean
+Mathematics & statistics,0.2443,0.1726,0.3068,179,univ_prior_mean
+Medicine,0.1919,0.1491,0.2293,304,univ_prior_mean
+Nursing,0.1305,0.0904,0.1731,441,univ_prior_mean
+Other business,0.2147,0.1654,0.2681,352,univ_prior_mean
+Other education,0.1717,0.1277,0.2179,289,univ_prior_mean
+Other health,0.1906,0.1459,0.2379,482,univ_prior_mean
+Other services,0.1661,0.0979,0.2393,97,univ_prior_mean
+Other social sciences,0.2177,0.1715,0.2601,294,univ_prior_mean
+Physical sciences,0.2175,0.1598,0.2723,286,univ_prior_mean
+Primary teaching,0.2131,0.1776,0.255,444,univ_prior_mean
+Psychology,0.1964,0.1593,0.2495,388,univ_prior_mean
+Social work,0.1829,0.1367,0.2334,256,univ_prior_mean
+Sports,0.1792,0.125,0.2194,293,univ_prior_mean
+Tourism,0.1996,0.1498,0.2561,291,univ_prior_mean
+Veterinary,0.1556,0.1177,0.2024,97,univ_prior_mean
+Agriculture,0.1784,0.1451,0.2099,145,oracle_current
+Architecture,0.1801,0.1409,0.2178,249,oracle_current
+Arts,0.2374,0.2182,0.2649,236,oracle_current
+Audiovisual & media,0.1873,0.1513,0.2218,299,oracle_current
+Business administration,0.2051,0.1828,0.2331,543,oracle_current
+Computer science,0.2079,0.1791,0.2393,429,oracle_current
+Early childhood teaching,0.1651,0.1372,0.1934,439,oracle_current
+Economics,0.2155,0.1856,0.2451,272,oracle_current
+Engineering,0.1836,0.1608,0.2099,470,oracle_current
+Humanities,0.2682,0.2405,0.2916,292,oracle_current
+Journalism,0.1985,0.1696,0.2342,255,oracle_current
+Languages,0.2781,0.2545,0.2998,326,oracle_current
+Law,0.2287,0.2047,0.2498,503,oracle_current
+Life sciences,0.2392,0.2064,0.2649,340,oracle_current
+Mathematics & statistics,0.2501,0.2168,0.2809,179,oracle_current
+Medicine,0.1864,0.1644,0.2089,304,oracle_current
+Nursing,0.1276,0.0998,0.1547,441,oracle_current
+Other business,0.2148,0.177,0.2454,352,oracle_current
+Other education,0.1616,0.1382,0.1878,289,oracle_current
+Other health,0.1963,0.165,0.2227,482,oracle_current
+Other services,0.1905,0.1487,0.2253,97,oracle_current
+Other social sciences,0.2217,0.1945,0.2438,294,oracle_current
+Physical sciences,0.2324,0.2047,0.2527,286,oracle_current
+Primary teaching,0.2013,0.1831,0.2217,444,oracle_current
+Psychology,0.1956,0.1748,0.2209,388,oracle_current
+Social work,0.1736,0.146,0.2032,256,oracle_current
+Sports,0.1828,0.1505,0.2096,293,oracle_current
+Tourism,0.2062,0.1789,0.2311,291,oracle_current
+Veterinary,0.1765,0.1449,0.2033,97,oracle_current

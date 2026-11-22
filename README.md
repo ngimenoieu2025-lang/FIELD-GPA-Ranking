@@ -32,13 +32,14 @@ python src/model_eval.py    # proposal: model comparison with a held-out test se
 python src/progress.py      # progress report: decomposition, temporal validation, confounders, clustering
 python src/mixed_model.py   # mixed-effects model and university-field profiles
 python src/normal_check.py  # normal approximation checks and selection sensitivity
-python src/ranking_rules.py # comparison of four ranking rules (Portuguese records)
-python src/final_figures.py # six figures of the Final Report, written to figures/final/
+python src/ranking_rules.py   # comparison of four ranking rules (Portuguese records)
+python src/background.py      # student background by degree (Portuguese records)
 python src/adjusted_mark.py   # adjusted marks (mark minus field deviation) and selection
 python src/model_selection.py # prediction models: temporal tuning and test errors (about 3 minutes)
+python src/final_figures.py   # nine figures of the Final Report, written to figures/final/
 ```
 
-`src/final_figures.py` needs `src/us_replication.py` to have been run first (see "US replication" below), because Figure 5 reads its tables in `data/processed/`. Notes for each figure caption are in `figures/final/CAPTIONS.md`.
+`src/final_figures.py` must run last. It also needs `src/us_replication.py` to have been run first (see "US replication" below), because Figure 5 reads its tables in `data/processed/`; without the US data, `python src/final_figures.py fig1 fig2 fig3 fig4 fig6 fig7 fig8 fig9` remakes the other figures. Notes for each figure caption are in `figures/final/CAPTIONS.md`.
 
 All scripts use fixed random seeds (42) and write their numbers to `results/` and their figures to `figures/`.
 

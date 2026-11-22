@@ -19,7 +19,11 @@
     "median_within_univ_sd_of_field_means": 0.3490360371584632,
     "n_univ_field_years": 9291,
     "n_univ_years": 595,
-    "n_univ": 79
+    "n_univ": 79,
+    "median_share_pp": {
+      "Nursing": 40.5988049337181,
+      "Business administration": 5.404948137313091
+    }
   },
   "common_prior": {
     "mean_abs_gap_pp": 7.380098485417032,
@@ -37,7 +41,11 @@
     "median_within_univ_sd_of_field_means": 0.18627127415064731,
     "n_univ_field_years": 9291,
     "n_univ_years": 595,
-    "n_univ": 79
+    "n_univ": 79,
+    "median_share_pp": {
+      "Nursing": 14.392933474208796,
+      "Business administration": 17.688221491599787
+    }
   },
   "univ_last_year": {
     "mean_abs_gap_pp": 4.996656745295351,
@@ -55,7 +63,11 @@
     "median_within_univ_sd_of_field_means": 0.09894619168409821,
     "n_univ_field_years": 9291,
     "n_univ_years": 595,
-    "n_univ": 79
+    "n_univ": 79,
+    "median_share_pp": {
+      "Nursing": 12.730265309179,
+      "Business administration": 20.023302949793436
+    }
   },
   "univ_prior_mean": {
     "mean_abs_gap_pp": 5.076214213664561,
@@ -73,7 +85,11 @@
     "median_within_univ_sd_of_field_means": 0.10232316703227565,
     "n_univ_field_years": 9291,
     "n_univ_years": 595,
-    "n_univ": 79
+    "n_univ": 79,
+    "median_share_pp": {
+      "Nursing": 13.04802311888545,
+      "Business administration": 19.488616504489713
+    }
   },
   "oracle_current": {
     "mean_abs_gap_pp": 3.6002985049130896,
@@ -91,7 +107,11 @@
     "median_within_univ_sd_of_field_means": 8.881784197001252e-16,
     "n_univ_field_years": 9291,
     "n_univ_years": 595,
-    "n_univ": 79
+    "n_univ": 79,
+    "median_share_pp": {
+      "Nursing": 12.764352942160489,
+      "Business administration": 20.506923984688196
+    }
   },
   "reduction_vs_raw_pct": {
     "common_prior": 37.36896402657528,

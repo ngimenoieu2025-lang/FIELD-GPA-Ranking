@@ -17,8 +17,11 @@ University-specific corrections fall back to common_prior when the university
 has no earlier record for the field. The spread of each graduate's grade (SD
 from the interquartile range) is not changed; only the field mean is shifted.
 
-Outputs: results/adjusted_mark_stats.json, results/adjusted_mark_by_field.csv,
-figures/adjusted_mark_selection.pdf/.png.
+Outputs: results/adjusted_mark_stats.json, results/adjusted_mark_by_field.csv
+(graduate-weighted mean share per field), results/adjusted_mark_field_distribution.csv
+(median and interquartile range across university-years, the statistic of
+Figure 4), figures/adjusted_mark_selection.pdf/.png (exploratory). The report
+version of the figure is made by final_figures.py (fig7).
 """
 import json
 import sys
@@ -109,7 +112,14 @@ def summarise(r: pd.DataFrame, rng: np.random.Generator) -> dict:
         "max_field": str(field.idxmax()), "min_field": str(field.idxmin()),
         "median_within_univ_sd_of_field_means": float(by_uy.median()),
         "n_univ_field_years": int(len(r)), "n_univ_years": int(len(by_uy)), "n_univ": int(r["univ"].nunique()),
-    }, field
+    }, field, distribution(r)
+
+
+def distribution(r: pd.DataFrame) -> pd.DataFrame:
+    """Median and interquartile range across university-years of each field's share (as in Figure 4)."""
+    g = r.groupby("field")["share"]
+    return pd.DataFrame({"median": g.median(), "q1": g.quantile(0.25), "q3": g.quantile(0.75),
+                         "n_univ_years": g.size()})
 
 
 def fig(by_field: pd.DataFrame) -> None:
@@ -139,11 +149,17 @@ def main() -> None:
     df = corrections(df)
     d = df.join(grads, on=["univ", "field", "year"]).dropna(subset=["q1", "q3", "graduates"])
     d = d[(d["q3"] > d["q1"]) & (d["graduates"] > 0) & (d["year"] > d["year"].min())]  # first year has no past
-    stats, fields = {"evaluation_years": [int(d["year"].min()), int(d["year"].max())]}, {}
+    stats, fields, dists = {"evaluation_years": [int(d["year"].min()), int(d["year"].max())]}, {}, []
     for m in METHODS:
-        stats[m], fields[m] = summarise(select(d, m), np.random.default_rng(SEED))
+        stats[m], fields[m], dist = summarise(select(d, m), np.random.default_rng(SEED))
+        dists.append(dist.assign(method=m))
+        stats[m]["median_share_pp"] = {f: float(100 * dist.loc[f, "median"])
+                                       for f in ["Nursing", "Business administration"]}
     by_field = pd.DataFrame(fields)
+    # Within-field spread (SD = IQR/1.349) explains why equal means do not give equal access.
+    by_field["median_within_field_sd"] = ((d["q3"] - d["q1"]) / IQR_TO_SD).groupby(d["field"]).median()
     by_field.round(4).to_csv(RES / "adjusted_mark_by_field.csv")
+    pd.concat(dists).reset_index().round(4).to_csv(RES / "adjusted_mark_field_distribution.csv", index=False)
     fig(by_field)
     raw = stats["raw"]["mean_abs_gap_pp"]
     stats["reduction_vs_raw_pct"] = {m: float(100 * (1 - stats[m]["mean_abs_gap_pp"] / raw)) for m in METHODS[1:]}
