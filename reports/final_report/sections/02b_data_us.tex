@@ -1,0 +1,15 @@
+% ============================================================
+% 2.3 US COURSE GRADES -- Writer: Adam Bajer -- about 170 words
+% Start from outline entry 3c. Numbers: results/us_replication_stats.json,
+% README "US replication (Adam)".
+% ============================================================
+
+\subsection{US Course Grades}
+\label{sec:data-us}
+
+\guide{Adam -- Paragraph: what one observation is and how it was prepared}{%
+\textbf{Establish (outline 3c):} grade distributions at the course or section level from 33 US public universities (Jeong et al.; dataset ``Course Grades from 33 Public Universities'' on Kaggle, MIT licence). One row = share of each letter grade in one course or section, with total enrolment; these are \emph{not} individual students' GPAs.\\
+\textbf{Preparation:} section GPA from the letter shares with the paper's mapping (A+ = 4.3 \ldots\ F = 0; pass/fail and withdrawals excluded); 1,449,779 raw rows, 94\% of valid rows mapped to a broad area; exact duplicates removed; four institutions without enrolment counts are excluded from the weighted analysis (Georgia Tech, Parkland College, Purdue, UNC Charlotte).\\
+\textbf{Limitation to state here:} source years 2009--2023 do not match the Spanish window.\\
+Keep the mapping to ten broad areas for \S\ref{sec:methods-us}.}
+\budget{170}{Adam}

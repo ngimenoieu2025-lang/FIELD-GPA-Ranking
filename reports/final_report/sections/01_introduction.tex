@@ -1,0 +1,65 @@
+% ============================================================
+% 1. INTRODUCTION (with background and related work) -- Writer: Ignacio Gimeno
+% Target: about 810 words in total, + Figure 1 (student background by degree).
+% Brief: "Introduction, including Background and Related Work: research
+% question, motivation, dataset significance, objectives, and the relevant
+% scientific or technical background and prior work ... integrated into the
+% Introduction rather than submitted as a separate chapter."
+% IRENE'S FEEDBACK ON THE SENTENCE OUTLINE (follow it in this order):
+%   "Begin with how students' backgrounds can shape their choice of degree,
+%    then explain why GPA comparisons across fields raise a fairness question."
+%   "expand the literature beyond the current five references"
+%   "use graphs to help readers understand the analysis ... interpret the visuals"
+%   "Use first-person plural consistently to describe your work"
+% Template: avoid a broad textbook opening; every objective must connect to a
+% result and a conclusion; signpost the report without listing section titles.
+% All references below were checked (Crossref) and are in 90_works_cited.tex.
+% ============================================================
+
+\subsection{Students' Backgrounds and the Choice of Degree}
+\label{sec:context}
+
+\guide{Ignacio -- Paragraph 1: background shapes the choice of degree (literature)}{%
+\textbf{Establish (Irene):} the degree a student enters is not random: family background, gender, preferences and prior achievement shape it.\\
+\textbf{Sources (MLA in-text):} family socioeconomic status and parental involvement are linked to the choice of major, with differences by gender, ethnicity and nativity (Ma); the gender gap in majors is explained mainly by preferences and tastes rather than by expected ability (Zafar); students sort into majors by ability (Arcidiacono); review of how school curriculum and major choice differ across students and shape careers (Altonji et al.). Compare them in two or three sentences; do not list them.}
+\budget{140}{Ignacio}
+
+\guide{Ignacio -- Paragraph 2: our own data show it (Figure~\ref{fig:background})}{%
+\textbf{Interpret the figure (Irene: interpret the visuals):} in the 3,703 Portuguese students, the share with at least one parent holding a higher-education degree ranges from 7\% (Social Service, evening) to 50\% (Equinculture), scholarship holders from 8\% (Equinculture) to 42\% (Social Service), women from 2\% (Informatics Engineering) to 95\% (Basic Education); all differences between degrees are far larger than chance ($\chi^2$ tests, 14 df, $p<10^{-25}$; entry grade ANOVA $F = 12.6$, $p < 10^{-28}$). Across the 15 degrees, mean GPA is higher where more students have a graduate parent ($r = 0.40$) and stronger entry grades ($r = 0.44$).\\
+\textbf{Why it matters for the question:} degrees differ in who enters them, so a pooled GPA ranking compares students from different backgrounds \emph{and} different grading practices -- the report separates the second from the first as far as the data allow (\S\ref{sec:res-confounders}).\\
+\textbf{Source:} \texttt{results/background\_stats.json}, \texttt{results/background\_by\_degree.csv}. Descriptive only: no causal claim.}
+\budget{140}{Ignacio}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig9_background}
+  \caption{\capguide{Ignacio -- what is shown (background of the students of each degree, 15 degrees, 3,703 students of one Portuguese polytechnic, cohorts 2008--09 to 2018--19); definition of ``parent with a higher-education degree'' (mother or father with a completed bachelor's, master's or doctorate); degrees ordered by mean first-year GPA; dashed line = all students; source (Realinho et al.).}}
+  \label{fig:background}
+\end{figure*}
+
+\subsection{Why Comparing GPAs Across Fields Raises a Fairness Question}
+\label{sec:fairness}
+
+\guide{Ignacio -- Paragraph 3: fields grade differently, and grades steer choices}{%
+\textbf{Establish:} departments grade differently (Achen and Courant; Sabot and Wakeman-Linn), across many universities (Jeong et al.); low grades push students out of science majors (Ost; Rask) and students move towards leniently graded courses when grade information is visible (Bar et al.; read its abstract first); when Wellesley capped average grades in high-grading departments, enrolment in those departments fell (Butcher et al.). So grading practices and choices feed each other.}
+\budget{140}{Ignacio}
+
+\guide{Ignacio -- Paragraph 4: the fairness question}{%
+\textbf{Establish (Irene):} universities and programmes rank students from different degrees on one GPA list (exchange places, grants, honours, master's admission); if a grade does not mean the same in every field, the list partly sorts students by the field they chose -- and, through Paragraphs 1--2, by their background. One concrete example the reader knows (exchange-place allocation).\\
+\textbf{Existing answers:} adjusted GPAs that model each course's grading (Young; Johnson); comparisons of GPA measures against later outcomes (Bailey et al. -- read the abstract first); grade distribution tables to compare grades across groups (European Commission, ECTS Users' Guide).\\
+\textbf{Make clear (outline 2a):} we measure differences in \emph{observed grades}; we do not claim a field is harder or its students better.\\
+\textbf{Idris's feedback:} announce that we test his adjusted mark (original mark minus the field deviation) on selection outcomes.}
+\budget{160}{Ignacio}
+
+\subsection{Research Question, Objectives and Contribution}
+\label{sec:objectives}
+
+\guide{Ignacio -- Paragraph 5: question, objectives and gap}{%
+\textbf{Research question (identical to the README):} how much of a student's position in a university-wide GPA ranking depends on their field of study, and how would ranking students within their degree change who is selected for a fixed number of places?\\
+\textbf{Gap, stated modestly:} most studies use one university or US data; we (i) separate a field effect shared by 89 Spanish universities from each university's own pattern, (ii) test with tuned machine-learning models whether these patterns predict unseen years, and (iii) judge corrections by what they do to selection and to later performance.\\
+\textbf{Objectives, each pointing to its answer:} O1 field effects, shared and university-specific (\S\ref{sec:res-field}); O2 persistence and prediction (\S\ref{sec:res-prediction}); O3 does intake explain them (\S\ref{sec:res-confounders}); O4 consequence for a top-20\% selection (\S\ref{sec:res-selection}); O5 the adjusted mark and within-degree ranking (\S\ref{sec:res-adjusted}, \S\ref{sec:res-rules}); O6 the US check (\S\ref{sec:res-us}).}
+\budget{160}{Ignacio}
+
+\guide{Ignacio -- Paragraph 6: scope and road map}{%
+Three separate datasets that cannot be linked; aggregated means in Spain, so associations, not causes (\S\ref{sec:res-limitations}). Two or three sentences telling the reader what each part shows (Figure~\ref{fig:overview} gives the map of the analysis), not a list of section titles.}
+\budget{70}{Ignacio}

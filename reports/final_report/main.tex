@@ -1,0 +1,177 @@
+% ============================================================
+% IE UNIVERSITY - BACHELOR IN APPLIED MATHEMATICS
+% FIELD - FINAL REPORT (Machine Learning & Communication Skills)
+% Built on the official BAM Project LaTeX Template (bam-project.cls, downloaded
+% from the course Overleaf project on 18 November 2026; unchanged).
+%
+% Assignment brief (project_ML_commskills_2026.pdf) requirements kept here:
+% - Layout: clean, twocolumn (brief, Section 4: "Select clean,twocolumn").
+% - 10-12 pages, excluding the bibliography and appendices.
+% - Background integrated into the Introduction; results discussed where shown.
+% - References in MLA style (the brief overrides the template's amsplain).
+% - Link to the public GitHub repository.
+% - Declaration of Contributions and AI Use as in the template.
+%
+% HOW TO WRITE: see WRITING_GUIDE.md in this folder. Each member writes only
+% the files assigned to them in sections/. Blue boxes (\guide) and grey boxes
+% (\budget) are notes for the writer: delete them when the paragraph is written.
+% Before submission, set \FIELDdraftfalse below: if any \guide, \budget or
+% \capguide is left, compilation stops and names it.
+% ============================================================
+\documentclass[clean,twocolumn]{bam-project}
+
+% ------------------------------------------------------------
+% PROJECT METADATA
+% ------------------------------------------------------------
+\BAMtitle{FIELD: How Much Does the Field of Study Shape University GPA Rankings?}
+\BAMshorttitle{FIELD: field of study and GPA rankings}
+\BAMcourse{Machine Learning \& Communication Skills}
+\BAMteam{Adam Bajer\\[0.2em]Pablo Torres\\[0.2em]Ignacio Gimeno}
+\BAMinstructors{Idris Kouadri Boudjelthia\\[0.2em]Irene Alda Ferrero}
+\BAMsubmissiondate{25 November 2026}
+
+% Optional table of contents: not needed in a paper-style report.
+\newif\ifBAMshowtoc
+\BAMshowtocfalse
+
+% Figures live in the repository's figures/final/ folder.
+\graphicspath{{./}{../../figures/final/}}
+
+% ------------------------------------------------------------
+% DRAFTING AIDS (remove nothing here; switch the flag before submitting)
+% ------------------------------------------------------------
+\newif\ifFIELDdraft
+\FIELDdrafttrue   % <-- set to \FIELDdraftfalse for the submitted version
+
+% Colours of the overview diagram (same palette as the figures).
+\usetikzlibrary{arrows.meta}
+\definecolor{FIELDdata}{HTML}{0072B2}
+\definecolor{FIELDstep}{HTML}{E69F00}
+
+\definecolor{FIELDguide}{HTML}{1F4E9C}
+\newtcolorbox{FIELDguidebox}[1]{%
+  enhanced, breakable, colback=FIELDguide!5, colframe=FIELDguide, boxrule=0.5pt,
+  arc=1pt, left=4pt, right=4pt, top=3pt, bottom=3pt, before skip=4pt, after skip=5pt,
+  fontupper=\footnotesize, title={#1}, fonttitle=\footnotesize\bfseries,
+  colbacktitle=FIELDguide, coltitle=white, toptitle=1pt, bottomtitle=1pt}
+
+% \guide{Writer -- paragraph}{what the paragraph must establish, numbers, sources}
+\newcommand{\guide}[2]{%
+  \ifFIELDdraft
+    \begin{FIELDguidebox}{#1}#2\end{FIELDguidebox}%
+  \else
+    \PackageError{FIELD}{A writing guide is still in the text: #1}%
+      {Write the paragraph and delete its \string\guide\space block.}%
+  \fi}
+
+% \budget{words}{writer}: grey box with the height of that many words in one
+% column, so the draft shows the planned length of the finished report.
+\newcommand{\budget}[2]{%
+  \ifFIELDdraft
+    \par\noindent{\color{black!35}\fboxsep=0pt\fbox{\parbox[c][\dimexpr\textheight*#1/600\relax][c]{\dimexpr\linewidth-2\fboxrule\relax}{%
+      \centering\footnotesize\color{black!55}about #1 words of text (#2)}}}\par
+  \else
+    \PackageError{FIELD}{A length placeholder is still in the text (#2, #1 words)}%
+      {Delete the \string\budget\space line once the text is written.}%
+  \fi}
+
+% \capguide{...} inside \caption: what the caption must state.
+\DeclareRobustCommand{\capguide}[1]{%
+  \ifFIELDdraft
+    {\color{FIELDguide}[Caption to write: #1]}%
+  \else
+    \PackageError{FIELD}{A caption is still a placeholder}{Write the caption.}%
+  \fi}
+
+% MLA in-text citations are written by hand, e.g. (Achen and Courant 80).
+% Works Cited is in sections/90_works_cited.tex.
+
+\begin{document}
+
+\makebamtitle
+
+% ============================================================
+% ABSTRACT
+% ============================================================
+\begin{BAMabstract}
+\input{sections/00_abstract}
+\end{BAMabstract}
+
+% ============================================================
+% 1. INTRODUCTION (background and related work integrated, as the brief requires)
+% ============================================================
+\section{Introduction}
+\label{sec:introduction}
+\input{sections/01_introduction}
+
+% ============================================================
+% 2. DATA
+% ============================================================
+\section{Data}
+\label{sec:data}
+\input{sections/02_data}
+
+% ============================================================
+% 3. METHODOLOGY
+% ============================================================
+\section{Methodology}
+\label{sec:methodology}
+\input{tables/fig_overview}
+\input{sections/03a_methods_core}
+\input{sections/03b_methods_prediction_selection}
+\input{sections/03c_methods_us}
+\input{sections/03d_methods_computing}
+
+% ============================================================
+% 4. RESULTS AND DISCUSSION (each result discussed where it is shown)
+% ============================================================
+\section{Results and Discussion}
+\label{sec:results}
+\input{sections/04a_results_field_effects}
+\input{sections/04b_results_mixed_model}
+\input{sections/04c_results_prediction}
+\input{sections/04d_results_confounders}
+\input{sections/04e_results_selection}
+\input{sections/04f_results_normal_check}
+\input{sections/04g_results_adjusted_marks}
+\input{sections/04h_results_ranking_rules}
+\input{sections/04i_results_us}
+\input{sections/04j_results_limitations}
+
+% ============================================================
+% 5. CONCLUSIONS AND FUTURE WORK
+% ============================================================
+\section{Conclusions and Future Work}
+\label{sec:conclusion}
+\input{sections/05_conclusions}
+
+% ============================================================
+% WORKS CITED (MLA) -- not counted in the 10-12 pages
+% ============================================================
+\input{sections/90_works_cited}
+
+% ============================================================
+% DECLARATION OF CONTRIBUTIONS AND AI USE
+% ============================================================
+\BAMunnumberedsection{Declaration of Contributions and AI Use}
+\label{sec:contributions}
+\input{sections/91_declaration_team}
+
+\subsection*{Individual Contributions}
+\input{sections/92_declaration_adam}
+\input{sections/93_declaration_pablo}
+\input{sections/94_declaration_ignacio}
+
+\subsection*{Generative AI and Other Digital Tools}
+\input{sections/95_ai_intro}
+\input{sections/96_ai_adam}
+\input{sections/97_ai_pablo}
+\input{sections/98_ai_ignacio}
+
+% ============================================================
+% APPENDIX -- not counted in the 10-12 pages
+% ============================================================
+\BAMappendices
+\input{sections/99_appendix_reproducibility}
+
+\end{document}

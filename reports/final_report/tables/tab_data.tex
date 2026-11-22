@@ -1,0 +1,25 @@
+% Table 1 -- the three datasets. Numbers checked against results/ on 20 Nov 2026:
+% summary_stats.json (Portugal 3,703 students, 15 degrees), ranking_rules.json
+% (3,469 students), progress_stats.json (match: 86 with dropout, 47 with admission),
+% normal_check_stats.json (10,476 matched records, 664 university-years, 79
+% universities), us_replication_stats.json (1,449,779 raw rows; 1,845 cells;
+% 29 weighted universities; 2009-2023), mixed_model_stats.json (12,125; 89; 29).
+\begin{table*}[t]
+\centering
+\caption{\capguide{Pablo -- one sentence saying what the table compares (the three datasets, analysed separately) and that the numbers are after cleaning; define SIIU and IQR here if not defined before.}}
+\label{tab:data}
+\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+ & Spain (Ministry, SIIU) & Portugal (UCI records) & United States (33 universities) \\
+\midrule
+Unit of observation & Mean final grade of the graduates of one field at one university in one academic year (with quartiles and maximum) & One student (first-year grades by semester, entry grade, degree) & One course or section (share of each letter grade, enrolment) \\
+Size used & 12,125 university-field-years; 89 universities; 29 fields & 3,703 students in 15 degrees (of 4,424); 3,469 with grades in both semesters & 1,449,779 rows; 1,845 university-area-year cells; 10 broad areas \\
+Period & 2015--16 to 2023--24 & cohorts 2008--09 to 2018--19 & 2009 to 2023 (source years) \\
+Grade scale & 5--10 & 0--20 & 0--4 (A+ = 4.3) \\
+Extra variables & dropout (86 universities), graduates per field, admission grade by broad branch (47 public universities) & admission grade, standardised within admission route; background variables & enrolment (missing at 4 institutions) \\
+Used for & field effects, prediction, selection simulation, adjusted marks & degree gap with entry grades, ranking rules & external check of broad-area effects \\
+Source & Ministerio de Ciencia, Innovaci\'on y Universidades & Realinho et al. & Jeong et al. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
