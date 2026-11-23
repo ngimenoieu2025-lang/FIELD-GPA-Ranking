@@ -30,34 +30,39 @@ Figure and table numbers are those of the current draft. LaTeX renumbers them au
 
 Open `main.tex` to see the order. Each file in `sections/` belongs to one person. Edit only your own files. If you find a problem in someone else's file, tell them.
 
-| File | Writer | Words |
-|---|---|---|
-| `00_abstract.tex` (write it last) | Ignacio | 240 |
-| `01_introduction.tex`, Figure 1 caption | Ignacio | 810 |
-| `02_data.tex`, `tables/tab_data.tex` caption | Pablo | 480 |
-| `02b_data_us.tex` | Adam | 170 |
-| `03a_methods_core.tex`, `tables/fig_overview.tex` caption | Pablo | 1,000 |
-| `03b_methods_prediction_selection.tex` | Ignacio | 690 |
-| `03c_methods_us.tex` | Adam | 230 |
-| `03d_methods_computing.tex` | Ignacio | 80 |
-| `04a_results_field_effects.tex` | Ignacio | 290 |
-| `04b_results_mixed_model.tex` | Pablo | 170 |
-| `04c_results_prediction.tex`, `tables/tab_models.tex` caption | Ignacio | 460 |
-| `04d_results_confounders.tex` | Ignacio | 270 |
-| `04e_results_selection.tex` | Ignacio | 150 |
-| `04f_results_normal_check.tex` | Pablo | 180 |
-| `04g_results_adjusted_marks.tex`, `tables/tab_adjusted.tex` caption | Ignacio | 320 |
-| `04h_results_ranking_rules.tex` | Ignacio | 310 |
-| `04i_results_us.tex` | Adam | 330 |
-| `04j_results_limitations.tex` | Ignacio | 200 |
-| `05_conclusions.tex` | Ignacio | 300 |
-| `90_works_cited.tex` (add only checked entries) | Ignacio | - |
-| `91_declaration_team.tex` | Ignacio | 120 |
-| `92_declaration_adam.tex`, `96_ai_adam.tex` | Adam | 70 + record |
-| `93_declaration_pablo.tex`, `97_ai_pablo.tex` | Pablo | 70 + record |
-| `94_declaration_ignacio.tex`, `95_ai_intro.tex`, `98_ai_ignacio.tex` | Ignacio | 120 + record |
-| `99_appendix_reproducibility.tex` | Ignacio | 100 |
+The work was rebalanced on 22 November so that each of us writes a similar amount: Ignacio about 2,750 words, Pablo 2,320 and Adam 2,090. Ignacio also integrates the report and checks every number.
 
+| File | Section | Writer | Words |
+|---|---|---|---|
+| `00_abstract.tex` (write it last) | Abstract | Ignacio | 240 |
+| `01a_intro_background.tex`, Figure 1 caption | 1.1 Backgrounds and degree choice | Ignacio | 280 |
+| `01b_intro_fairness.tex` | 1.2 The fairness question | **Adam** | 300 |
+| `01c_intro_objectives.tex` | 1.3 Question and objectives | Ignacio | 230 |
+| `02_data.tex`, Table 1 caption | 2 Data (Spain, Portugal) | Pablo | 480 |
+| `02b_data_us.tex` | 2.3 US data | Adam | 170 |
+| `03a_methods_core.tex`, Figure 2 caption (`tables/fig_overview.tex`) | 3.1–3.5 Methodology | Pablo | 1,000 |
+| `03b_methods_prediction_selection.tex` | 3.6–3.8 Models, adjusted marks, ranking rules | Ignacio | 690 |
+| `03c_methods_us.tex` | 3.9 US replication design | Adam | 230 |
+| `03d_methods_computing.tex` | 3.10 Computing setup | **Adam** | 80 |
+| `04a_results_field_effects.tex` | 4.1 Field effects | Ignacio | 290 |
+| `04b_results_mixed_model.tex` | 4.1 Mixed-model paragraph | Pablo | 170 |
+| `04c_results_prediction.tex`, Table 2 caption | 4.2 Prediction and tuning | Ignacio | 460 |
+| `04d_results_confounders.tex` | 4.3 Intake, size, dropout | **Pablo** | 270 |
+| `04e_results_selection.tex` | 4.4 Selection | **Pablo** | 150 |
+| `04f_results_normal_check.tex` | 4.4 Normal-approximation checks | Pablo | 180 |
+| `04g_results_adjusted_marks.tex`, Table 3 caption | 4.5 Adjusted marks | Ignacio | 320 |
+| `04h_results_ranking_rules.tex` | 4.6 Ranking rules | **Adam** | 310 |
+| `04i_results_us.tex` | 4.7 US replication | Adam | 330 |
+| `04j_results_limitations.tex` | 4.8 Limitations | **Adam** | 200 |
+| `05_conclusions.tex` | 5 Conclusions and Future Work | **Adam** | 300 |
+| `90_works_cited.tex` (add only checked entries) | Works Cited | Ignacio | - |
+| `91_declaration_team.tex`, `95_ai_intro.tex` | Declaration: teamwork | Ignacio | 160 |
+| `92_declaration_adam.tex`, `96_ai_adam.tex` | Declaration: Adam | Adam | 70 + record |
+| `93_declaration_pablo.tex`, `97_ai_pablo.tex` | Declaration: Pablo | Pablo | 70 + record |
+| `94_declaration_ignacio.tex`, `98_ai_ignacio.tex` | Declaration: Ignacio | Ignacio | 80 + record |
+| `99_appendix_reproducibility.tex`, Tables 4–5 captions | Appendix A | **Adam** | 100 |
+
+Sections in **bold** changed writer on 22 November.
 The word counts are what fits in 10–12 pages, which the brief requires excluding the bibliography and appendices. Stay within about 10% of your number. The grey boxes in the PDF show this space.
 ## How to work
 

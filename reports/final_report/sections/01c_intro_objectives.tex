@@ -1,0 +1,31 @@
+% ============================================================
+% 1.3 INTRODUCTION: QUESTION AND OBJECTIVES -- Writer: Ignacio Gimeno
+% Target: about 230 words.
+% Brief: "Introduction, including Background and Related Work: research
+% question, motivation, dataset significance, objectives, and the relevant
+% scientific or technical background and prior work ... integrated into the
+% Introduction rather than submitted as a separate chapter."
+% IRENE'S FEEDBACK ON THE SENTENCE OUTLINE (follow it in this order):
+%   "Begin with how students' backgrounds can shape their choice of degree,
+%    then explain why GPA comparisons across fields raise a fairness question."
+%   "expand the literature beyond the current five references"
+%   "use graphs to help readers understand the analysis ... interpret the visuals"
+%   "Use first-person plural consistently to describe your work"
+% Template: avoid a broad textbook opening; every objective must connect to a
+% result and a conclusion; signpost the report without listing section titles.
+% All references below were checked (Crossref) and are in 90_works_cited.tex.
+% ============================================================
+
+\subsection{Research Question, Objectives and Contribution}
+\label{sec:objectives}
+
+\guide{Ignacio -- Paragraph 3 of the Introduction: question, objectives and gap}{%
+\textbf{Research question (identical to the README):} how much of a student's position in a university-wide GPA ranking depends on their field of study, and how would ranking students within their degree change who is selected for a fixed number of places?\\
+\textbf{Gap, stated modestly:} most studies use one university or US data; we (i) separate a field effect shared by 89 Spanish universities from each university's own pattern, (ii) test with tuned machine-learning models whether these patterns predict unseen years, and (iii) judge corrections by what they do to selection and to later performance.\\
+\textbf{Objectives, each pointing to its answer:} O1 field effects, shared and university-specific (\S\ref{sec:res-field}); O2 persistence and prediction (\S\ref{sec:res-prediction}); O3 does intake explain them (\S\ref{sec:res-confounders}); O4 consequence for a top-20\% selection (\S\ref{sec:res-selection}); O5 the adjusted mark and within-degree ranking (\S\ref{sec:res-adjusted}, \S\ref{sec:res-rules}); O6 the US check (\S\ref{sec:res-us}).}
+\budget{160}{Ignacio}
+
+\guide{Ignacio -- Paragraph 4 of the Introduction: scope and road map}{%
+Three separate datasets that cannot be linked; aggregated means in Spain, so associations, not causes (\S\ref{sec:res-limitations}). Two or three sentences telling the reader what each part shows (Figure~\ref{fig:overview} gives the map of the analysis), not a list of section titles.}
+\budget{70}{Ignacio}
+
