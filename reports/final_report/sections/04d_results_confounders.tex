@@ -1,6 +1,6 @@
 % ============================================================
-% 4.3 INTAKE, SIZE AND DROPOUT -- Writer: Ignacio Gimeno -- about 270 words
-% Numbers: results/progress_stats.json (confounders, portugal.degree_gap),
+% 4.3 INTAKE, SIZE AND DROPOUT -- Writer: Pablo Torres -- about 270 words
+% Background for Pablo: you describe these controls in 3.3 (your file 03a); here you report what they did. (confounders, portugal.degree_gap),
 % results/final_figures_stats.json (fig3), results/summary_stats.json,
 % figures/final/CAPTIONS.md (entry fig3). Outline entries 7, 7a, 7b.
 % ============================================================
@@ -8,25 +8,25 @@
 \subsection{Student Intake Explains Little of the Field Differences}
 \label{sec:res-confounders}
 
-\guide{Ignacio -- Paragraph: Spain (Figure~\ref{fig:confounders})}{%
+\guide{Pablo -- Paragraph: Spain (Figure~\ref{fig:confounders})}{%
 \textbf{Claim (outline 7):} the available measures of intake explain only a small part of the differences between fields.\\
 \textbf{Numbers:} at field level, fields with higher national admission grades do not have higher field effects (slope 0.05, $p = 0.26$, 29 fields). Within the 47 public universities, adding admission grade (by branch) and size leaves the field effects almost unchanged: correlation before/after 0.99, spread 0.31 $\to$ 0.31 points (8,043 rows); stronger intakes have slightly higher grades (coefficient 0.056 per SD, $p<0.001$).\\
 \textbf{Limit this claim honestly (CAPTIONS.md):} admission grade is published per broad branch (5 branches for 29 fields), so it cannot separate fields inside a branch; the near-identity is partly built in. This is why Portugal matters (next paragraph).}
-\budget{120}{Ignacio}
+\budget{120}{Pablo}
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.92\linewidth]{fig3_confounders}
-  \caption{\capguide{Ignacio -- see CAPTIONS.md, entry "Figure 3" (file fig3): field effects with field only (x) against field effects after adding admission grade and size (y); 47 public universities; branch-level admission grades make the test weak; 95\% intervals clustered by university; dashed red line = no change.}}
+  \caption{\capguide{Pablo -- see CAPTIONS.md, entry "Figure 3" (file fig3): field effects with field only (x) against field effects after adding admission grade and size (y); 47 public universities; branch-level admission grades make the test weak; 95\% intervals clustered by university; dashed red line = no change.}}
   \label{fig:confounders}
 \end{figure}
 
-\guide{Ignacio -- Paragraph: Portugal, with individual entry grades}{%
+\guide{Pablo -- Paragraph: Portugal, with individual entry grades}{%
 \textbf{Numbers (\texttt{progress\_stats.json}, \texttt{portugal.degree\_gap}, entry grades standardised within admission route -- the version quoted in the outline):} gap between the highest- and lowest-graded degree 1.51 points (0--20 scale) without controls and 1.30 with entry grades and background controls; degree still significant ($F = 38.1$, 14 df, $p < 0.001$). Do not mix with \texttt{summary\_stats.json} (proposal version, unstandardised entry grades: 1.31 and $F = 37.9$).\\
 \textbf{Interpretation:} even with individual intake data, most of the gap between degrees remains.}
-\budget{80}{Ignacio}
+\budget{80}{Pablo}
 
-\guide{Ignacio -- Paragraph: dropout (outline 7b)}{%
+\guide{Pablo -- Paragraph: dropout (outline 7b)}{%
 \textbf{Numbers:} adding dropout reduces the spread of field effects from 0.31 to 0.24 points (correlation with the original effects 0.95).\\
 \textbf{Interpretation:} dropout is associated with lower grades, but the direction is unknown: strict grading may push students out. So it is reported separately and not used as a control (\S\ref{sec:methods-confounders}).}
-\budget{70}{Ignacio}
+\budget{70}{Pablo}

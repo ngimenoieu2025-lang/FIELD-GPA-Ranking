@@ -1,6 +1,6 @@
 % ============================================================
-% 1. INTRODUCTION (with background and related work) -- Writer: Ignacio Gimeno
-% Target: about 810 words in total, + Figure 1 (student background by degree).
+% 1.1 INTRODUCTION: STUDENTS' BACKGROUNDS -- Writer: Ignacio Gimeno
+% Target: about 280 words + Figure 1 (student background by degree). The Introduction is split in three files: 01a (Ignacio), 01b (Adam), 01c (Ignacio).
 % Brief: "Introduction, including Background and Related Work: research
 % question, motivation, dataset significance, objectives, and the relevant
 % scientific or technical background and prior work ... integrated into the
@@ -37,29 +37,3 @@
   \label{fig:background}
 \end{figure*}
 
-\subsection{Why Comparing GPAs Across Fields Raises a Fairness Question}
-\label{sec:fairness}
-
-\guide{Ignacio -- Paragraph 3: fields grade differently, and grades steer choices}{%
-\textbf{Establish:} departments grade differently (Achen and Courant; Sabot and Wakeman-Linn), across many universities (Jeong et al.); low grades push students out of science majors (Ost; Rask) and students move towards leniently graded courses when grade information is visible (Bar et al.; read its abstract first); when Wellesley capped average grades in high-grading departments, enrolment in those departments fell (Butcher et al.). So grading practices and choices feed each other.}
-\budget{140}{Ignacio}
-
-\guide{Ignacio -- Paragraph 4: the fairness question}{%
-\textbf{Establish (Irene):} universities and programmes rank students from different degrees on one GPA list (exchange places, grants, honours, master's admission); if a grade does not mean the same in every field, the list partly sorts students by the field they chose -- and, through Paragraphs 1--2, by their background. One concrete example the reader knows (exchange-place allocation).\\
-\textbf{Existing answers:} adjusted GPAs that model each course's grading (Young; Johnson); comparisons of GPA measures against later outcomes (Bailey et al. -- read the abstract first); grade distribution tables to compare grades across groups (European Commission, ECTS Users' Guide).\\
-\textbf{Make clear (outline 2a):} we measure differences in \emph{observed grades}; we do not claim a field is harder or its students better.\\
-\textbf{Idris's feedback:} announce that we test his adjusted mark (original mark minus the field deviation) on selection outcomes.}
-\budget{160}{Ignacio}
-
-\subsection{Research Question, Objectives and Contribution}
-\label{sec:objectives}
-
-\guide{Ignacio -- Paragraph 5: question, objectives and gap}{%
-\textbf{Research question (identical to the README):} how much of a student's position in a university-wide GPA ranking depends on their field of study, and how would ranking students within their degree change who is selected for a fixed number of places?\\
-\textbf{Gap, stated modestly:} most studies use one university or US data; we (i) separate a field effect shared by 89 Spanish universities from each university's own pattern, (ii) test with tuned machine-learning models whether these patterns predict unseen years, and (iii) judge corrections by what they do to selection and to later performance.\\
-\textbf{Objectives, each pointing to its answer:} O1 field effects, shared and university-specific (\S\ref{sec:res-field}); O2 persistence and prediction (\S\ref{sec:res-prediction}); O3 does intake explain them (\S\ref{sec:res-confounders}); O4 consequence for a top-20\% selection (\S\ref{sec:res-selection}); O5 the adjusted mark and within-degree ranking (\S\ref{sec:res-adjusted}, \S\ref{sec:res-rules}); O6 the US check (\S\ref{sec:res-us}).}
-\budget{160}{Ignacio}
-
-\guide{Ignacio -- Paragraph 6: scope and road map}{%
-Three separate datasets that cannot be linked; aggregated means in Spain, so associations, not causes (\S\ref{sec:res-limitations}). Two or three sentences telling the reader what each part shows (Figure~\ref{fig:overview} gives the map of the analysis), not a list of section titles.}
-\budget{70}{Ignacio}

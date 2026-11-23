@@ -1,5 +1,5 @@
 % ============================================================
-% APPENDIX A -- CODE, DATA AND REPRODUCIBILITY -- Writer: Ignacio Gimeno
+% APPENDIX A -- CODE, DATA AND REPRODUCIBILITY -- Writer: Adam Bajer
 % Not counted in the 10-12 pages. Template: "Repository URL; exact release,
 % tag, or commit; ... software and versions; installation; data preparation;
 % configuration; random seeds; execution commands; mapping from scripts or
@@ -11,13 +11,13 @@
 \section{Code, Data, and Reproducibility}
 \label{app:reproducibility}
 
-\guide{Ignacio -- Two or three sentences introducing the appendix}{%
-Repository: \url{https://github.com/ngimenoieu2025-lang/FIELD-GPA-Ranking}. Give the \textbf{final commit hash} after the last merge (\texttt{git rev-parse --short HEAD}). Say which data are in the repository (Ministry CSVs and the UCI file) and which must be downloaded (US files from Kaggle, about 274 MB, see README). All random seeds are 42; figures are deterministic. Reproducibility test you can report: on 22 Nov 2026 every script was rerun on a fresh copy of the repository (about 16 minutes on the setup of Table~\ref{tab:software}); every saved table and JSON file came out identical, except \texttt{mixed\_model\_stats.json}, whose decomposition shares differ only in the eighth decimal (numerical rounding). Refer to Table~\ref{tab:software} and Table~\ref{tab:pipeline}, and cite the libraries here (Harris et al.; McKinney; Virtanen et al.; Seabold and Perktold; Pedregosa et al.; Hunter).}
-\budget{100}{Ignacio}
+\guide{Adam -- Two or three sentences introducing the appendix}{%
+Repository: \url{https://github.com/ngimenoieu2025-lang/FIELD-GPA-Ranking}. Leave a placeholder for the \textbf{final commit hash}: Ignacio fills it in after the last merge (\texttt{git rev-parse --short HEAD}). Say which data are in the repository (Ministry CSVs and the UCI file) and which must be downloaded (US files from Kaggle, about 274 MB, see README). All random seeds are 42; figures are deterministic. Reproducibility test you can report: on 22 Nov 2026 every script was rerun on a fresh copy of the repository (about 16 minutes on the setup of Table~\ref{tab:software}); every saved table and JSON file came out identical, except \texttt{mixed\_model\_stats.json}, whose decomposition shares differ only in the eighth decimal (numerical rounding). Refer to Table~\ref{tab:software} and Table~\ref{tab:pipeline}, and cite the libraries here (Harris et al.; McKinney; Virtanen et al.; Seabold and Perktold; Pedregosa et al.; Hunter).}
+\budget{100}{Adam}
 
 \begin{table}[H]
 \centering
-\caption{\capguide{Ignacio -- computing setup: hardware, operating system, software and versions used to produce every result in this report.}}
+\caption{\capguide{Adam -- computing setup: hardware, operating system, software and versions used to produce every result in this report.}}
 \label{tab:software}
 \small
 \begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}X@{}}
@@ -39,7 +39,7 @@ Matplotlib & 3.10.9 \\
 
 \begin{table*}[t]
 \centering
-\caption{\capguide{Ignacio -- run order and the report items each script produces; all outputs are saved in \texttt{results/} and \texttt{figures/}.}}
+\caption{\capguide{Adam -- run order and the report items each script produces; all outputs are saved in \texttt{results/} and \texttt{figures/}.}}
 \label{tab:pipeline}
 \footnotesize
 \begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}Xr@{}}
