@@ -1,36 +1,26 @@
 % ============================================================
-% 4.5 ADJUSTED MARKS -- Writer: Ignacio Gimeno -- about 320 words
-% THIS ANSWERS IDRIS'S QUESTION: "Have you tried the suggestion in the previous
-% feedback? and see if it makes GPA more equal?"  Answer it explicitly, with a
-% real-life example (his Progress Report feedback asked for one).
+% 4.5 ADJUSTED MARKS -- Writer: Ignacio Gimeno
+% Answers Idris: "Have you tried the suggestion in the
+% previous feedback? and see if it makes GPA more equal?" and his Progress
+% Report request for a real-life example.
 % Numbers: results/adjusted_mark_stats.json, results/adjusted_mark_field_distribution.csv,
-% results/final_figures_stats.json (fig7), figures/final/CAPTIONS.md (entry fig7).
+% results/adjusted_mark_by_field.csv, results/final_fig1_field_effects.csv.
 % ============================================================
 
 \subsection{Adjusted Marks Halve the Inequality}
 \label{sec:res-adjusted}
 
-\guide{Ignacio -- Paragraph: a worked example a reader can picture}{%
-\textbf{Give one concrete case (Idris asked for a real-life result):} take a Nursing graduate and a Business administration graduate in the same university. Explain with the numbers of Figure~\ref{fig:field-effects} what their adjusted marks would be: on average Nursing grades sit $0.53$ points above the university-year average and Business administration $0.32$ below it (\texttt{results/final\_fig1\_field\_effects.csv}), so two students with the same raw mark, say 7.5, end up about $7.0$ and $7.8$ after adjustment -- 0.85 points apart, in favour of the Business student. In the method the deviation is the university's own past one, so the exact numbers vary by university; say that. Keep it simple and use the university's past deviation, as the method does.}
-\budget{90}{Ignacio}
+A concrete case shows what the adjusted mark does. In the average university, Nursing grades sit 0.53 points above the university-year average and Business administration grades 0.32 points below it (Figure~\ref{fig:field-effects}). Two graduates who both finish with a mean grade of 7.5 would therefore receive adjusted marks of about 7.0 and 7.8 respectively: 0.85 points apart, in favour of the Business student. In our method the deviation subtracted is the university's own past deviation for that field, so the exact adjustment varies from one university to another.
 
-\guide{Ignacio -- Paragraph: the answer to Idris (Table~\ref{tab:adjusted}, Figure~\ref{fig:adjusted})}{%
-\textbf{Claim:} yes -- the adjusted mark makes access much more equal, provided the deviation is estimated for each university.\\
-\textbf{Numbers:} distance from equal access $G$: 11.8 pp with raw marks; 7.4 with the shared field deviation ($-37\%$); 5.1 with the university's average past deviation ($-57\%$), 95\% intervals 11.0--12.6 vs 4.8--5.3; upper bound with the same year's deviation 3.6 ($-69\%$). Nursing median 40.6\% $\to$ 13.0\%; Business administration 5.4\% $\to$ 19.5\%.\\
-\textbf{Interpretation:} the ranking of the variants follows the prediction results in \S\ref{sec:res-prediction}: the better a correction predicts the deviation, the more equal the selection.}
-\budget{120}{Ignacio}
+The adjusted mark makes access to a top-20\% selection much more equal, provided that the deviation is estimated for each university (Table~\ref{tab:adjusted} and Figure~\ref{fig:adjusted}). With raw marks, the average distance between a field's selection share and the 20\% of equal access is $G = 11.8$ percentage points. Subtracting the shared field deviation reduces it to 7.4 points ($-37\%$), and subtracting each university's average past deviation reduces it to 5.1 points ($-57\%$), with 95\% intervals of 11.0--12.6 and 4.8--5.3 that do not overlap. The median share of Nursing graduates in the top 20\% falls from 40.6\% to 13.0\%, while that of Business administration rises from 5.4\% to 19.5\%. The order of the variants follows the prediction results of \S\ref{sec:res-prediction}: the better a correction predicts the deviation, the more equal the resulting selection. Even the same-year deviation, which could not be used in practice, only lowers the distance to 3.6 points ($-69\%$).
 
 \input{tables/tab_adjusted}
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\linewidth]{fig7_adjusted_marks}
-  \caption{\capguide{Ignacio -- see CAPTIONS.md, entry "Figure 7" (file fig7): Figure~\ref{fig:selection} repeated with adjusted marks (minus the field's average past deviation at that university); median and interquartile range; 2016--2023, 595 university-years, so raw values differ slightly from Figure~\ref{fig:selection}; dashed line = equal access.}}
+  \caption{Simulated share of each field's graduates in their university's top 20\% with raw marks (grey) and with adjusted marks equal to the raw mark minus the field's average past deviation at the same university (blue). Points show the median university-year and bars the interquartile range (2016--2023, 595 university-years, 79 universities; the sample starts in 2016 because 2015 has no past, so raw values differ slightly from Figure~\ref{fig:selection}). Dashed line: equal access (20\%). Original figure; data from the Ministry, SIIU.}
   \label{fig:adjusted}
 \end{figure}
 
-\guide{Ignacio -- Paragraph: why the adjusted mark is not enough on its own}{%
-\textbf{Observation:} even with the same-year deviation (field means made equal), the median Nursing share is 12.8\% while Languages (27.8\%), Humanities (26.8\%) and Mathematics \& statistics (25.0\%) stay above 20\% (\texttt{adjusted\_mark\_field\_distribution.csv}, method \texttt{oracle\_current}). Equal means do not give equal access because fields differ in the \emph{spread} of their grades: a field with a narrow spread has few graduates in the upper tail. Evidence: median within-field standard deviation 0.44 points for Nursing (the narrowest) against 0.84 for Humanities and 0.87 for Languages (the widest) (\texttt{adjusted\_mark\_by\_field.csv}, column \texttt{median\_within\_field\_sd}).\\
-\textbf{Consequence:} a correction must remove differences in spread as well as in level -- which is what ranking within the degree does (\S\ref{sec:res-rules}).\\
-\textbf{Also say:} the 2016--2023 sample differs from Figure~\ref{fig:selection}, so the raw medians differ slightly (Nursing 40.6\% here, 41.1\% there).}
-\budget{110}{Ignacio}
+The adjusted mark is nevertheless not enough on its own. Even when the field means are made equal with the same-year deviation, the median Nursing share is 12.8\%, while Languages (27.8\%), Humanities (26.8\%) and Mathematics \& statistics (25.0\%) stay above 20\%. Equal means do not give equal access because fields also differ in how widely their grades are spread, and a field with a narrow spread has few graduates in the upper tail: the median within-field standard deviation is 0.44 points in Nursing, the narrowest, against 0.84 in Humanities and 0.87 in Languages, the widest. A fair correction must therefore remove differences in spread as well as in level, which is what ranking within the degree does (\S\ref{sec:res-rules}). The raw medians here differ slightly from those of Figure~\ref{fig:selection} (40.6\% against 41.1\% for Nursing) because the sample starts one year later.

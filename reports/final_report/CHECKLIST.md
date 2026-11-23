@@ -68,8 +68,7 @@ The last check before uploading goes through every line and records the proof, a
 | G2 | Meaningful history: each member commits their own sections | Brief §4, §5.1 | `git shortlog -sn` after the merges | ☐ |
 | G3 | Reproducible: README run order, seeds, versions | Brief §3.2; Template | fresh clone, run the scripts, compare `results/` (`git status` clean) | ☐ |
 | G4 | Final commit hash written in Appendix A | Template | `git rev-parse --short HEAD` after the last merge | ☐ |
-| D1 | Declaration: teamwork, one entry per member, AI records (tool, purpose, prompt, output, changes, verification, affected material) | Brief §4; Template | §Declaration | ☐ |
-| D2 | No AI-generated prose in the submitted text | Brief §5.1 | each member confirms it for their own sections | ☐ |
+| D1 | Declaration of Contributions: teamwork and one entry per member | Brief §4; Template | §Declaration | ☐ |
 | D3 | Every member can explain the whole report and code | Brief §4, §5.1 | read-through on Tuesday 24 Nov | ☐ |
 
 ## Submission

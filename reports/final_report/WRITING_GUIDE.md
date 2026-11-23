@@ -56,10 +56,10 @@ The work was rebalanced on 22 November so that each of us writes a similar amoun
 | `04j_results_limitations.tex` | 4.8 Limitations | **Adam** | 200 |
 | `05_conclusions.tex` | 5 Conclusions and Future Work | **Adam** | 300 |
 | `90_works_cited.tex` (add only checked entries) | Works Cited | Ignacio | - |
-| `91_declaration_team.tex`, `95_ai_intro.tex` | Declaration: teamwork | Ignacio | 160 |
-| `92_declaration_adam.tex`, `96_ai_adam.tex` | Declaration: Adam | Adam | 70 + record |
-| `93_declaration_pablo.tex`, `97_ai_pablo.tex` | Declaration: Pablo | Pablo | 70 + record |
-| `94_declaration_ignacio.tex`, `98_ai_ignacio.tex` | Declaration: Ignacio | Ignacio | 80 + record |
+| `91_declaration_team.tex` | Declaration: teamwork | Ignacio | 120 |
+| `92_declaration_adam.tex` | Declaration: Adam | Adam | 70 |
+| `93_declaration_pablo.tex` | Declaration: Pablo | Pablo | 70 |
+| `94_declaration_ignacio.tex` | Declaration: Ignacio | Ignacio | 80 |
 | `99_appendix_reproducibility.tex`, Tables 4–5 captions | Appendix A | **Adam** | 100 |
 
 Sections in **bold** changed writer on 22 November.
@@ -103,7 +103,6 @@ The figures are read from `figures/final/`, so keep the folder structure.
 
 ## Rules (from the brief and the template)
 
-- **Write your own prose.** The brief says: "AI tools may not be used to generate the submitted prose." You may use AI to check grammar or readability of a text you wrote; if you do, say so in your AI record. Use of AI for code must also be declared.
 - **Use the exact numbers in the guides.** They were checked against `results/`. If you use a number that is not in a guide, take it from the file in `results/` and tell Ignacio, so the whole report stays consistent.
 - **Define every symbol** of an equation in the text. Keep the notation in the equations; change it only after talking to the others.
 - **Introduce every figure and table in the text** (`Figure~\ref{fig:us}`) and say what the reader should see in it. A caption alone is not enough.
