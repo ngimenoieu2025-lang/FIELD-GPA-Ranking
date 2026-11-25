@@ -1,30 +1,16 @@
-% ============================================================
-% 4.6 RANKING RULES -- Writer: Adam Bajer -- about 310 words
-% Background for Adam: the method is described by Ignacio in 3.8 (file 03b, section "Ranking Rules on Individual Students") and in the docstring of src/ranking_rules.py; read both first., results/progress_stats.json (portugal),
-% figures/final/CAPTIONS.md (entry fig6). Outline entries 10, 10a, 10b, 10c.
-% ============================================================
-
-\subsection{Ranking Within the Degree Equalises Access at Almost No Cost}
+% Adam report draft; prepared with AI assistance for author review.
+\subsection{Ranking Within the Degree Equalises Access with a Small Observed Grade Difference}
 \label{sec:res-rules}
 
-\guide{Adam -- Paragraph: equal access (Figure~\ref{fig:rules}, last panel)}{%
-\textbf{Claim (outline 10):} ranking students within their own degree makes access to a top-20\% selection much more equal.\\
-\textbf{Numbers:} standard deviation of selection rates across the 15 degrees: raw 0.090 (95\% CI 0.082--0.107), regression-adjusted 0.040, within-degree $z$-score 0.019, within-degree percentile 0.006 (0.005--0.013). With raw grades the selection rate ranges from 5\% to 36\% depending on the degree; with percentiles from 19\% to 21\% (\texttt{progress\_stats.json}, portugal, full 3,703 sample). Within-degree rules change 138--156 of 741 places.}
-\budget{110}{Adam}
+Ranking students within their degrees makes their chances of selection much more similar. Among the 3,469 students with grades in both semesters, the last panel of Figure~\ref{fig:rules} shows the standard deviation of selection rates falling from 0.090 under raw GPA (95\% interval 0.082--0.107) to 0.006 under percentiles (0.005--0.013). Regression adjustment and within-degree $z$-scores fall between them, at 0.040 and 0.019. The earlier exercise with all 3,703 students illustrates what this means: selection rates range from 5\% to 36\% under raw grades, compared with 19\% to 21\% under percentiles. In that larger sample, the within-degree rules change 138--156 of the 741 places.
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{fig6_ranking_rules}
-  \caption{\capguide{Adam -- see CAPTIONS.md, entry "Figure 6" (file fig6): four rules ranking 3,469 Portuguese students on first-semester grades, top 20\% selected, judged on the second semester; 95\% bootstrap intervals (1,000 resamples of students); axes are zoomed, so say that the 0.13-point gap in the first panel is small on the 0--20 scale.}}
+  \caption{Four rules selecting the top 20\% of 3,469 Portuguese students using first-semester grades, evaluated against second-semester outcomes, entry profile and selection balance. Bars show 95\% intervals from 1,000 student bootstrap resamples. Grade points use the 0--20 scale; standardised measures use standard-deviation units, and selection rates are proportions. Axes are zoomed: the raw-grade difference in the first panel is 0.13 points. Original figure; records from Realinho et al.}
   \label{fig:rules}
 \end{figure*}
 
-\guide{Adam -- Paragraph: the cost in later performance (outline 10a)}{%
-\textbf{Numbers:} mean second-semester grade of the selected students 14.21 (14.11--14.31) with raw grades and 14.08 (13.97--14.19) with percentiles: 0.13 points on a 0--20 scale, intervals overlap. Measured as standing within their own degree, the percentile rule selects students who do \emph{better}: 1.04 vs 1.00 SD.\\
-\textbf{Interpretation:} whether a rule ``costs'' anything depends on whether the grade gap between degrees reflects ability or grading; on either reading the cost is small.}
-\budget{100}{Adam}
+The difference in later grades is much smaller. Students selected by raw GPA average 14.21 in the second semester (14.11--14.31), compared with 14.08 under percentiles (13.97--14.19). That is a gap of 0.13 points on a 0--20 scale. The intervals overlap, although this alone does not prove that the rules perform equally or test the difference between them. If we look instead at students' standing within their degrees, the percentile rule comes out slightly ahead: the average standardised second-semester grade is 1.04, compared with 1.00 under raw GPA. Which result matters more depends on whether we want to reward reported grades or performance relative to classmates. Neither measure independently tells us how much students have learnt.
 
-\guide{Adam -- Paragraph: stability and entry profile (outline 10c)}{%
-\textbf{Numbers:} rank stability between semesters 0.66 (raw) vs 0.62 (percentile); mean standardised entry grade of the selected 0.55 vs 0.48 (intervals overlap: 0.46--0.63 and 0.39--0.56).\\
-\textbf{Interpretation (outline 10c):} raw GPA looks more stable partly because the same gap between degrees repeats every semester -- which is the inequality itself, not extra information about students.}
-\budget{100}{Adam}
+Raw GPA produces a more stable ranking between semesters, with a correlation of 0.66 compared with 0.62 for percentiles. However, grade differences between degrees can repeat too, contributing to that stability. A stable ranking is therefore not necessarily a more accurate measure of individual achievement. The selected students' mean standardised admission grades are 0.55 under raw GPA and 0.48 under percentiles, with overlapping intervals of 0.46--0.63 and 0.39--0.56. In this institution, percentiles give students much more similar chances across degrees, while the selected groups have broadly similar entry profiles and later grades.
