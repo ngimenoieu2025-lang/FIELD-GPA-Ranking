@@ -1,0 +1,24 @@
+% Table -- machine-learning set-up at a glance. Facts from src/model_selection.py
+% and results/model_selection_stats.json (checked 27 Nov 2026).
+\begin{table}[t]
+\centering
+\caption{The prediction task at a glance. Every feature of a university-field in year $t$ is computed from years before $t$ only. Results are in Table~\ref{tab:models} and Figure~\ref{fig:tuning}.}
+\label{tab:mlsetup}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.25\linewidth} >{\raggedright\arraybackslash}X@{}}
+\toprule
+Task & Supervised regression \\
+Observation & One university, field and year (Spain) \\
+Target & $d_{ufy}$: the field's deviation from its university-year mean, in grade points \\
+Features & Field; shared field effect $\hat\beta_f$; university's mean past deviation $\bar e_{uf}$ and its number of past years $n_{uf}$; dropout rate and number of graduates (boosting only) \\
+Training & 2015--2021 (9,292 observations) \\
+Tuning & Expanding-window validation on 2018--2021 (Algorithm~\ref{alg:tuning}) \\
+Test & 2022--2023, used once (2,774 observations, 87 universities) \\
+Metric & RMSE; also MAE and $R^2$, with 95\% intervals from resampling universities \\
+Models & Baseline; common field effect; shrunk university profile; ridge regression; gradient boosting \\
+Main model & Shrunk university profile, $k = 0.25$ (test RMSE 0.138) \\
+Most accurate & Gradient boosting (test RMSE 0.133), kept as a benchmark \\
+\bottomrule
+\end{tabularx}
+\end{table}
