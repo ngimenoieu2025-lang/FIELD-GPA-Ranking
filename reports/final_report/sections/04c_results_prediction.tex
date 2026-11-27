@@ -31,4 +31,4 @@ The tuning curves in Figure~\ref{fig:tuning} explain these choices. For the shru
   \label{fig:tuning}
 \end{figure*}
 
-We keep the shrunk profile as our main model. Gradient boosting improves on it by only 0.002--0.008 points (paired bootstrap, about 3\%), whereas the shrunk profile has a single parameter and a direct interpretation: the weight given to a university's own past. Boosting can also use dropout and graduate numbers, yet it improves only slightly on a model that uses neither. The same idea of using a university's past deviation is what makes the adjusted mark of \S\ref{sec:res-adjusted} work.
+Our main model is therefore the shrunk university profile with $k = 0.25$, and we keep gradient boosting as a flexible benchmark. Boosting is the most accurate model, but it improves on the shrunk profile by only 0.002--0.008 points (paired bootstrap, about 3\%), even though it also uses dropout and graduate numbers. The shrunk profile, in contrast, has a single parameter with a direct interpretation: the weight given to a university's own past. The adjusted mark of \S\ref{sec:res-adjusted} rests on the same idea of subtracting a university's past deviation.
