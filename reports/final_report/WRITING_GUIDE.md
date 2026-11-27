@@ -1,11 +1,11 @@
 # Final Report: writing guide
 
-Due on Wednesday 25 November 2026. Upload to both courses:
+Due on Monday 30 November 2026 (postponed from 25 November; check the closing times on Blackboard). Upload to both courses:
 
-- Communication Skills, Turnitin: closes at 23:39.
-- Machine Learning, "Final Report ML+CS": closes at 23:59, one attempt only.
+- Communication Skills, Turnitin.
+- Machine Learning, "Final Report ML+CS": one attempt only.
 
-**Your sections are due on Monday 23 November at 22:00**, merged through a pull request. On Tuesday morning Ignacio integrates them and checks every number. On Tuesday evening we all read the whole report and approve it.
+**Your sections are due as a pull request by Saturday 28 November at 12:00.** Ignacio then integrates them and checks every number. On Sunday 29 November we all read the whole report and approve it.
 
 ## Feedback we must answer
 
