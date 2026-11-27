@@ -9,11 +9,11 @@
 \subsection{Prediction Models and Temporal Tuning}
 \label{sec:methods-prediction}
 
-If a university's field pattern is real and stable, its past should predict its future. Predicting $d_{ufy}$ (equation~\eqref{eq:deviation}) for years the models have not seen is therefore a test of the decomposition rather than an end in itself. We train on 2015--2021 (9,292 university-field-years) and test on 2022--2023 (2,774 university-field-years from 87 universities), keeping only university-fields that appear in the training years, and we use the test years once, after every modelling choice has been made. We measure the error by the root mean squared error (RMSE) in grade points, report the mean absolute error (MAE) and $R^2$ as well, and obtain 95\% intervals by resampling universities. In machine-learning terms, this is a supervised regression task; Table~\ref{tab:mlsetup} summarises its target, features, data split, metric and models, and names the model we use in the rest of the report.
+If a university's field pattern is real and stable, its past should predict $d_{ufy}$ (equation~\eqref{eq:deviation}) in years the models have not seen, so prediction tests the decomposition. We train on 2015--2021 (9,292 university-field-years) and test on 2022--2023 (2,774 university-field-years from 87 universities), keeping only university-fields that appear in the training years, and we use the test years once, after every modelling choice has been made. We measure the error by the root mean squared error (RMSE) in grade points, report the mean absolute error (MAE) and $R^2$ as well, and obtain 95\% intervals by resampling universities. In machine-learning terms, this is a supervised regression task; Table~\ref{tab:mlsetup} summarises its target, features, data split, metric and models, and names the model we use in the rest of the report.
 
 \input{tables/tab_ml_setup}
 
-We compare five models, all of which use features computed from training years only. The baseline predicts zero, that is, every field graded like its university average. The common field effect predicts the average deviation of the field across all universities, $\hat\beta_f$. The shrunk university profile, equation~\eqref{eq:shrinkage}, adds to $\hat\beta_f$ the university's own average past deviation from it, $\bar e_{uf}$, computed over its $n_{uf}$ past years and weighted by $n_{uf}/(n_{uf}+k)$, so that a university with few past years is pulled towards the shared effect; this is empirical Bayes shrinkage (Efron and Morris). The ridge regression, equation~\eqref{eq:ridge}, uses indicator variables $\mathbf x_{uf}$ for the field and for each university-field pair, with penalty $\alpha$ (Hoerl and Kennard). Finally, gradient-boosted trees (Friedman), implemented with scikit-learn's \texttt{HistGradientBoostingRegressor}, use the field, $\hat\beta_f$, $\bar e_{uf}$, $n_{uf}$, the dropout rate and the number of graduates. These five models move from no information to the shared effect, then to two linear forms of partial pooling, and finally to a non-linear model that can exploit additional covariates.
+We compare five models, all of which use features computed from training years only. The baseline predicts zero, that is, every field graded like its university average. The common field effect predicts the average deviation of the field across all universities, $\hat\beta_f$. The shrunk university profile, equation~\eqref{eq:shrinkage}, adds to $\hat\beta_f$ the university's own average past deviation from it, $\bar e_{uf}$, computed over its $n_{uf}$ past years and weighted by $n_{uf}/(n_{uf}+k)$, so that a university with few past years is pulled towards the shared effect; this is empirical Bayes shrinkage (Efron and Morris). The ridge regression, equation~\eqref{eq:ridge}, uses indicator variables $\mathbf x_{uf}$ for the field and for each university-field pair, with penalty $\alpha$ (Hoerl and Kennard). Finally, gradient-boosted trees (Friedman), implemented with scikit-learn's \texttt{HistGradientBoostingRegressor}, use the field, $\hat\beta_f$, $\bar e_{uf}$, $n_{uf}$, the dropout rate and the number of graduates.
 \begin{equation}
   \begin{aligned}
   \hat d_{uf,t} &= \hat\beta_f + \frac{n_{uf}}{n_{uf}+k}\,\bar e_{uf},\\
@@ -26,25 +26,7 @@ We compare five models, all of which use features computed from training years o
   \label{eq:ridge}
 \end{equation}
 
-We choose every hyperparameter by expanding-window validation inside 2015--2021 (Algorithm~\ref{alg:tuning}). For each validation year $v \in \{2018, \dots, 2021\}$, we train the model on the years before $v$ and score it on $v$, and the average of the four errors decides; unlike random $k$-fold cross-validation, this respects the order of time (Bergmeir and Ben\'itez). We then refit the chosen model on 2015--2021 and evaluate it once on 2022--2023. The grids are $k \in \{0, 0.25, 0.5, 1, 2, 3, 5, 8, 13, 21, 50, \infty\}$, where $k = \infty$ gives the common field effect; 16 log-spaced values of $\alpha$ from $10^{-2}$ to $10^{3}$; and, for boosting, maximum depth $\{2, 3, 5, 8\}$, learning rate $\{0.03, 0.1, 0.3\}$ and number of trees $\{100, 300, 600\}$, giving 36 combinations. The boosting model of our Progress Report did not include the past-deviation features and reached an error of 0.206; the version used here does include them.
-
-\begin{algorithm}[t]
-\caption{Expanding-window tuning and final test (\texttt{src/model\_selection.py}).}
-\label{alg:tuning}
-\begin{algorithmic}[1]
-\small
-\For{each model $m$ and each value $h$ in its grid $H_m$}
-  \For{$v = 2018, 2019, 2020, 2021$}
-    \State fit $m(h)$ on years $< v$; features from years $< v$ only
-    \State $e_v \gets$ RMSE on year $v$ (university-fields seen before $v$)
-  \EndFor
-  \State $\mathrm{score}(m,h) \gets \tfrac14 \sum_v e_v$
-\EndFor
-\State $h^\ast_m \gets \arg\min_h \mathrm{score}(m,h)$
-\State refit $m(h^\ast_m)$ on 2015--2021; evaluate \emph{once} on 2022--2023
-\State 95\% interval: 1,000 bootstrap resamples of universities
-\end{algorithmic}
-\end{algorithm}
+We choose every hyperparameter by expanding-window validation inside 2015--2021 (Algorithm~\ref{alg:tuning}, Appendix~\ref{app:tuning}). For each validation year $v \in \{2018, \dots, 2021\}$, we train the model on the years before $v$ and score it on $v$, and the average of the four errors decides; unlike random $k$-fold cross-validation, this respects the order of time (Bergmeir and Ben\'itez). We then refit the chosen model on 2015--2021 and evaluate it once on 2022--2023. The grids are $k \in \{0, 0.25, 0.5, 1, 2, 3, 5, 8, 13, 21, 50, \infty\}$, where $k = \infty$ gives the common field effect; 16 log-spaced values of $\alpha$ from $10^{-2}$ to $10^{3}$; and, for boosting, maximum depth $\{2, 3, 5, 8\}$, learning rate $\{0.03, 0.1, 0.3\}$ and number of trees $\{100, 300, 600\}$, giving 36 combinations.
 
 \subsection{Adjusted Marks}
 \label{sec:methods-adjusted}
@@ -65,4 +47,4 @@ Our instructor suggested an adjusted mark equal to the original mark minus the f
 \subsection{Ranking Rules on Individual Students}
 \label{sec:methods-rules}
 
-On the Portuguese records we compare four rules, each computed from the first-semester grade: the raw grade; a regression-adjusted grade, equal to the raw grade minus the degree effect estimated with entry-grade and background controls; the $z$-score within the degree; and the percentile within the degree. Each rule selects the top 20\% of the 3,469 students with grades in both semesters (694 places), with ties broken at random. We then judge every rule on the second semester, which the ranking never saw, by five criteria: the mean second-semester grade of the selected students; their mean within-degree $z$-score; the stability of the ranking between semesters (Spearman correlation); their mean standardised entry grade; and the standard deviation of selection rates across degrees, which is zero when every degree sends the same share. The 95\% intervals come from 1,000 bootstrap resamples of students. The first two criteria favour different rules by construction, since the first rewards high raw grades and the second rewards standing within the degree, so which one matters depends on what a grade gap between degrees means. For our question, the property of interest is equal access across degrees.
+On the Portuguese records we compare four rules, each computed from the first-semester grade: the raw grade; a regression-adjusted grade, equal to the raw grade minus the degree effect estimated with entry-grade and background controls; the $z$-score within the degree; and the percentile within the degree. Each rule selects the top 20\% of the 3,469 students with grades in both semesters (694 places), with ties broken at random. We then judge every rule on the second semester, which the ranking never saw, by five criteria: the mean second-semester grade of the selected students; their mean within-degree $z$-score; the stability of the ranking between semesters (Spearman correlation); their mean standardised entry grade; and the standard deviation of selection rates across degrees, which is zero when every degree sends the same share. The first two criteria favour different rules by construction; for our question, the property of interest is equal access across degrees.

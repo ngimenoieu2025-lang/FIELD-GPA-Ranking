@@ -1,0 +1,38 @@
+% ============================================================
+% APPENDIX B -- TUNING ALGORITHM AND PERSISTENCE -- Writer: Ignacio Gimeno
+% Moved from Sections 3.6 and 4.2 to keep the body within 12 pages.
+% Code: src/model_selection.py. Numbers: results/progress_stats.json,
+% results/final_figures_stats.json (fig2).
+% ============================================================
+
+\section{Model Tuning and Persistence of University Profiles}
+\label{app:tuning}
+
+Algorithm~\ref{alg:tuning} gives the expanding-window tuning of \S\ref{sec:methods-prediction} step by step. Every hyperparameter is chosen on the validation years 2018--2021, and the test years 2022--2023 are used only once, at the end.
+
+\begin{algorithm}[H]
+\caption{Expanding-window tuning and final test (\texttt{src/model\_selection.py}).}
+\label{alg:tuning}
+\begin{algorithmic}[1]
+\small
+\For{each model $m$ and each value $h$ in its grid $H_m$}
+  \For{$v = 2018, 2019, 2020, 2021$}
+    \State fit $m(h)$ on years $< v$; features from years $< v$ only
+    \State $e_v \gets$ RMSE on year $v$ (university-fields seen before $v$)
+  \EndFor
+  \State $\mathrm{score}(m,h) \gets \tfrac14 \sum_v e_v$
+\EndFor
+\State $h^\ast_m \gets \arg\min_h \mathrm{score}(m,h)$
+\State refit $m(h^\ast_m)$ on 2015--2021; evaluate \emph{once} on 2022--2023
+\State 95\% interval: 1,000 bootstrap resamples of universities
+\end{algorithmic}
+\end{algorithm}
+
+Figure~\ref{fig:persistence} supports \S\ref{sec:res-prediction}. Most points lie close to the line of perfect persistence: a university that grades a field above the shared field effect in one year tends to do so again in the next, which is why each university's past deviations predict the test years.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{fig2_persistence}
+  \caption{Persistence of university-specific field deviations. Each point is one university and field observed in two consecutive years: the deviation not explained by the field effect shared by all universities in year $t$ (horizontal axis) and in year $t+1$ (vertical axis), in grade points ($r = 0.84$, 10,413 pairs). Black line: least-squares fit (slope 0.85); dashed red line: perfect persistence (slope 1). Original figure; data from the Ministry, SIIU.}
+  \label{fig:persistence}
+\end{figure}
