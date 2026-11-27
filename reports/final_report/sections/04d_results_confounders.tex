@@ -1,32 +1,15 @@
-% ============================================================
-% 4.3 INTAKE, SIZE AND DROPOUT -- Writer: Pablo Torres -- about 270 words
-% Background for Pablo: you describe these controls in 3.3 (your file 03a); here you report what they did. (confounders, portugal.degree_gap),
-% results/final_figures_stats.json (fig3), results/summary_stats.json,
-% figures/final/CAPTIONS.md (entry fig3). Outline entries 7, 7a, 7b.
-% ============================================================
-
 \subsection{Student Intake Explains Little of the Field Differences}
 \label{sec:res-confounders}
 
-\guide{Pablo -- Paragraph: Spain (Figure~\ref{fig:confounders})}{%
-\textbf{Claim (outline 7):} the available measures of intake explain only a small part of the differences between fields.\\
-\textbf{Numbers:} at field level, fields with higher national admission grades do not have higher field effects (slope 0.05, $p = 0.26$, 29 fields). Within the 47 public universities, adding admission grade (by branch) and size leaves the field effects almost unchanged: correlation before/after 0.99, spread 0.31 $\to$ 0.31 points (8,043 rows); stronger intakes have slightly higher grades (coefficient 0.056 per SD, $p<0.001$).\\
-\textbf{Limit this claim honestly (CAPTIONS.md):} admission grade is published per broad branch (5 branches for 29 fields), so it cannot separate fields inside a branch; the near-identity is partly built in. This is why Portugal matters (next paragraph).}
-\budget{120}{Pablo}
+We find little evidence that the available intake measures account for the shared field pattern. Across 29 fields, the association between national admission grade and the field effect has slope 0.05 ($p=0.26$). In Figure~\ref{fig:confounders}, the points remain close to the no-change line when we add admission grade and size: before and after effects correlate 0.99, and their spread remains about 0.31 grade points. The figure covers 8,043 observations from 47 public universities. However, admission grades distinguish only five broad branches for 29 fields; they cannot separate intake within a branch, so the near-identity partly reflects this weak measurement. In the nested control analysis, the admission coefficient is 0.056 points per standard deviation ($p<0.001$), suggesting a small positive intake association without explaining away the field pattern.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.92\linewidth]{fig3_confounders}
-  \caption{\capguide{Pablo -- see CAPTIONS.md, entry "Figure 3" (file fig3): field effects with field only (x) against field effects after adding admission grade and size (y); 47 public universities; branch-level admission grades make the test weak; 95\% intervals clustered by university; dashed red line = no change.}}
+  \caption{Field effects before (horizontal axis) and after (vertical axis) adjustment for admission grade and size, in grade points on the Spanish 5--10 scale; SIIU, 8,043 records from 47 public universities. Bars show 95\% confidence intervals clustered by university; the dashed red line denotes no change. Admission grades identify only five broad branches, limiting adjustment within branches. Original figure; data from SIIU.}
   \label{fig:confounders}
 \end{figure}
 
-\guide{Pablo -- Paragraph: Portugal, with individual entry grades}{%
-\textbf{Numbers (\texttt{progress\_stats.json}, \texttt{portugal.degree\_gap}, entry grades standardised within admission route -- the version quoted in the outline):} gap between the highest- and lowest-graded degree 1.51 points (0--20 scale) without controls and 1.30 with entry grades and background controls; degree still significant ($F = 38.1$, 14 df, $p < 0.001$). Do not mix with \texttt{summary\_stats.json} (proposal version, unstandardised entry grades: 1.31 and $F = 37.9$).\\
-\textbf{Interpretation:} even with individual intake data, most of the gap between degrees remains.}
-\budget{80}{Pablo}
+We obtained a similar conclusion using individual Portuguese entry grades. The gap between the highest- and lowest-graded degrees decreases from 1.51 to 1.30 points on the 0--20 scale after standardised entry grades and background controls. Degree remains jointly significant ($F=38.1$, 14 degrees of freedom, $p<0.001$). Most of the gap therefore remains even where intake is measured individually. We interpret this as an adjusted association, not evidence that equally able students would necessarily receive different grades if assigned to different degrees.
 
-\guide{Pablo -- Paragraph: dropout (outline 7b)}{%
-\textbf{Numbers:} adding dropout reduces the spread of field effects from 0.31 to 0.24 points (correlation with the original effects 0.95).\\
-\textbf{Interpretation:} dropout is associated with lower grades, but the direction is unknown: strict grading may push students out. So it is reported separately and not used as a control (\S\ref{sec:methods-confounders}).}
-\budget{70}{Pablo}
+We found more attenuation when we added dropout: the spread falls from 0.31 to 0.24 points, and the effects correlate 0.95 with the original estimates. Higher dropout is associated with lower grades, but the direction is unresolved. Stricter grading may drive departures, while the remaining graduates are a selected group. We therefore report this specification separately rather than using it to claim that dropout causes the observed differences.
