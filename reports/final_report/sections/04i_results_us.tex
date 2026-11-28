@@ -1,33 +1,15 @@
-% ============================================================
-% 4.7 US REPLICATION RESULTS -- Writer: Adam Bajer -- about 330 words
-% Numbers: results/final_figures_stats.json (fig5, clustered intervals),
-% results/final_fig5_us_spain.csv, results/us_replication_stats.json
-% (sensitivity, leave-one-out), reports/us_replication/FINDINGS.md,
-% figures/final/CAPTIONS.md (entry fig5). Outline entries 8, 8a, 8b (your text).
-% ============================================================
-
 \subsection{The US Data Show a Similar but Not Conclusive Pattern}
 \label{sec:res-us}
 
-\guide{Adam -- Paragraph: the main comparison (Figure~\ref{fig:us})}{%
-\textbf{Claim (your outline 8):} the US data show moderate agreement with the Spanish pattern of broad-area effects, although the evidence is not conclusive.\\
-\textbf{Numbers:} Pearson $r = 0.61$ (95\% CI $-0.03$ to $0.90$, 10 areas), Spearman 0.61; 8 of 10 areas have the same sign. Education is the most generous area in both countries (Spain $+0.45$, US $+0.43$), Engineering and Agriculture are below average in both. The field explains a large share of the variation in both models ($R^2$ from 0.28 to 0.77 in the US and from 0.26 to 0.70 in Spain when field is added).\\
-\textbf{Interpretation:} the interval includes zero because there are only ten points -- say this plainly.}
-\budget{130}{Adam}
+The US results show moderate agreement with the Spanish pattern, although the evidence is not conclusive. Across ten comparable areas, Pearson correlation is $r=0.61$, with a 95\% Fisher-$z$ interval from $-0.03$ to $0.90$. Spearman correlation is also 0.61, and eight areas share the same sign. In Figure~\ref{fig:us}, Education has the highest effect in both countries: $+0.45$ Spanish grade points and $+0.43$ US GPA points. Engineering and Agriculture are below the centred reference in both. Adding area effects to university and year effects raises $R^2$ from 0.28 to 0.77 in the US and from 0.26 to 0.70 in Spain. This describes differences between aggregated cells. With only ten area pairs, the correlation remains uncertain: its interval includes zero, so the apparent agreement should be treated cautiously.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.92\linewidth]{fig5_us_spain}
-  \caption{\capguide{Adam -- see CAPTIONS.md, entry "Figure 5" (file fig5): broad-area effects in Spain (graduates' final averages, 5--10) against the US (course-section GPA, 0--4); 10 areas; 95\% intervals clustered by university in both countries; compare signs and order, not magnitudes; data sources.}}
+  \caption{Fixed-effect estimates for ten common areas: Spanish graduate averages (5--10 scale) against US section GPAs (A+ = 4.3 conversion). Bars show 95\% intervals clustered by university. Pearson $r=0.61$ (95\% interval $-0.03$ to $0.90$); eight signs agree. Compare signs and ordering, not absolute magnitudes. Original figure; SIIU and Jeong et al.\ (``Course Grades'').}
   \label{fig:us}
 \end{figure}
 
-\guide{Adam -- Paragraph: where the countries disagree (your outline 8b)}{%
-\textbf{Numbers:} Humanities \& languages is above average in Spain ($+0.22$) but below in the US ($-0.08$); Sports, tourism \& services changes sign too ($-0.01$ vs $+0.11$, both small); Science, mathematics \& computing is close to average in Spain ($-0.03$) but clearly below in the US ($-0.36$).\\
-\textbf{Interpretation:} US course grades include introductory courses taken by students of every degree, while Spanish data are graduates' final averages, so the two measures are not directly comparable.}
-\budget{110}{Adam}
+The countries do not agree in every area. Humanities and languages is above the reference in Spain ($+0.22$) but below it in the US ($-0.08$). Sports, tourism and services also changes sign, from $-0.01$ to $+0.11$, although both estimates are small. Science, mathematics and computing is close to the reference in Spain ($-0.03$) and further below it in the US ($-0.36$). These differences may partly reflect what the records measure. US departmental grades include introductory courses taken by students from other degrees, while the Spanish data describe graduates' final averages. Grouping subjects into broad areas can also hide differences within them, so we should not read every disagreement as evidence of a different grading policy.
 
-\guide{Adam -- Paragraph: robustness}{%
-\textbf{Numbers:} equal section weights with all 33 institutions $r = 0.62$; A+ capped at 4.0 $r = 0.61$ (Spearman 0.70); common years only $r = 0.63$; 8 of 10 same signs in every check; leaving out each US university in turn keeps $r$ between 0.60 and 0.63. (These sensitivity runs use conventional standard errors, as in \texttt{us\_replication.py}; Figure~\ref{fig:us} uses clustered ones -- keep the two apart.)\\
-\textbf{Interpretation:} the agreement does not depend on one university or on the weighting; the limit is the small number of areas and the different grade types.}
-\budget{90}{Adam}
+The main result changes little across our checks. Pearson correlation is 0.62 with equal section weights across all 33 institutions, 0.61 when A+ is capped at 4.0, and 0.63 using common years. Each check keeps eight matching signs; capped-grade Spearman correlation is 0.70. Leaving out each US university keeps Pearson correlation between 0.60 and 0.63. This suggests that one institution does not drive the result, but it does not remove the uncertainty. The sensitivity runs use conventional coefficient errors, whereas Figure~\ref{fig:us} uses university-clustered intervals. The small number of areas and different grade definitions remain limitations.

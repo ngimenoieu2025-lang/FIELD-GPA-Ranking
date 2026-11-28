@@ -11,13 +11,11 @@
 \section{Code, Data, and Reproducibility}
 \label{app:reproducibility}
 
-\guide{Adam -- Two or three sentences introducing the appendix}{%
-Repository: \url{https://github.com/ngimenoieu2025-lang/FIELD-GPA-Ranking}. Leave a placeholder for the \textbf{final commit hash}: Ignacio fills it in after the last merge (\texttt{git rev-parse --short HEAD}). Say which data are in the repository (Ministry CSVs and the UCI file) and which must be downloaded (US files from Kaggle, about 274 MB, see README). All random seeds are 42; figures are deterministic. Reproducibility test you can report: on 22 Nov 2026 every script was rerun on a fresh copy of the repository (about 16 minutes on the setup of Table~\ref{tab:software}); every saved table and JSON file came out identical, except \texttt{mixed\_model\_stats.json}, whose decomposition shares differ only in the eighth decimal (numerical rounding). Refer to Table~\ref{tab:software} and Table~\ref{tab:pipeline}, and cite the libraries here (Harris et al.; McKinney; Virtanen et al.; Seabold and Perktold; Pedregosa et al.; Hunter).}
-\budget{100}{Adam}
+Our code is at \url{https://github.com/ngimenoieu2025-lang/FIELD-GPA-Ranking}; final commit: \texttt{[insert after final merge]}. The README explains installation and execution. Ministry and UCI data are included; the US files require a separate download (about 274 MB). Tables~\ref{tab:software} and~\ref{tab:pipeline} give software versions and run order. Random seeds are 42. The recorded 22 November rerun took about 16 minutes, excluding the US replication. Saved tables and JSON results matched, apart from eighth-decimal differences in mixed-model shares. The libraries used were NumPy, pandas, SciPy, statsmodels, scikit-learn and Matplotlib (Harris et al.; McKinney; Virtanen et al.; Seabold and Perktold; Pedregosa et al.; Hunter).
 
 \begin{table}[H]
 \centering
-\caption{\capguide{Adam -- computing setup: hardware, operating system, software and versions used to produce every result in this report.}}
+\caption{Hardware and software used in the team's documented rerun on 22 November 2026. The versions describe that setup; they are not minimum requirements.}
 \label{tab:software}
 \small
 \begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}X@{}}
@@ -39,7 +37,7 @@ Matplotlib & 3.10.9 \\
 
 \begin{table*}[t]
 \centering
-\caption{\capguide{Adam -- run order and the report items each script produces; all outputs are saved in \texttt{results/} and \texttt{figures/}.}}
+\caption{Scripts in run order, the outputs they produce and where those outputs appear in the report. Run scripts from the repository root with \texttt{python src/<script>}; install dependencies with \texttt{pip install -r requirements.txt}. Outputs are saved under \texttt{results/} and \texttt{figures/}. Times are from the documented 22 November run; -- denotes an unmeasured US runtime, excluded from the approximately 16-minute total.}
 \label{tab:pipeline}
 \footnotesize
 \begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}Xr@{}}

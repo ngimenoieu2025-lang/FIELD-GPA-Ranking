@@ -1,21 +1,6 @@
-% ============================================================
-% 3.9 US REPLICATION DESIGN -- Writer: Adam Bajer -- about 230 words
-% Start from outline entry 3c and the README section "US replication (Adam)".
-% Code: src/us_replication.py, src/us_mapping.py, src/us_model.py,
-% src/final_figures.py (fig5, clustered intervals).
-% Results go in Section 4.7 (your file 04i_results_us.tex), not here.
-% ============================================================
-
 \subsection{US Replication Design}
 \label{sec:methods-us}
 
-\guide{Adam -- Paragraph 1: from course grades to comparable cells}{%
-\textbf{Explain:} section GPA from letter-grade shares (paper's mapping, A+ = 4.3); cell means per university, broad area and year, weighting sections by total enrolment (as in Jeong et al.); four institutions without enrolment are excluded from this weighted analysis (29 universities, 1,845 cells).\\
-\textbf{Mapping and why broad areas:} US departments cannot be matched one-to-one to the 29 Spanish fields, so both countries are mapped to ten common broad areas (Education; Arts, media \& architecture; Humanities \& languages; Social sciences \& law; Business; Science, mathematics \& computing; Engineering; Agriculture; Health \& veterinary; Sports, tourism \& services). Start from the authors' workbook, ordered name rules, ambiguous departments excluded; the crosswalk is in \texttt{data/mappings/} and editable.}
-\budget{120}{Adam}
+We first combined section GPAs into one mean for each university, broad area and year, weighting sections by total enrolment, as in Jeong et al.\ (``Construction''). This gave us 1,845 cells from 29 institutions. US departments do not match the 29 Spanish fields directly, so we grouped both countries into ten common areas: Education; Arts, media and architecture; Humanities and languages; Social sciences and law; Business; Science, mathematics and computing; Engineering; Agriculture; Health and veterinary; and Sports, tourism and services. We used the authors' department workbook and ordered name-matching rules, leaving out ambiguous departments. The mappings can be reviewed in \texttt{data/mappings/}. For Spain, we averaged the available field means equally within each broad-area cell, giving 5,691 cells from 89 universities.
 
-\guide{Adam -- Paragraph 2: the model and the comparison}{%
-\textbf{Explain:} the same specification in both countries, $\text{mean} \sim$ field (sum-coded) $+$ university $+$ year, refitted on the ten common areas in each country (Spain: 5,691 cells, 89 universities). The comparison is the Pearson correlation of the ten pairs of effects (Fisher-$z$ 95\% interval) and the number of areas with the same sign; intervals in Figure~\ref{fig:us} are clustered by university.\\
-\textbf{Sensitivity checks (name them here, report them in \S\ref{sec:res-us}):} equal section weights with all 33 institutions; A+ capped at 4.0; common years only; leaving out each university in turn.\\
-\textbf{Why only signs and order are compared:} the scales differ (0--4 vs 5--10) and so do the grades (course sections vs graduates' final averages).}
-\budget{110}{Adam}
+We then fitted separate ordinary least-squares models with area, university and year fixed effects, giving each cell equal weight. Sum coding makes the ten area effects add to zero. We compared their signs and ordering using Pearson and Spearman correlations, with a Fisher-$z$ 95\% interval for Pearson correlation. Figure~\ref{fig:us} uses coefficient intervals clustered by university. We also checked equal section weights across all 33 institutions, A+ capped at 4.0, common years (2015--2023), and leaving out each US university. We compare relative patterns because the grade scales differ (0--4.3 versus 5--10), as do section and graduate averages. Spain also includes private universities.

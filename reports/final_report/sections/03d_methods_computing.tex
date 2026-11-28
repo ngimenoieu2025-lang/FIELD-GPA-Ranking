@@ -1,15 +1,4 @@
-% ============================================================
-% 3.10 IMPLEMENTATION AND COMPUTING SETUP -- Writer: Adam Bajer -- about 80 words
-% Irene's feedback: "State the computing setup." Brief (3.2): explain clearly
-% how each method is implemented. Details (versions, run order, runtimes) are in
-% Appendix A; here, two or three sentences.
-% Hardware and runtimes measured on 22 Nov 2026 with a clean rerun of every
-% script in a copy of the repository (results identical to the saved ones).
-% ============================================================
-
 \subsection{Implementation and Computing Setup}
 \label{sec:methods-computing}
 
-\guide{Adam -- Computing setup (two or three sentences)}{%
-\textbf{State:} all analyses in Python 3.14 with NumPy, pandas, SciPy, statsmodels, scikit-learn and Matplotlib (versions in Table~\ref{tab:software}); run on a laptop with an Intel Core Ultra 7 258V processor (8 cores), 32~GB of memory and Windows 11, without a GPU; the whole pipeline takes about 16 minutes (without the US replication, whose data must be downloaded first), most of it in the Progress Report analyses (\texttt{progress.py}, about 6 minutes), the model tuning (\texttt{model\_selection.py}, 3.4 minutes) and the 1,000 bootstrap resamples of the ranking rules (3.3 minutes); random seed 42 everywhere, so a rerun reproduces every number and figure (we checked this by rerunning all scripts on a fresh copy). Point to Appendix~\ref{app:reproducibility} and the repository for the run order.}
-\budget{80}{Adam}
+We ran the analyses in Python 3.14 with NumPy, pandas, SciPy, statsmodels, scikit-learn and Matplotlib. The documented rerun used an eight-core Intel Core Ultra 7 258V laptop with 32~GB RAM and Windows 11, without GPU acceleration. Excluding the US replication, the scripts took about 16 minutes, mostly for modelling and bootstrap resampling. We set random seeds to 42. Appendix~\ref{app:reproducibility} gives the software versions, run order and reproduction check. The README explains how to install the dependencies and prepare the data.
