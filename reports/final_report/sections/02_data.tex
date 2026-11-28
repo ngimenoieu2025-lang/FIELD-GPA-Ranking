@@ -1,47 +1,17 @@
-% ============================================================
-% 2. DATA -- Writer: Pablo Torres (2.1, 2.2, overview) and Adam Bajer (2.3, in
-% 02b_data_us.tex). Target: about 480 words for Pablo, 170 for Adam, + Table 1.
-% Brief: "Data, Materials, or Inputs: sources, provenance, integration,
-% preparation, limitations, and any relevant ethical or access considerations."
-% Template: source and access conditions; sampling; inclusion and exclusion
-% criteria; units and variable definitions; cleaning; missing values; licensing;
-% privacy or ethics; known limitations.
-% IMPORTANT (Idris, Progress Report feedback): the data was hard to understand.
-% This section must make the unit of observation of each dataset obvious.
-% Start from outline entries 3, 3a, 3b, 3c.
-% ============================================================
-
-\guide{Pablo -- Overview paragraph + Table~\ref{tab:data}}{%
-\textbf{Establish (outline 3):} three datasets are analysed separately because they have different units of observation and cannot be linked; one sentence on what each contributes.\\
-\textbf{Introduce Table~\ref{tab:data}} in the text and tell the reader what to look at in it (the unit of observation row). Write the table caption yourself (the blue text in the caption).}
-\budget{80}{Pablo}
+We analysed three public datasets separately because their units of observation differ and they have no shared identifiers. The Spanish records let us compare fields within universities over time; the Portuguese records let us compare individual students and evaluate ranking rules against later performance; the US records provide an external comparison. Table~\ref{tab:data} summarises their coverage and preparation. Its unit-of-observation row is essential: a Spanish row represents a group of graduates, a Portuguese row one student, and a US source row a course or section.
 
 \input{tables/tab_data}
 
 \subsection{Spanish Ministry Data}
 \label{sec:data-spain}
 
-\guide{Pablo -- Paragraph: what one observation is}{%
-\textbf{Establish (outline 3a):} one row = mean final grade (\emph{nota media del expediente}) of the graduates of one field at one university in one academic year; the Ministry also publishes the quartiles and the maximum. 12,125 rows, 89 universities, 29 fields (\emph{\'ambitos de estudio}), 2015--16 to 2023--24, scale 5--10, both sexes combined.\\
-\textbf{Missing cells:} the Ministry hides small cells, so only about half of the possible university-field-years appear (12,125 of $89\times29\times9=23{,}229$, i.e.\ 52\%); models use reported cells only.\\
-\textbf{Cite:} Ministerio de Ciencia, Innovaci\'on y Universidades, ``Media, cuartiles y m\'aximo\ldots'' (see Works Cited).}
-\budget{130}{Pablo}
+We used the Sistema Integrado de Informaci\'on Universitaria (SIIU) table of graduates' final grades, combining both sexes (Ministerio de Ciencia, Innovaci\'on y Universidades, ``Media''). Each observation is the mean final grade of graduates in one field at one university in one academic year, on a 5--10 scale. For example, the Nursing observation for A Coru\~na in 2019--20 reports 7.85: this is an average over that field's graduates, not one student's mark. We also retained the published quartiles and maximum. The dataset contains 12,125 observations from 89 universities and 29 fields over 2015--16 to 2023--24. This is 52\% of the 23,229 possible combinations; suppression of small cells and differences in programme coverage leave an incomplete panel. We analysed reported cells without inventing missing grades.
 
-\guide{Pablo -- Paragraph: extra Ministry tables and how they are matched}{%
-\textbf{Variables:} dropout rate by university and field (86 universities); number of graduates by university, field and year (weights and size); admission grade of new entrants, published only by university and \emph{broad branch} (5 branches for 29 fields) and only for 47 public universities; national admission grade by field.\\
-\textbf{Preparation:} admission grades converted to $z$-scores because branch scales differ; graduates matched to grades by university, field and year (10,476 records with valid quartiles and counts are used in the selection simulation).\\
-\textbf{Limitation to state here:} the admission grade cannot separate fields within one branch (keep the full discussion for \S\ref{sec:res-confounders}).}
-\budget{110}{Pablo}
+We matched graduate counts by university, field and year to obtain selection weights and a measure of size (Ministerio de Ciencia, Innovaci\'on y Universidades, ``Egresados''). Valid quartiles and counts were available for 10,476 records. We also matched dropout rates for 86 universities and admission grades for 47 public universities. University admission grades are published for five broad branches rather than the 29 fields, while a separate table gives national admission grades by field (Ministerio de Ciencia, Innovaci\'on y Universidades, ``Nota media''). We standardised admission grades as z-scores before adjustment. These branch averages cannot distinguish intake between fields within the same branch, limiting our interpretation of the controls.
 
 \subsection{Portuguese Student Records}
 \label{sec:data-portugal}
 
-\guide{Pablo -- Paragraph: individual students}{%
-\textbf{Establish (outline 3b):} 4,424 students of one Portuguese polytechnic, enrolled 2008--09 to 2018--19 (Realinho et al.); first-year GPA = mean of the two semester averages weighted by units passed (scale 0--20).\\
-\textbf{Cleaning (src/load\_data.py):} students who passed no unit are excluded because their average is undefined, not zero; degrees with fewer than 50 students are excluded; result 3,703 students in 15 degrees. The ranking-rule comparison uses the 3,469 students with grades in both semesters.\\
-\textbf{Entry grades:} standardised within admission route because routes grade applicants differently.\\
-\textbf{Why this dataset matters:} it is the only one with individual students and entry grades, so it can test corrections on later performance.\\
-\textbf{Access and ethics:} public, anonymised data (UCI Machine Learning Repository, Creative Commons Attribution 4.0 licence, checked on the dataset page on 22 Nov 2026). The same records give the background variables of Figure~\ref{fig:background} (parents' qualifications, scholarship, gender).}
-\budget{160}{Pablo}
+We used the public, anonymised records of 4,424 students enrolled at one Portuguese polytechnic from 2008--09 to 2018--19 (Realinho et al., ``Predict Students''). Each row describes one student, including degree, entry grade, background and semester results. We calculated first-year grade point average (GPA) on the 0--20 scale by weighting the two semester averages by units passed. We excluded students who passed no unit because their average is undefined, rather than a genuine zero, and excluded degrees with fewer than 50 students. This left 3,703 students in 15 degrees; the ranking comparison used the 3,469 with grades in both semesters. We standardised entry grades within admission route because routes assess applicants differently. These individual records allow us to evaluate first-semester selection against second-semester performance and supply the background variables in Figure~\ref{fig:background}. We used the data under the repository's Creative Commons Attribution 4.0 licence without attempting to identify students.
 
 \input{sections/02b_data_us}

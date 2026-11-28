@@ -1,13 +1,1 @@
-% ============================================================
-% 4.1 (continued) MIXED-MODEL RESULT -- Writer: Pablo Torres -- about 170 words
-% This paragraph continues Section 4.1 (no new heading).
-% Numbers: results/mixed_model_stats.json, results/mixed_model_profiles.csv.
-% Start from outline entry 6a ("mixed model: 61, 29 and 11%").
-% ============================================================
-
-\guide{Pablo -- Paragraph: what the mixed model adds}{%
-\textbf{Claim:} the mixed model confirms the split with a different method.\\
-\textbf{Numbers:} descriptive split 61\% shared field effect, 29\% university-specific, 11\% residual (\texttt{descriptive\_three\_way\_shares}); variance components $\sigma_a^2 = 0.027$, $\sigma_b^2 = 0.039$, $\sigma^2 = 0.015$ grade points$^2$; converged with L-BFGS.\\
-\textbf{Interpretation:} the university-by-field variance is larger than the residual variance, so a university's profile is not noise -- this is what \S\ref{sec:res-prediction} tests on future years.\\
-\textbf{Be precise:} the 65/28/7 and 61/29/11 splits measure slightly different things (see \texttt{comparison\_note}); say so in one sentence so the reader does not think they contradict each other. Mention that the profiles (BLUPs) are saved in \texttt{results/mixed\_model\_profiles.csv}.}
-\budget{170}{Pablo}
+We find the same broad ordering of components with the mixed model. Its descriptive comparison assigns approximately 61\% to the shared field pattern, 29\% to university-specific field differences and 11\% to the residual, compared with 65\%, 28\% and 7\% from nested least squares. The rounded mixed-model percentages need not sum to 100\%. The estimated variances are $\sigma_a^2=0.027$, $\sigma_b^2=0.039$ and $\sigma^2=0.015$ squared grade points, and the REML fit converged with L-BFGS. The interaction variance exceeds the residual variance, supporting a university profile beyond unexplained annual fluctuations. This does not establish persistence by itself; we test that interpretation on later years in Section~\ref{sec:res-prediction}. The two percentage splits are not identical estimands: one uses reductions in residual sums of squares after university-year adjustment, while the other combines fitted fixed-field variation with estimated interaction and residual variances. We saved the partially pooled profiles and conditional uncertainty intervals in \texttt{results/mixed\_model\_profiles.csv}, so the comparison need not rely on raw university averages alone.

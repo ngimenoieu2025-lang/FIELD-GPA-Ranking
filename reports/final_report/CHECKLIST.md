@@ -75,6 +75,6 @@ The last check before uploading goes through every line and records the proof, a
 
 | # | Requirement | Done |
 |---|---|---|
-| S1 | PDF uploaded to Communication Skills (Turnitin) **before 23:39 on 25 Nov**; receipt saved | ☐ |
-| S2 | Same PDF uploaded to Machine Learning, "Final Report ML+CS" (**one attempt only**) before 23:59 | ☐ |
+| S1 | PDF uploaded to Communication Skills (Turnitin) **on 30 Nov, before the closing time shown on Blackboard**; receipt saved | ☐ |
+| S2 | Same PDF uploaded to Machine Learning, "Final Report ML+CS" (**one attempt only**) before its closing time | ☐ |
 | S3 | Uploaded PDF has the same hash as `reports/final_report/main.pdf` on `main` | ☐ |
